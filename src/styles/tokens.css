@@ -1,0 +1,69 @@
+/* ============================================================
+   FITT WITH T — DESIGN TOKENS (FIT-27)
+   Single source of truth. Import once in main.jsx:  import './styles/tokens.css'
+   NEVER hard-code a value that exists here. Every component reads from these.
+   ============================================================ */
+
+:root{
+  /* ---- Colour ---- */
+  --espresso:   #241c17;   /* deep warm dark (creed section, footer) */
+  --bg:         #fbf7f3;   /* warm off-white page background */
+  --sand:       #f0e7df;   /* warm stone (alt section bg) */
+  --sand-2:     #e6d9cd;
+  --cream:      #fffdfb;   /* card surfaces */
+  --ink:        #2a221d;   /* primary text */
+  --muted:      #8a7b6e;   /* secondary text */
+  --rose:       #b3705c;   /* logo rose-gold — primary accent */
+  --rose-2:     #9a5645;   /* deeper rose for text accents on light */
+  --rose-soft:  rgba(179,112,92,.12);
+  --gold:       #bb9a64;   /* warm gold — broadens palette */
+  --gold-soft:  rgba(187,154,100,.14);
+  --line:       #e7dace;   /* light divider */
+  --line-dark:  #3a2e26;   /* divider on dark sections */
+
+  /* ---- Type ---- */
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body:    "Outfit", system-ui, sans-serif;
+  --fs-display: clamp(2.4rem, 5.5vw, 4rem);
+  --fs-h2:      clamp(1.8rem, 4vw, 2.6rem);
+  --fs-body:    1.08rem;
+  --fs-small:   0.82rem;
+  --fw-light:   300;
+  --fw-reg:     400;
+  --fw-med:     500;
+  --fw-semi:    600;
+
+  /* ---- Spacing & shape ---- */
+  --u: 8px;                /* base unit — all spacing is a multiple */
+  --maxw: 1200px;
+  --radius: 10px;          /* softly rounded — buttons, cards, inputs */
+  --radius-sm: 8px;
+  --radius-pill: 999px;    /* only where a pill is wanted */
+
+  /* ---- Motion ---- */
+  --ease: cubic-bezier(.2,.7,.2,1);
+  --t-fast: .25s;
+  --t-med: .4s;
+  --t-slow: .8s;
+
+  /* ---- Shadow ---- */
+  --shadow-sm: 0 8px 30px rgba(42,34,29,.05);
+  --shadow-md: 0 24px 60px rgba(42,34,29,.12);
+  --shadow-rose: 0 10px 30px rgba(179,112,92,.28);
+}
+
+/* Honour reduced-motion globally */
+@media (prefers-reduced-motion: reduce){
+  *{ animation:none !important; transition:none !important; }
+}
+
+/* Optional: base resets components can rely on */
+*{ margin:0; padding:0; box-sizing:border-box; }
+body{
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: var(--fw-light);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
