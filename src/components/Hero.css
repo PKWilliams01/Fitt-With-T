@@ -244,6 +244,34 @@
 
 /* ====== Responsive ====== */
 @media (max-width: 900px) {
-  .hero-wrap   { grid-template-columns: 1fr; }
-  .hero-visual { display: none; }
+  .hero-wrap {
+    grid-template-columns: 1fr;
+    position: relative;
+  }
+
+  /* Image becomes a soft background layer on mobile */
+  .hero-visual {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .hero-photo {
+    height: 100%;
+    aspect-ratio: unset;
+    border-radius: 0;
+    box-shadow: none;
+    opacity: 0.18;
+  }
+
+  .hero-creed { display: none; }
+
+  /* Copy floats above the background */
+  .hero-copy {
+    position: relative;
+    z-index: 1;
+    padding-bottom: calc(var(--u) * 8);
+  }
 }
