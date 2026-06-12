@@ -86,7 +86,7 @@
   color: #fff;
   border: none;
   border-radius: var(--radius);
-  padding: calc(var(--u) * 1.25) calc(var(--u) * 3);
+  padding: calc(var(--u) * 2) calc(var(--u) * 4);
   cursor: pointer;
   box-shadow: var(--shadow-rose);
   transition: background var(--t-fast), transform var(--t-fast), box-shadow var(--t-fast);
