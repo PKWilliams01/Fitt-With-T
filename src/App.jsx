@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Nav          from './components/Nav'
+import Footer       from './components/Footer'
 import HomePage     from './pages/HomePage'
 import AboutPage    from './pages/AboutPage'
 import ServicesPage from './pages/ServicesPage'
@@ -30,6 +31,7 @@ export default function App() {
     <>
       <Nav currentPage={page} onNavigate={navigate} />
       <Page onNavigate={navigate} />
+      <Footer onNavigate={navigate} />
     </>
   )
 }
