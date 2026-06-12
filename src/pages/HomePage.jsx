@@ -1,7 +1,9 @@
-export default function HomePage() {
+import Hero from '../components/Hero'
+
+export default function HomePage({ onNavigate }) {
   return (
-    <main className="page-stub">
-      <p>Home</p>
+    <main>
+      <Hero onNavigate={onNavigate} />
     </main>
   )
 }
