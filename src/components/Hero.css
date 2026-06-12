@@ -244,6 +244,54 @@
 
 /* ====== Responsive ====== */
 @media (max-width: 900px) {
-  .hero-wrap   { grid-template-columns: 1fr; }
-  .hero-visual { display: none; }
+  /* static so .hero-visual escapes to .hero as positioning context */
+  .hero-wrap {
+    grid-template-columns: 1fr;
+    position: static;
+  }
+
+  /* image occupies right lane only — text gets clean left side */
+  .hero-visual {
+    display: block;
+    position: absolute;
+    left: 42%;
+    right: 0;
+    top: calc(var(--u) * 8);
+    bottom: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .hero-photo {
+    height: 100%;
+    aspect-ratio: unset;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  /* frame face at top, show full figure down to hands */
+  .hero-photo__img {
+    object-position: center 12%;
+  }
+
+  /* soft left fade into cream, gentle bottom fade */
+  .hero-visual::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to right, var(--bg) 0%, transparent 40%),
+      linear-gradient(to top, var(--bg) 6%, transparent 35%);
+    pointer-events: none;
+  }
+
+  .hero-creed { display: none; }
+
+  /* text constrained to left lane */
+  .hero-copy {
+    position: relative;
+    z-index: 1;
+    max-width: 60%;
+    padding-bottom: calc(var(--u) * 8);
+  }
 }
