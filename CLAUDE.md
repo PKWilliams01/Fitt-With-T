@@ -39,6 +39,12 @@ Home, About (Tommera's real story), Services (Face to Face / Online Coaching / H
 8. No secrets committed; dependencies sane.
 9. Committed with a clear message; self-reviewed.
 
+## Git workflow (non-negotiable)
+- NEVER commit directly to `main`. `main` = live Vercel site.
+- For every task, create a work branch: `build/[card-id]` (e.g. `build/b-04`).
+- Push the branch — Vercel builds a private preview URL. Only merge to `main` when I explicitly say "make it live".
+- Always confirm the current branch before committing.
+
 ## How to work with me
 - One story/card at a time. Don't build ahead.
 - ALWAYS show proposed file changes before applying them; I review before you write.
