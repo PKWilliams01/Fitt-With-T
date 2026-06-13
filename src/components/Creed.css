@@ -1,0 +1,36 @@
+/* Creed band — dark espresso section, four pillars with animated dividers. */
+.creed { background: var(--espresso); color: var(--cream); position: relative; overflow: hidden; }
+.creed .wrap { position: relative; z-index: 2; }
+.creed-head { text-align: center; }
+.creed .eyebrow { color: var(--gold); }
+.creed .eyebrow::before,
+.creed .eyebrow.center::after { background: var(--gold); }
+.creed .display { color: var(--cream); margin-top: calc(var(--u) * 2); }
+.creed .display em { color: var(--rose); }
+
+.creed-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: calc(var(--u) * 7); }
+.creed-item { padding: calc(var(--u) * 4) calc(var(--u) * 3); border-left: 1px solid var(--line-dark); position: relative; }
+.creed-item:first-child { border-left: none; }
+.creed-item__n { font-family: var(--font-display); font-style: italic; font-size: 1rem; color: var(--gold); }
+.creed-item h3 { font-family: var(--font-display); font-weight: var(--fw-med); font-size: 1.9rem; margin: calc(var(--u) * 1.5) 0; color: var(--cream); }
+.creed-item p { color: rgba(255, 253, 251, .6); font-size: .92rem; }
+
+/* animated rose divider that grows as the column reveals */
+.creed-item::after {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 0;
+  width: 1px;
+  height: 0;
+  background: var(--rose);
+  transition: height var(--t-slow) ease;
+}
+.creed-item.in::after { height: 100%; }
+
+@media (max-width: 900px) {
+  .creed-grid { grid-template-columns: 1fr; }
+  .creed-item { border-left: none; border-top: 1px solid var(--line-dark); padding: calc(var(--u) * 3) 0; }
+  .creed-item:first-child { border-top: none; }
+  .creed-item::after { display: none; }
+}

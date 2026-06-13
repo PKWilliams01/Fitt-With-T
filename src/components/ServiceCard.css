@@ -1,0 +1,61 @@
+/* Coaching tier card. Reused on Home and the full Services page. */
+.service-card {
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: calc(var(--u) * 5) calc(var(--u) * 4);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--t-med) var(--ease), box-shadow var(--t-med), border-color var(--t-med);
+}
+.service-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--rose), var(--gold));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--t-med);
+}
+.service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); border-color: var(--rose-soft); }
+.service-card:hover::before { transform: scaleX(1); }
+
+.service-card--featured { background: var(--espresso); border-color: var(--espresso); }
+.service-card--featured .service-card__name,
+.service-card--featured .service-card__desc { color: var(--cream); }
+.service-card--featured .service-card__freq { color: var(--gold); }
+.service-card--featured .service-card__incl { border-color: var(--line-dark); }
+.service-card--featured .service-card__incl li { color: rgba(255, 253, 251, .7); }
+
+.service-card__ribbon {
+  position: absolute;
+  top: 18px;
+  right: -30px;
+  background: var(--rose);
+  color: var(--cream);
+  font-size: .62rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 5px 36px;
+  transform: rotate(45deg);
+}
+.service-card__name { font-family: var(--font-display); font-weight: var(--fw-med); font-size: 1.8rem; }
+.service-card__freq { color: var(--rose-2); font-size: .82rem; letter-spacing: .06em; margin-top: 5px; text-transform: uppercase; }
+.service-card__desc { color: var(--muted); font-size: .92rem; margin: calc(var(--u) * 2.5) 0; flex-grow: 1; }
+
+.service-card__incl {
+  list-style: none;
+  border-top: 1px solid var(--line);
+  padding-top: calc(var(--u) * 2.5);
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: calc(var(--u) * 3);
+}
+.service-card__incl li { font-size: .86rem; color: var(--muted); display: flex; gap: 9px; align-items: flex-start; }
+.service-card__incl li::before { content: "\2726"; color: var(--rose); flex-shrink: 0; }
+
+.service-card__cta { justify-content: center; }
