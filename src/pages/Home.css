@@ -1,0 +1,51 @@
+/* Home-only sections. Shared primitives live in primitives.css;
+   reusable blocks (Creed, ServiceCard, Testimonial) own their own styles. */
+
+/* ---- sliding marquee strip ---- */
+.marquee { background: var(--espresso); color: var(--cream); padding: calc(var(--u) * 1.75) 0; overflow: hidden; white-space: nowrap; }
+.marquee__track { display: inline-flex; gap: calc(var(--u) * 5); animation: marquee-scroll 28s linear infinite; }
+.marquee__set { display: inline-flex; gap: calc(var(--u) * 5); }
+.marquee__word { font-family: var(--font-display); font-style: italic; font-size: 1.2rem; }
+.marquee__dot { color: var(--gold); }
+@keyframes marquee-scroll { to { transform: translateX(-50%); } }
+
+/* ---- welcome / intro split ---- */
+.welcome .split { display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--u) * 7); align-items: center; }
+.welcome .photo { aspect-ratio: 4 / 5; border-radius: var(--radius-sm); box-shadow: var(--shadow-md); }
+.welcome__copy h2 { margin: calc(var(--u) * 2) 0 calc(var(--u) * 2.5); }
+.welcome__copy p { color: var(--muted); margin-bottom: calc(var(--u) * 2); }
+.welcome__copy .btn { margin-top: calc(var(--u) * 1); }
+
+/* ---- coaching ---- */
+.coaching { background: var(--sand); }
+.coaching__head { text-align: center; }
+.coaching__head h2 { margin-top: calc(var(--u) * 2); }
+.coaching__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: calc(var(--u) * 3); margin-top: calc(var(--u) * 6); }
+
+/* ---- testimonials ---- */
+.testimonials__head { text-align: center; }
+.note { text-align: center; color: var(--muted); font-size: .82rem; font-style: italic; margin-top: calc(var(--u) * 4); }
+
+/* ---- closing CTA band ---- */
+.cta-band {
+  background: linear-gradient(135deg, var(--rose), var(--rose-2));
+  color: var(--cream);
+  text-align: center;
+  border-radius: var(--radius);
+  padding: calc(var(--u) * 8) calc(var(--u) * 4);
+  position: relative;
+  overflow: hidden;
+}
+.cta-band::before,
+.cta-band::after { content: ""; position: absolute; border-radius: 50%; background: rgba(255, 255, 255, .08); }
+.cta-band::before { width: 300px; height: 300px; top: -120px; right: -80px; }
+.cta-band::after { width: 200px; height: 200px; bottom: -100px; left: -40px; }
+.cta-band h2 { color: var(--cream); position: relative; z-index: 2; }
+.cta-band h2 em { color: var(--cream); font-style: italic; }
+.cta-band p { color: rgba(255, 253, 251, .85); position: relative; z-index: 2; max-width: 46ch; margin: calc(var(--u) * 2) auto calc(var(--u) * 4); }
+.cta-band .btn { position: relative; z-index: 2; }
+
+@media (max-width: 900px) {
+  .welcome .split { grid-template-columns: 1fr; }
+  .coaching__grid { grid-template-columns: 1fr; }
+}
