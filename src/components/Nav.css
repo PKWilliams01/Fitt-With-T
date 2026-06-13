@@ -19,7 +19,8 @@
 }
 
 /* ====== Over-hero state — light text on the dark home hero (until scrolled) ====== */
-.nav-bar--over-hero .nav-logo { color: var(--cream); }
+/* logo art is dark+rose; knock it out to clean white over the dark hero */
+.nav-bar--over-hero .nav-logo__img { filter: brightness(0) invert(1); }
 .nav-bar--over-hero .nav-link { color: var(--cream); }
 .nav-bar--over-hero .nav-burger span { background: var(--cream); }
 
@@ -41,24 +42,19 @@
 
 /* ====== Logo ====== */
 .nav-logo {
-  font-family: var(--font-display);
-  font-weight: var(--fw-semi);
-  font-size: 1.5rem;
-  letter-spacing: 0.01em;
   display: flex;
-  align-items: baseline;
-  gap: 3px;
+  align-items: center;
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--ink);
   padding: 0;
 }
 
-.nav-logo__t {
-  color: var(--rose);
-  font-style: italic;
-  font-size: 1.7rem;
+.nav-logo__img {
+  display: block;
+  height: calc(var(--u) * 5.5);
+  width: auto;
+  transition: filter var(--t-fast);
 }
 
 /* ====== Links ====== */
@@ -155,6 +151,7 @@
 /* ====== Mobile ====== */
 @media (max-width: 900px) {
   .nav-burger { display: flex; }
+  .nav-logo__img { height: calc(var(--u) * 4.5); }
 
   .nav-links {
     position: fixed;

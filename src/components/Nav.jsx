@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import logo from '../assets/logo-transparent.png'
 import './Nav.css'
 
 const LINKS = [
@@ -34,7 +35,7 @@ export default function Nav({ currentPage, onNavigate }) {
         onClick={() => handleNav('home')}
         aria-label="Fitt With T — go to home"
       >
-        Fitt With <span className="nav-logo__t">T</span>
+        <img className="nav-logo__img" src={logo} alt="Fitt With T" />
       </button>
 
       <nav
