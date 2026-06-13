@@ -24,8 +24,10 @@ export default function Nav({ currentPage, onNavigate }) {
     setMenuOpen(false)
   }
 
+  const overHero = currentPage === 'home' && !scrolled
+
   return (
-    <header className={`nav-bar${scrolled ? ' nav-bar--scrolled' : ''}`}>
+    <header className={`nav-bar${scrolled ? ' nav-bar--scrolled' : ''}${overHero ? ' nav-bar--over-hero' : ''}`}>
 
       <button
         className="nav-logo"
