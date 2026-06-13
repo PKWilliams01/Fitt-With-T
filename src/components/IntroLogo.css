@@ -1,0 +1,38 @@
+/* ====== Intro logo reveal (one per session) ====== */
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 200;                 /* above the nav (80) */
+  display: grid;
+  place-items: center;
+  background: var(--espresso);  /* matches the hero base for a seamless dissolve */
+  opacity: 1;
+  transition: opacity var(--t-slow) var(--ease);
+}
+
+.intro--fading { opacity: 0; }
+
+.intro__logo {
+  height: clamp(200px, 44vmin, 460px);
+  width: auto;
+  /* dark logo art knocked out to clean white on the espresso wash */
+  filter: brightness(0) invert(1);
+  transform-origin: center;
+  animation: intro-logo 3600ms var(--ease) forwards;
+  will-change: opacity, transform;
+}
+
+@keyframes intro-logo {
+  0%   { opacity: 0; transform: scale(.94); }
+  22%  { opacity: 1; transform: scale(1); }
+  60%  { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.06); }
+}
+
+/* keep the corner nav logo hidden until the intro hands off */
+body.intro-active .nav-logo__img { opacity: 0; }
+
+/* motion-reduced users never see the intro */
+@media (prefers-reduced-motion: reduce) {
+  .intro { display: none; }
+}

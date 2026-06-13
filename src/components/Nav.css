@@ -18,26 +18,43 @@
   box-shadow: var(--shadow-sm);
 }
 
+/* ====== Over-hero state — light text on the dark home hero (until scrolled) ====== */
+/* logo art is dark+rose; knock it out to clean white over the dark hero */
+.nav-bar--over-hero .nav-logo__img { filter: brightness(0) invert(1); }
+.nav-bar--over-hero .nav-link { color: var(--cream); }
+.nav-bar--over-hero .nav-burger span { background: var(--cream); }
+
+/* burger turns into the X over the open (cream) drawer — keep it dark there */
+.nav-bar--over-hero .nav-burger--open span { background: var(--ink); }
+
+/* outlined-cream CTA over the hero (matches concept); reverts to solid rose on scroll */
+.nav-bar--over-hero .nav-cta {
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid rgba(255, 253, 251, .85);
+  box-shadow: none;
+}
+.nav-bar--over-hero .nav-cta:hover {
+  background: var(--rose);
+  border-color: var(--rose);
+  color: #fff;
+}
+
 /* ====== Logo ====== */
 .nav-logo {
-  font-family: var(--font-display);
-  font-weight: var(--fw-semi);
-  font-size: 1.5rem;
-  letter-spacing: 0.01em;
   display: flex;
-  align-items: baseline;
-  gap: 3px;
+  align-items: center;
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--ink);
   padding: 0;
 }
 
-.nav-logo__t {
-  color: var(--rose);
-  font-style: italic;
-  font-size: 1.7rem;
+.nav-logo__img {
+  display: block;
+  height: calc(var(--u) * 7);
+  width: auto;
+  transition: opacity var(--t-slow) var(--ease), filter var(--t-fast);
 }
 
 /* ====== Links ====== */
@@ -131,25 +148,132 @@
 .nav-burger--open span:nth-child(2) { opacity: 0; }
 .nav-burger--open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+/* ====== Drawer scrim (mobile) — dims + locks focus onto the menu ====== */
+.nav-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: rgba(36, 28, 23, 0.45);
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--t-med) var(--ease);
+}
+.nav-scrim--show { opacity: 1; pointer-events: auto; }
+
+/* social row lives only in the mobile drawer */
+.nav-social { display: none; }
+
 /* ====== Mobile ====== */
 @media (max-width: 900px) {
-  .nav-burger { display: flex; }
+  .nav-burger { display: flex; position: relative; z-index: 3; }
+  .nav-logo__img { height: calc(var(--u) * 5.5); }
 
   .nav-links {
     position: fixed;
     inset: 0 0 0 auto;
-    width: 80%;
-    background: var(--cream);
+    z-index: 2;
+    width: min(84%, 360px);
+    background:
+      radial-gradient(120% 55% at 100% 0%, var(--rose-soft), transparent 58%),
+      linear-gradient(180deg, var(--cream), var(--sand));
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
-    padding: 0 calc(var(--u) * 5);
-    gap: calc(var(--u) * 3);
+    padding: calc(var(--u) * 15) calc(var(--u) * 5) calc(var(--u) * 5);
+    gap: calc(var(--u) * 2.25);
     transform: translateX(100%);
     transition: transform var(--t-med) var(--ease);
-    box-shadow: -20px 0 60px rgba(42, 34, 29, 0.15);
+    box-shadow: -24px 0 70px rgba(42, 34, 29, 0.22);
+    border-left: 1px solid var(--line);
   }
 
   .nav-links--open { transform: none; }
-  .nav-link { font-size: 1.2rem; }
+
+  /* drawer links — larger, serif, with the rose underline ===== */
+  .nav-links .nav-link {
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+    font-weight: var(--fw-med);
+    letter-spacing: .01em;
+    text-transform: none;
+    padding: calc(var(--u) * 0.5) 0;
+  }
+  .nav-links .nav-link--current { color: var(--rose-2); }
+
+  /* drawer has a light background, so links/CTA stay dark even over the hero */
+  .nav-bar--over-hero .nav-link { color: var(--ink); }
+  .nav-bar--over-hero .nav-cta {
+    background: var(--rose);
+    color: #fff;
+    border-color: transparent;
+  }
+
+  .nav-links .nav-cta {
+    width: 100%;
+    text-align: center;
+    margin-top: calc(var(--u) * 2);
+    padding: calc(var(--u) * 2.25) calc(var(--u) * 4);
+  }
+
+  /* ===== social row pinned to the bottom of the drawer ===== */
+  .nav-social {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--u) * 1.5);
+    width: 100%;
+    margin-top: auto;
+    padding-top: calc(var(--u) * 3);
+    border-top: 1px solid var(--line);
+  }
+  .nav-social__label {
+    font-family: var(--font-body);
+    font-size: .7rem;
+    font-weight: var(--fw-semi);
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .nav-social__icons { display: flex; gap: calc(var(--u) * 1.5); }
+  .nav-social__link {
+    display: grid;
+    place-items: center;
+    width: calc(var(--u) * 5.5);
+    height: calc(var(--u) * 5.5);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--cream);
+    color: var(--ink);
+    transition: color var(--t-fast), background var(--t-fast),
+                border-color var(--t-fast), transform var(--t-fast);
+  }
+  .nav-social__link:hover,
+  .nav-social__link:focus-visible {
+    color: #fff;
+    background: var(--rose);
+    border-color: var(--rose);
+    transform: translateY(-2px);
+    outline: none;
+  }
+  .nav-social__link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+  /* ===== staggered entrance for drawer items ===== */
+  .nav-links > * { opacity: 0; transform: translateX(18px); }
+  .nav-links--open > * { animation: drawer-item .5s var(--ease) forwards; }
+  .nav-links--open > *:nth-child(1) { animation-delay: .10s; }
+  .nav-links--open > *:nth-child(2) { animation-delay: .16s; }
+  .nav-links--open > *:nth-child(3) { animation-delay: .22s; }
+  .nav-links--open > *:nth-child(4) { animation-delay: .28s; }
+  .nav-links--open > *:nth-child(5) { animation-delay: .34s; }
+  .nav-links--open > *:nth-child(6) { animation-delay: .42s; }
+  .nav-links--open > *:nth-child(7) { animation-delay: .50s; }
+}
+
+@keyframes drawer-item { to { opacity: 1; transform: none; } }
+
+/* reduced-motion: tokens.css kills animations globally, so make sure the
+   drawer items are visible without relying on the entrance animation */
+@media (prefers-reduced-motion: reduce) {
+  .nav-links > * { opacity: 1; transform: none; }
 }

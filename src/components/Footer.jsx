@@ -1,3 +1,4 @@
+import { SOCIALS, isMail } from '../data/socials'
 import './Footer.css'
 
 const EXPLORE = [
@@ -24,7 +25,7 @@ export default function Footer({ onNavigate }) {
             </button>
             <p className="footer__creed">Faith · Intention · Tenacity · Testimonials</p>
             <p className="footer__tagline">
-              Personal training in North London for everyone — beginners, returners, all ages and levels.
+              Personal training in South London for everyone — beginners, returners, all ages and levels.
             </p>
           </div>
 
@@ -42,14 +43,23 @@ export default function Footer({ onNavigate }) {
             <button className="footer__link" onClick={() => onNavigate('book')}>
               Book a taster
             </button>
-            <span className="footer__link footer__link--placeholder">Instagram</span>
-            <span className="footer__link footer__link--placeholder">TikTok</span>
+            {SOCIALS.map(({ label, href }) => (
+              <a
+                key={label}
+                className="footer__link"
+                href={href}
+                {...(isMail(href) ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
+                aria-label={isMail(href) ? 'Email Fitt With T' : `${label} (opens in a new tab)`}
+              >
+                {label}
+              </a>
+            ))}
           </div>
 
         </div>
 
         <div className="footer__bottom">
-          <span>© 2026 Fitt With T · Personal Training, North London</span>
+          <span>© 2026 Fitt With T · Personal Training, South London</span>
         </div>
 
       </div>
