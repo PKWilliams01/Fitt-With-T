@@ -1,0 +1,204 @@
+/* ============================================================
+   ABOUT PAGE (B-07) — styles scoped to .about-page
+   Built from the approved concept's About section. Tokens only.
+   ============================================================ */
+
+.about-page .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 calc(var(--u) * 3); }
+.about-page section { padding: calc(var(--u) * 12) 0; }
+
+/* ---- reveal-in (load + on-scroll) ---- */
+.about-page .reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--t-slow) ease, transform var(--t-slow) var(--ease);
+}
+.about-page .reveal.in { opacity: 1; transform: none; }
+.about-page .reveal.d1 { transition-delay: .08s; }
+.about-page .reveal.d2 { transition-delay: .16s; }
+.about-page .reveal.d3 { transition-delay: .24s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .about-page .reveal { opacity: 1; transform: none; }
+}
+
+/* ---- shared type ---- */
+.about-page .eyebrow {
+  font-weight: var(--fw-semi);
+  font-size: .7rem;
+  letter-spacing: .32em;
+  text-transform: uppercase;
+  color: var(--rose-2);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.about-page .eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: var(--rose);
+  display: inline-block;
+}
+.about-page .eyebrow--center::after {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: var(--rose);
+  display: inline-block;
+}
+.about-page .display {
+  font-family: var(--font-display);
+  font-weight: var(--fw-reg);
+  font-size: var(--fs-display);
+  line-height: 1.06;
+  letter-spacing: .005em;
+}
+.about-page .display em { font-style: italic; color: var(--rose-2); }
+
+/* ---- page head ---- */
+.about-page .page-head {
+  padding-top: calc(var(--u) * 20);
+  padding-bottom: calc(var(--u) * 5);
+  text-align: center;
+  background: radial-gradient(90% 130% at 50% 0%, var(--rose-soft), transparent 60%);
+}
+.about-page .page-head .display { margin-top: calc(var(--u) * 2); }
+.about-page .page-head p { color: var(--muted); max-width: 56ch; margin: calc(var(--u) * 2) auto 0; }
+
+/* ---- story split ---- */
+.about-page .about-story { padding-top: calc(var(--u) * 3); }
+.about-page .split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: calc(var(--u) * 5);
+  align-items: center;
+}
+.about-page .story-copy h2 { margin: calc(var(--u) * 2) 0 calc(var(--u) * 2.5); }
+.about-page .story-copy p { color: var(--muted); margin-bottom: calc(var(--u) * 2); }
+.about-page .story-copy .lead {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--rose-2);
+}
+.about-page .story-copy strong { color: var(--ink); font-weight: var(--fw-semi); }
+.about-page .story-copy em { font-style: italic; color: var(--rose-2); }
+.about-page .sig {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.6rem;
+  color: var(--rose-2);
+  margin-top: calc(var(--u) * 1);
+}
+
+/* ---- portrait placeholder zone ---- */
+.about-page .photo {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  background: linear-gradient(150deg, var(--sand-2), var(--sand) 55%, var(--cream));
+}
+.about-page .photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .5;
+  background-image: radial-gradient(var(--rose-soft) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+.about-page .photo-mark {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sand-2);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 2rem;
+}
+.about-page .photo-label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: calc(var(--u) * 1.25) calc(var(--u) * 2);
+  background: linear-gradient(0deg, rgba(36, 28, 23, .55), transparent);
+  color: var(--cream);
+  font-size: .72rem;
+  letter-spacing: .04em;
+}
+.about-page .photo-label::before { content: "\2295"; color: var(--gold); }
+
+/* ---- button ---- */
+.about-page .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .6em;
+  font-family: var(--font-body);
+  font-weight: var(--fw-med);
+  font-size: .8rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: calc(var(--u) * 2) calc(var(--u) * 4);
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: transform var(--t-fast) var(--ease), background var(--t-fast), box-shadow var(--t-fast);
+}
+.about-page .btn-primary {
+  margin-top: calc(var(--u) * 3);
+  background: var(--rose);
+  color: var(--cream);
+  box-shadow: var(--shadow-rose);
+}
+.about-page .btn-primary:hover { background: var(--rose-2); transform: translateY(-2px); }
+.about-page .btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+/* ---- creed (My Approach) ---- */
+.about-page .creed { background: var(--espresso); color: var(--cream); }
+.about-page .creed-head { text-align: center; }
+.about-page .creed .eyebrow { color: var(--gold); }
+.about-page .creed .eyebrow::before,
+.about-page .creed .eyebrow--center::after { background: var(--gold); }
+.about-page .creed .display { color: var(--cream); margin-top: calc(var(--u) * 2); }
+.about-page .creed .display em { color: var(--rose); }
+.about-page .creed-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: calc(var(--u) * 7);
+}
+.about-page .creed-item {
+  padding: calc(var(--u) * 3) 0;
+  border-top: 1px solid var(--line-dark);
+}
+.about-page .creed-item:first-child { border-top: none; }
+.about-page .creed-n { font-family: var(--font-display); font-style: italic; font-size: 1rem; color: var(--gold); }
+.about-page .creed-item h3 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-med);
+  font-size: 1.9rem;
+  margin: calc(var(--u) * 1.5) 0;
+  color: var(--cream);
+}
+.about-page .creed-item p { color: rgba(255, 253, 251, .6); font-size: .92rem; }
+
+/* ---- desktop ---- */
+@media (min-width: 900px) {
+  .about-page .split { grid-template-columns: 1fr 1fr; gap: calc(var(--u) * 7); }
+  .about-page .creed-grid { grid-template-columns: repeat(4, 1fr); }
+  .about-page .creed-item {
+    padding: calc(var(--u) * 4) calc(var(--u) * 3);
+    border-top: none;
+    border-left: 1px solid var(--line-dark);
+  }
+  .about-page .creed-item:first-child { border-left: none; }
+}
