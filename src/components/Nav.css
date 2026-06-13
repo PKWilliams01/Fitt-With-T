@@ -18,6 +18,27 @@
   box-shadow: var(--shadow-sm);
 }
 
+/* ====== Over-hero state — light text on the dark home hero (until scrolled) ====== */
+.nav-bar--over-hero .nav-logo { color: var(--cream); }
+.nav-bar--over-hero .nav-link { color: var(--cream); }
+.nav-bar--over-hero .nav-burger span { background: var(--cream); }
+
+/* burger turns into the X over the open (cream) drawer — keep it dark there */
+.nav-bar--over-hero .nav-burger--open span { background: var(--ink); }
+
+/* outlined-cream CTA over the hero (matches concept); reverts to solid rose on scroll */
+.nav-bar--over-hero .nav-cta {
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid rgba(255, 253, 251, .85);
+  box-shadow: none;
+}
+.nav-bar--over-hero .nav-cta:hover {
+  background: var(--rose);
+  border-color: var(--rose);
+  color: #fff;
+}
+
 /* ====== Logo ====== */
 .nav-logo {
   font-family: var(--font-display);
@@ -152,4 +173,14 @@
 
   .nav-links--open { transform: none; }
   .nav-link { font-size: 1.2rem; }
+
+  /* drawer has a cream background, so links inside stay dark even over the hero */
+  .nav-bar--over-hero .nav-link { color: var(--ink); }
+
+  /* CTA inside the cream drawer stays solid rose (outlined-cream would vanish) */
+  .nav-bar--over-hero .nav-cta {
+    background: var(--rose);
+    color: #fff;
+    border-color: transparent;
+  }
 }
