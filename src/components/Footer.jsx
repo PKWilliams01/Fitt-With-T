@@ -24,7 +24,7 @@ export default function Footer({ onNavigate }) {
             </button>
             <p className="footer__creed">Faith · Intention · Tenacity · Testimonials</p>
             <p className="footer__tagline">
-              Personal training in North London for everyone — beginners, returners, all ages and levels.
+              Personal training in South London for everyone — beginners, returners, all ages and levels.
             </p>
           </div>
 
@@ -49,7 +49,7 @@ export default function Footer({ onNavigate }) {
         </div>
 
         <div className="footer__bottom">
-          <span>© 2026 Fitt With T · Personal Training, North London</span>
+          <span>© 2026 Fitt With T · Personal Training, South London</span>
         </div>
 
       </div>

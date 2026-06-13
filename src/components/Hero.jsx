@@ -31,7 +31,7 @@ export default function Hero({ onNavigate }) {
 
       {/* FIT-51 — centred headline + CTA */}
       <div className="hero-centre">
-        <span className="hero-eyebrow rise d1">Personal Training — North London</span>
+        <span className="hero-eyebrow rise d1">Personal Training</span>
         <h1 className="hero-h1 rise d2">
           More than a programme — <em>a mindset shift</em>
         </h1>
