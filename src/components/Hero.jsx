@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import './Hero.css'
 
-export default function Hero({ onNavigate }) {
+export default function Hero({ onNavigate, introActive }) {
   const mediaRef = useRef(null)
 
   /* FIT-55 — gentle parallax: the photo pulls at a slower rate than the page.
@@ -25,7 +25,7 @@ export default function Hero({ onNavigate }) {
   }, [])
 
   return (
-    <section className="hero">
+    <section className={`hero${introActive ? '' : ' hero--reveal'}`}>
       {/* FIT-53 — full-bleed photo zone (hero.jpeg) under the readability overlay */}
       <div className="hero-media" aria-hidden="true" ref={mediaRef} />
 

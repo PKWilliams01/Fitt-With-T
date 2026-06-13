@@ -36,12 +36,12 @@ const TIERS = [
   },
 ]
 
-export default function HomePage({ onNavigate }) {
+export default function HomePage({ onNavigate, introActive }) {
   const revealRef = useReveal()
 
   return (
     <main ref={revealRef}>
-      <Hero onNavigate={onNavigate} />
+      <Hero onNavigate={onNavigate} introActive={introActive} />
 
       {/* sliding marquee strip */}
       <div className="marquee">

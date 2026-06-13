@@ -27,7 +27,14 @@
   /* FIT-55 — parallax offset set from JS (0 when reduced-motion) */
   transform: translateY(var(--py, 0));
   will-change: transform;
+  /* held hidden until the hero reveals (image fades in first) */
+  opacity: 0;
 }
+
+/* ====== Entrance — photo fades in first, then the text rises ====== */
+.hero--reveal .hero-media { animation: media-in 1.3s var(--ease) forwards; }
+
+@keyframes media-in { to { opacity: 1; } }
 
 /* readability scrim — darker at the top & bottom with a soft centre wash, so
    cream text always has contrast while the photo stays visible at the edges */
@@ -164,25 +171,26 @@
 
 .hero-creed span:last-child::after { content: ""; }
 
-/* ====== FIT-52 — staggered entrance ====== */
+/* ====== FIT-52 — staggered entrance (text follows the photo) ====== */
 .rise {
   opacity: 0;
   transform: translateY(18px);
-  animation: rise .9s var(--ease) forwards;
 }
-.rise.d1 { animation-delay: .15s; }
-.rise.d2 { animation-delay: .3s; }
-.rise.d3 { animation-delay: .45s; }
-.rise.d4 { animation-delay: .6s; }
+.hero--reveal .rise { animation: rise .9s var(--ease) forwards; }
+.hero--reveal .rise.d1 { animation-delay: .7s; }
+.hero--reveal .rise.d2 { animation-delay: .85s; }
+.hero--reveal .rise.d3 { animation-delay: 1s; }
+.hero--reveal .rise.d4 { animation-delay: 1.15s; }
 
 @keyframes rise {
   to { opacity: 1; transform: none; }
 }
 
 /* honour reduced-motion — must reset opacity, since tokens.css globally
-   forces `animation:none !important` (otherwise .rise stays invisible). */
+   forces `animation:none !important` (otherwise content stays invisible). */
 @media (prefers-reduced-motion: reduce) {
   .rise { animation: none; opacity: 1; transform: none; }
+  .hero-media { opacity: 1; }
 }
 
 /* ====== Desktop — split composition: readable text panel + clear photo ====== */
