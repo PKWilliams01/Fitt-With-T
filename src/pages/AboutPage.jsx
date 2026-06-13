@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import portrait from '../assets/Portrait.jpeg'
 import './About.css'
 
 export default function AboutPage({ onNavigate }) {
@@ -38,9 +39,8 @@ export default function AboutPage({ onNavigate }) {
 
       <section className="about-story">
         <div className="wrap split">
-          <figure className="photo reveal" aria-label="Portrait of Tommera — photo placeholder">
-            <span className="photo-mark" aria-hidden="true">T</span>
-            <figcaption className="photo-label">Portrait of Tommera</figcaption>
+          <figure className="photo reveal">
+            <img className="photo-img" src={portrait} alt="Tommera, coach and founder of Fitt With T" />
           </figure>
 
           <div className="story-copy reveal d1">
