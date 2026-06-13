@@ -1,0 +1,130 @@
+/* ============================================================
+   SHARED PRIMITIVES
+   Base layout, type, buttons, photo zones, reveal — lifted
+   verbatim from the approved concept. Tokens only.
+   Imported once in main.jsx so pages/components compose, not
+   redefine, these. (Buttons use --radius per CLAUDE.md, not pills.)
+   ============================================================ */
+
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 calc(var(--u) * 3); }
+section { padding: calc(var(--u) * 12) 0; }
+
+/* ---- type ---- */
+.eyebrow {
+  font-weight: var(--fw-semi);
+  font-size: .7rem;
+  letter-spacing: .32em;
+  text-transform: uppercase;
+  color: var(--rose-2);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: var(--rose);
+  display: inline-block;
+}
+.eyebrow.center::after {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: var(--rose);
+  display: inline-block;
+}
+.display {
+  font-family: var(--font-display);
+  font-weight: var(--fw-reg);
+  font-size: var(--fs-display);
+  line-height: 1.06;
+  letter-spacing: .005em;
+}
+.display em { font-style: italic; color: var(--rose-2); }
+.lead { color: var(--muted); font-size: 1.08rem; font-weight: var(--fw-light); }
+
+/* ---- buttons (softly rounded per CLAUDE.md, not pills) ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .6em;
+  font-family: var(--font-body);
+  font-weight: var(--fw-med);
+  font-size: .8rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: calc(var(--u) * 2) calc(var(--u) * 4);
+  border-radius: var(--radius);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform var(--t-fast) var(--ease), background var(--t-fast),
+    color var(--t-fast), box-shadow var(--t-fast);
+}
+.btn-primary { background: var(--rose); color: var(--cream); box-shadow: var(--shadow-rose); }
+.btn-primary:hover { background: var(--rose-2); transform: translateY(-2px); }
+.btn-ghost { border-color: var(--rose); color: var(--rose-2); background: transparent; }
+.btn-ghost:hover { background: var(--rose); color: var(--cream); transform: translateY(-2px); }
+.btn-dark { background: var(--espresso); color: var(--cream); }
+.btn-dark:hover { background: #000; transform: translateY(-2px); }
+.btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+/* ---- photo placeholder zones ---- */
+.photo {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(150deg, var(--sand-2), var(--sand) 55%, var(--cream));
+  border: 1px solid var(--line);
+}
+.photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .5;
+  background-image: radial-gradient(var(--rose-soft) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+.photo .pl {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: calc(var(--u) * 1.25) calc(var(--u) * 2);
+  background: linear-gradient(0deg, rgba(36, 28, 23, .55), transparent);
+  color: var(--cream);
+  font-size: .72rem;
+  letter-spacing: .04em;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  z-index: 2;
+}
+.photo .pl::before { content: "\2295"; color: var(--gold); }
+.photo .pc {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sand-2);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 2rem;
+  z-index: 1;
+}
+
+/* ---- reveal on scroll (JS adds .in; see useReveal hook) ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--t-slow) ease, transform var(--t-slow) var(--ease);
+}
+.reveal.in { opacity: 1; transform: none; }
+.reveal.d1 { transition-delay: .08s; }
+.reveal.d2 { transition-delay: .16s; }
+.reveal.d3 { transition-delay: .24s; }
+
+/* Reduced motion: never leave reveal content invisible. */
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
+}

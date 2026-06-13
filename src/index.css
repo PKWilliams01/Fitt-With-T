@@ -12,11 +12,11 @@ html {
 
 body {
   font-family: var(--font-body);
-  font-size: var(--text-base);
-  font-weight: var(--weight-regular);
-  line-height: var(--leading-normal);
-  color: var(--espresso);
-  background-color: var(--sand-1);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-light);
+  line-height: 1.65;
+  color: var(--ink);
+  background-color: var(--bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
