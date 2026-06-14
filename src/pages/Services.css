@@ -1,0 +1,31 @@
+/* Coaching / Services page. Composes shared primitives + the reusable
+   ServiceCard; this file owns page-level layout only. Tokens for every value. */
+
+.services-page .page-head {
+  padding-top: calc(var(--u) * 20);
+  padding-bottom: calc(var(--u) * 5);
+  text-align: center;
+  background: radial-gradient(90% 130% at 50% 0%, var(--rose-soft), transparent 60%);
+}
+.services-page .page-head .display { margin-top: calc(var(--u) * 2); }
+.services-page .page-head p { color: var(--muted); max-width: 56ch; margin: calc(var(--u) * 2) auto 0; }
+
+.services-page .services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: calc(var(--u) * 3);
+  align-items: stretch;
+}
+
+.services-page .note {
+  text-align: center;
+  color: var(--muted);
+  font-size: .82rem;
+  font-style: italic;
+  margin-top: calc(var(--u) * 4);
+}
+
+/* ---- responsive: 3-up → single column ---- */
+@media (max-width: 900px) {
+  .services-page .services-grid { grid-template-columns: 1fr; }
+}
