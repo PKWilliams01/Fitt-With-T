@@ -1,0 +1,36 @@
+/* Results & Testimonials — gallery grid + a testimonial area that scales
+   from a single featured quote into a wall as more arrive. */
+.results-page .gal-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 170px;
+  gap: calc(var(--u) * 1.5);
+  margin-top: calc(var(--u) * 5);
+  list-style: none;
+}
+.results-page .gal-grid .photo { border-radius: var(--radius-sm); transition: transform var(--t-med) var(--ease); }
+.results-page .gal-grid .photo:hover { transform: scale(.98); }
+.results-page .gtall { grid-row: span 2; }
+.results-page .gwide { grid-column: span 2; }
+
+/* Testimonial area: one featured quote now, a row/wall later — no redesign.
+   auto-fit means a single item sits centred & full-width; extra <Testimonial>s
+   flow into columns automatically. */
+.results-wall {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: calc(var(--u) * 4);
+  align-items: start;
+  margin-top: calc(var(--u) * 8);
+}
+.results-wall .testimonial { margin: 0 auto; }
+
+@media (max-width: 900px) {
+  .results-page .gal-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .results-page .gal-grid { grid-template-columns: 1fr; }
+  /* drop the spans so tiles stack cleanly in one column */
+  .results-page .gwide { grid-column: auto; }
+  .results-page .gtall { grid-row: auto; }
+}
