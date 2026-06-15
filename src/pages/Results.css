@@ -1,5 +1,11 @@
 /* Results & Testimonials — gallery grid + a testimonial area that scales
    from a single featured quote into a wall as more arrive. */
+
+/* clear the fixed nav, matching the other inner pages */
+.results-page .page-head { padding-top: calc(var(--u) * 20); }
+.results-page .page-head .display { margin-top: calc(var(--u) * 2); }
+.results-page .page-head p { color: var(--muted); max-width: 56ch; margin: calc(var(--u) * 2) auto 0; }
+
 .results-page .gal-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
