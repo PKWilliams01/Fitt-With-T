@@ -2,13 +2,15 @@
    ServiceCard; this file owns page-level layout only. Tokens for every value. */
 
 .services-page .page-head {
-  padding-top: calc(var(--u) * 20);
-  padding-bottom: calc(var(--u) * 5);
+  padding-top: calc(var(--u) * 13);
+  padding-bottom: calc(var(--u) * 3);
   text-align: center;
   background: radial-gradient(90% 130% at 50% 0%, var(--rose-soft), transparent 60%);
 }
 .services-page .page-head .display { margin-top: calc(var(--u) * 2); }
 .services-page .page-head p { color: var(--muted); max-width: 56ch; margin: calc(var(--u) * 2) auto 0; }
+/* first section sits close to the header so the cards lead the page */
+.services-page > section { padding-top: calc(var(--u) * 3); }
 
 .services-page .services-grid {
   display: grid;
