@@ -38,6 +38,11 @@
 }
 .results-wall .testimonial { margin: 0 auto; }
 
+/* desktop: compact title to match About / Coaching */
+@media (min-width: 900px) {
+  .results-page .page-head .display { font-size: var(--fs-h2); }
+}
+
 @media (max-width: 900px) {
   .results-page .gal-grid { grid-template-columns: repeat(2, 1fr); }
 }

@@ -170,6 +170,10 @@
 
 /* ---- desktop ---- */
 @media (min-width: 900px) {
+  /* compact page title + portrait capped to the viewport so the whole
+     image is presented without scrolling */
+  .about-page .page-head .display { font-size: var(--fs-h2); }
+  .about-page .photo { max-height: 60vh; }
   .about-page .split { grid-template-columns: 1fr 1fr; gap: calc(var(--u) * 7); }
   .about-page .creed-grid { grid-template-columns: repeat(4, 1fr); }
   .about-page .creed-item {

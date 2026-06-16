@@ -27,6 +27,14 @@
   margin-top: calc(var(--u) * 4);
 }
 
+/* ---- desktop: compact title + tighter cards so all three present fully ---- */
+@media (min-width: 900px) {
+  .services-page .page-head .display { font-size: var(--fs-h2); }
+  .services-page .service-card { padding: calc(var(--u) * 3) calc(var(--u) * 3.5); }
+  .services-page .service-card__desc { margin: calc(var(--u) * 1.75) 0; }
+  .services-page .service-card__incl { padding-top: calc(var(--u) * 2); margin-bottom: calc(var(--u) * 1.5); }
+}
+
 /* ---- responsive: 3-up → single column ---- */
 @media (max-width: 900px) {
   .services-page .services-grid { grid-template-columns: 1fr; }
