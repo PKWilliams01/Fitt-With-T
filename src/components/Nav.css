@@ -11,11 +11,23 @@
 }
 
 .nav-bar--scrolled {
-  background: rgba(251, 247, 243, 0.92);
-  backdrop-filter: blur(14px);
   padding: calc(var(--u) * 1.5) calc(var(--u) * 4);
   border-bottom: 1px solid var(--line);
   box-shadow: var(--shadow-sm);
+}
+/* Frosted bar is painted on a pseudo-element, NOT on .nav-bar itself.
+   backdrop-filter on the nav would make it the containing block for its
+   fixed-position children (the drawer + scrim), trapping their inset:0
+   inside the ~60px bar instead of the viewport. Keeping the filter on the
+   pseudo preserves the look while leaving the drawer/scrim viewport-fixed. */
+.nav-bar--scrolled::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(251, 247, 243, 0.92);
+  -webkit-backdrop-filter: blur(14px);
+          backdrop-filter: blur(14px);
 }
 
 /* ====== Over-hero state — light text on the dark home hero (until scrolled) ====== */
