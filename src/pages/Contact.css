@@ -1,0 +1,116 @@
+/* Contact (B-10) — low-pressure form + direct contact + FAQ. Tokens only.
+   Form & FAQ styling refactored from the approved concept. */
+
+/* header — matches the other inner pages for symmetry */
+.contact-page .page-head {
+  padding-top: calc(var(--u) * 13);
+  padding-bottom: calc(var(--u) * 3);
+  text-align: center;
+  background: radial-gradient(90% 130% at 50% 0%, var(--rose-soft), transparent 60%);
+}
+.contact-page .page-head .display { margin-top: calc(var(--u) * 2); }
+.contact-page .page-head p { color: var(--muted); max-width: 56ch; margin: calc(var(--u) * 2) auto 0; }
+.contact-page > section { padding-top: calc(var(--u) * 3); }
+
+/* layout */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: calc(var(--u) * 4);
+  align-items: start;
+}
+
+/* form card */
+.contact-form-wrap {
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--u) * 4);
+  box-shadow: var(--shadow-sm);
+}
+.contact-form .field { margin-bottom: calc(var(--u) * 2.5); }
+.contact-form label {
+  display: block;
+  font-size: .72rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+  font-weight: var(--fw-med);
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  padding: calc(var(--u) * 1.75) calc(var(--u) * 2);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: .95rem;
+}
+.contact-form textarea { resize: vertical; min-height: calc(var(--u) * 14); }
+.contact-form input:focus-visible,
+.contact-form textarea:focus-visible {
+  outline: 2px solid var(--rose);
+  outline-offset: 2px;
+  border-color: var(--rose);
+}
+.contact-form input[aria-invalid="true"],
+.contact-form textarea[aria-invalid="true"] { border-color: var(--rose-2); }
+.field-err { color: var(--rose-2); font-size: .78rem; margin-top: 6px; }
+
+.contact-sent {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--rose-2);
+  text-align: center;
+  padding: calc(var(--u) * 4) 0;
+}
+
+/* direct contact */
+.contact-direct { display: flex; flex-direction: column; gap: calc(var(--u) * 3); }
+.contact-direct__h {
+  font-size: .74rem;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: var(--rose-2);
+  font-family: var(--font-body);
+  font-weight: var(--fw-semi);
+  margin-bottom: calc(var(--u) * 1.5);
+}
+.contact-direct p { color: var(--muted); margin-bottom: 6px; }
+.contact-direct a { color: var(--rose-2); }
+.contact-direct__note { font-size: .85rem; }
+.contact-direct__socials { list-style: none; }
+.contact-direct__socials li { margin-bottom: 6px; }
+.contact-direct a:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; border-radius: var(--radius-sm); }
+
+/* FAQ accordion (native <details> for built-in accessibility) */
+.contact-faq-section .faq-head { text-align: center; }
+.contact-faq-section .faq-head .display { margin-top: calc(var(--u) * 2); }
+.faq { max-width: 780px; margin: calc(var(--u) * 5) auto 0; }
+.fitem { border-bottom: 1px solid var(--line); }
+.fq {
+  padding: calc(var(--u) * 2.5) 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 1.05rem;
+  font-family: var(--font-display);
+  list-style: none;
+}
+.fq::-webkit-details-marker { display: none; }
+.fq .pm { color: var(--rose); transition: transform var(--t-med); font-family: var(--font-body); }
+.fitem[open] .pm { transform: rotate(45deg); }
+.fq:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; border-radius: var(--radius-sm); }
+.fa { color: var(--muted); font-size: .92rem; padding-bottom: calc(var(--u) * 2.5); }
+
+/* desktop */
+@media (min-width: 900px) {
+  .contact-page .page-head .display,
+  .contact-faq-section .faq-head .display { font-size: var(--fs-h2); }
+  .contact-grid { grid-template-columns: 1.4fr 1fr; gap: calc(var(--u) * 6); }
+}
