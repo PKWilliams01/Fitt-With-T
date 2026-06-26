@@ -83,8 +83,6 @@
 .contact-direct p { color: var(--muted); margin-bottom: 6px; }
 .contact-direct a { color: var(--rose-2); }
 .contact-direct__note { font-size: .85rem; }
-.contact-direct__socials { list-style: none; }
-.contact-direct__socials li { margin-bottom: 6px; }
 .contact-direct a:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; border-radius: var(--radius-sm); }
 
 /* FAQ accordion (native <details> for built-in accessibility) */

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import useReveal from '../hooks/useReveal'
 import { SOCIALS, isMail } from '../data/socials'
+import SocialLinks from '../components/SocialLinks'
 import './Contact.css'
 
 /* FAQ — verbatim from the approved concept (#page-contact). */
@@ -13,7 +14,6 @@ const FAQ = [
 ]
 
 const emailEntry = SOCIALS.find((s) => isMail(s.href))
-const socialEntries = SOCIALS.filter((s) => !isMail(s.href))
 
 const EMPTY = { name: '', email: '', message: '' }
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -124,14 +124,7 @@ export default function ContactPage({ onNavigate }) {
             </div>
             <div>
               <h2 className="contact-direct__h">Follow along</h2>
-              <ul className="contact-direct__socials">
-                {socialEntries.map((s) => (
-                  <li key={s.label}>
-                    <a href={s.href} target="_blank" rel="noopener noreferrer"
-                       aria-label={`${s.label} (opens in a new tab)`}>{s.label}</a>
-                  </li>
-                ))}
-              </ul>
+              <SocialLinks />
             </div>
             <button className="btn btn-ghost" onClick={() => onNavigate('book')}>
               Or book a free taster <span aria-hidden="true">→</span>

@@ -7,3 +7,12 @@ export const SOCIALS = [
 ]
 
 export const isMail = (href) => href.startsWith('mailto:')
+
+/* Public "follow" platforms for the dedicated social section (FIT-75).
+   The client's handles are NOT confirmed yet, so href stays null — the
+   section renders a clear "coming soon" placeholder instead of linking to a
+   wrong or dead account. Fill in each href once she confirms. */
+export const SOCIAL_PLATFORMS = [
+  { label: 'Instagram', href: null },
+  { label: 'TikTok',    href: null },
+]

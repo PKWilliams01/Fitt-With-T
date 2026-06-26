@@ -2,6 +2,7 @@ import Hero from '../components/Hero'
 import Creed from '../components/Creed'
 import ServiceCard from '../components/ServiceCard'
 import Testimonial from '../components/Testimonial'
+import SocialLinks from '../components/SocialLinks'
 import useReveal from '../hooks/useReveal'
 import './Home.css'
 
@@ -122,6 +123,18 @@ export default function HomePage({ onNavigate, introActive }) {
             />
           </div>
           <p className="note reveal d2">More reviews join here as clients finish their programmes.</p>
+        </div>
+      </section>
+
+      {/* follow along — dedicated social section */}
+      <section className="social">
+        <div className="wrap social__inner">
+          <span className="eyebrow center reveal">Social</span>
+          <h2 className="display reveal d1">Follow <em>along</em></h2>
+          <p className="reveal d2">Day-to-day coaching, client wins and a little motivation.</p>
+          <div className="social__links reveal d2">
+            <SocialLinks />
+          </div>
         </div>
       </section>
 
