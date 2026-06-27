@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: calc(var(--u) * 2.5) calc(var(--u) * 4);
+  padding: calc(var(--u) * 1.5) calc(var(--u) * 4);
   transition: background var(--t-fast), padding var(--t-fast), box-shadow var(--t-fast);
 }
 
@@ -64,10 +64,12 @@
 
 .nav-logo__img {
   display: block;
-  height: calc(var(--u) * 7);
+  height: calc(var(--u) * 9);
   width: auto;
-  transition: opacity var(--t-slow) var(--ease), filter var(--t-fast);
+  transition: opacity var(--t-slow) var(--ease), filter var(--t-fast), height var(--t-fast);
 }
+/* compact the logo when scrolled so the bar still shrinks (96px -> 80px) */
+.nav-bar--scrolled .nav-logo__img { height: calc(var(--u) * 7); }
 
 /* ====== Links ====== */
 .nav-links {
@@ -180,7 +182,7 @@
 /* ====== Mobile ====== */
 @media (max-width: 900px) {
   .nav-burger { display: flex; position: relative; z-index: 3; }
-  .nav-logo__img { height: calc(var(--u) * 5.5); }
+  .nav-logo__img { height: calc(var(--u) * 7); }
 
   .nav-links {
     position: fixed;
