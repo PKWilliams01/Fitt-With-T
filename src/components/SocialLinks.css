@@ -1,0 +1,52 @@
+/* Reusable social links row (FIT-75). Tokens only. */
+.social-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--u) * 1.5);
+  padding: 0;
+  margin: 0;
+}
+
+.social-links__link {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--u) * 1.25);
+  padding: calc(var(--u) * 1.25) calc(var(--u) * 2.25);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: .9rem;
+  text-decoration: none;
+  transition: color var(--t-fast), background var(--t-fast),
+              border-color var(--t-fast), transform var(--t-fast);
+}
+
+.social-links__icon { display: inline-flex; color: var(--rose); transition: color var(--t-fast); }
+
+/* real links — interactive */
+a.social-links__link:hover,
+a.social-links__link:focus-visible {
+  background: var(--rose);
+  border-color: var(--rose);
+  color: var(--cream);
+  transform: translateY(-2px);
+  outline: none;
+}
+a.social-links__link:hover .social-links__icon,
+a.social-links__link:focus-visible .social-links__icon { color: var(--cream); }
+a.social-links__link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+/* placeholder state — not yet a link (handle to be confirmed) */
+.social-links__link--soon { color: var(--muted); cursor: default; }
+.social-links__soon {
+  font-size: .62rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--rose-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  padding: 1px calc(var(--u) * 1);
+}
