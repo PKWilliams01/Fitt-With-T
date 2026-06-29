@@ -2,7 +2,7 @@ import { SOCIALS, isMail } from '../data/socials'
 import './Footer.css'
 
 const EXPLORE = [
-  { label: 'About',    page: 'about'    },
+  { label: 'Meet Tommera', page: 'about'    },
   { label: 'Coaching', page: 'packages' },
   { label: 'Results',  page: 'results'  },
   { label: 'Contact',  page: 'contact'  },

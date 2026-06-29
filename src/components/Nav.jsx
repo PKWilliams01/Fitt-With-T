@@ -5,8 +5,8 @@ import './Nav.css'
 
 const LINKS = [
   { label: 'Home',     page: 'home'     },
-  { label: 'About',    page: 'about'    },
-  { label: 'Coaching', page: 'packages' },
+  { label: 'Meet Tommera', page: 'about'    },
+  { label: 'Coaching',     page: 'packages' },
   { label: 'Results',  page: 'results'  },
   { label: 'Contact',  page: 'contact'  },
 ]
