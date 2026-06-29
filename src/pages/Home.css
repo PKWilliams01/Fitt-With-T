@@ -1,14 +1,6 @@
 /* Home-only sections. Shared primitives live in primitives.css;
    reusable blocks (Creed, ServiceCard, Testimonial) own their own styles. */
 
-/* ---- sliding marquee strip ---- */
-.marquee { background: var(--espresso); color: var(--cream); padding: calc(var(--u) * 1.75) 0; overflow: hidden; white-space: nowrap; }
-.marquee__track { display: inline-flex; gap: calc(var(--u) * 5); animation: marquee-scroll 28s linear infinite; }
-.marquee__set { display: inline-flex; gap: calc(var(--u) * 5); }
-.marquee__word { font-family: var(--font-display); font-style: italic; font-size: 1.2rem; }
-.marquee__dot { color: var(--gold); }
-@keyframes marquee-scroll { to { transform: translateX(-50%); } }
-
 /* ---- welcome / intro split ---- */
 .welcome .split { display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--u) * 7); align-items: center; }
 .welcome .photo { aspect-ratio: 4 / 5; border-radius: var(--radius-sm); box-shadow: var(--shadow-md); }
