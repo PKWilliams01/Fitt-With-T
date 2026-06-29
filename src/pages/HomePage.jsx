@@ -1,14 +1,10 @@
 import Hero from '../components/Hero'
+import Marquee from '../components/Marquee'
 import Creed from '../components/Creed'
 import ServiceCard from '../components/ServiceCard'
 import Testimonial from '../components/Testimonial'
 import useReveal from '../hooks/useReveal'
 import './Home.css'
-
-const MARQUEE_WORDS = [
-  'Strength', 'Confidence', 'Fat Loss', 'Mobility',
-  'Beginners Welcome', 'All Levels', 'Faith-Driven',
-]
 
 const TIERS = [
   {
@@ -44,19 +40,7 @@ export default function HomePage({ onNavigate, introActive }) {
       <Hero onNavigate={onNavigate} introActive={introActive} />
 
       {/* sliding marquee strip */}
-      <div className="marquee">
-        <div className="marquee__track" aria-hidden="true">
-          {[0, 1].map((copy) => (
-            <span key={copy} className="marquee__set">
-              {MARQUEE_WORDS.map((word) => (
-                <span key={word} className="marquee__word">
-                  <span className="marquee__dot">&#10022;</span> {word}
-                </span>
-              ))}
-            </span>
-          ))}
-        </div>
-      </div>
+      <Marquee onNavigate={onNavigate} />
 
       {/* welcome / intro */}
       <section className="welcome">
