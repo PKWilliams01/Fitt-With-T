@@ -1,0 +1,55 @@
+/* ProviderEmbed (FIT-34) — responsive host for an external provider embed.
+   Tokens only. No data from inside the embed is read or stored. */
+.embed { width: 100%; }
+
+.embed__frame {
+  position: relative;
+  width: 100%;
+  min-height: calc(var(--u) * 70);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.embed__iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: calc(var(--u) * 70);
+  border: 0;
+}
+.embed__iframe:focus-visible {
+  outline: 2px solid var(--rose);
+  outline-offset: 2px;
+}
+
+.embed__loading {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  background: var(--bg);
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+.embed__fallback {
+  margin-top: calc(var(--u) * 2);
+  font-size: .85rem;
+  color: var(--muted);
+}
+.embed__fallback a { color: var(--rose-2); }
+.embed__fallback a:focus-visible {
+  outline: 2px solid var(--rose);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+.embed__caption {
+  margin-top: calc(var(--u) * 1);
+  font-size: .78rem;
+  font-style: italic;
+  color: var(--muted);
+}
