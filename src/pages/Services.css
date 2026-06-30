@@ -29,6 +29,7 @@
 
 /* ---- desktop: compact title + tighter cards so all three present fully ---- */
 @media (min-width: 900px) {
+  .services-page .page-head { padding-top: calc(var(--u) * 15); } /* clear the taller logo nav */
   .services-page .page-head .display { font-size: var(--fs-h2); }
   .services-page .service-card { padding: calc(var(--u) * 3) calc(var(--u) * 3.5); }
   .services-page .service-card__desc { margin: calc(var(--u) * 1.75) 0; }
