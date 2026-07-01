@@ -18,16 +18,6 @@ const emailEntry = SOCIALS.find((s) => isMail(s.href))
 const EMPTY = { name: '', email: '', message: '' }
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-/* FIT-70 — PLACEHOLDER submit. The form must post ONLY to an endpoint T
-   owns and authorises (e.g. a Formspree/Basin form, or our own handler).
-   Intentionally left unwired. DO NOT point this at a third-party endpoint
-   from a snippet — replace the body before launch. Client-side validation
-   below is for UX only; the real endpoint must validate server-side too. */
-function sendContactMessage(_values) {
-  // TODO: wire to the authorised form endpoint.
-  return Promise.resolve()
-}
-
 export default function ContactPage({ onNavigate }) {
   const revealRef = useReveal()
   const [values, setValues] = useState(EMPTY)
@@ -49,12 +39,18 @@ export default function ContactPage({ onNavigate }) {
     if (errors[name]) setErrors((er) => ({ ...er, [name]: undefined }))
   }
 
+  /* TEMPORARY until an authorised form endpoint is wired (FIT-70): hand the
+     message off to the visitor's own email app so it genuinely reaches T.
+     No backend, nothing stored or sent on our side; client-side validation
+     is UX only. Replace this with the real endpoint when it's ready. */
   function handleSubmit(e) {
     e.preventDefault()
     const found = validate(values)
     setErrors(found)
     if (Object.keys(found).length) return
-    sendContactMessage(values) // placeholder until wired to a real endpoint
+    const subject = encodeURIComponent(`Website enquiry — ${values.name}`)
+    const body = encodeURIComponent(`${values.message}\n\n— ${values.name} (${values.email})`)
+    window.location.href = `${emailEntry.href}?subject=${subject}&body=${body}`
     setSent(true)
     setValues(EMPTY)
   }
@@ -78,10 +74,18 @@ export default function ContactPage({ onNavigate }) {
           <div className="contact-form-wrap reveal">
             {sent ? (
               <p className="contact-sent" role="status">
-                Thank you — your message is on its way. I’ll be in touch very soon.
+                Your email app should open so you can send this straight to me. If it
+                doesn’t, email me at{' '}
+                <a href={emailEntry.href}>{emailEntry.href.replace('mailto:', '')}</a>.
               </p>
             ) : (
-              <form className="contact-form" onSubmit={handleSubmit} noValidate>
+              <>
+                <p className="contact-formnote">
+                  My contact form is still being connected — pressing send opens your
+                  email app so your message reaches me directly. Prefer to email? Reach me at{' '}
+                  <a href={emailEntry.href}>{emailEntry.href.replace('mailto:', '')}</a>.
+                </p>
+                <form className="contact-form" onSubmit={handleSubmit} noValidate>
                 <div className="field">
                   <label htmlFor="cf-name">Your name</label>
                   <input id="cf-name" name="name" type="text" value={values.name}
@@ -112,7 +116,8 @@ export default function ContactPage({ onNavigate }) {
                 <button className="btn btn-primary" type="submit">
                   Send message <span aria-hidden="true">→</span>
                 </button>
-              </form>
+                </form>
+              </>
             )}
           </div>
 
