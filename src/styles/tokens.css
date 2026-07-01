@@ -45,6 +45,7 @@
   --t-fast: .25s;
   --t-med: .4s;
   --t-slow: .8s;
+  --t-marquee: 40s;        /* marquee scroll cycle — calm continuous */
 
   /* ---- Shadow ---- */
   --shadow-sm: 0 8px 30px rgba(42,34,29,.05);

@@ -1,0 +1,108 @@
+/* ===========================================================================
+   Home marquee — slim, elevated, readable & actionable.
+   A scannable strip of coaching outcomes; each phrase is a shortcut into the
+   Coaching page, it pauses on hover/focus so it can be read, and it falls back
+   to a static row under reduced motion. Tokens only.
+   =========================================================================== */
+
+.mq {
+  --mq-gap: calc(var(--u) * 6);
+  --mq-duration: var(--t-marquee);
+  background: var(--espresso);
+  color: var(--cream);
+  overflow: hidden;
+  padding: 0;   /* it's a <section>; cancel the global section padding */
+}
+
+.mq__viewport {
+  /* soft edge fade so items enter / exit instead of hard-cutting */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 calc(var(--u) * 6), #000 calc(100% - var(--u) * 6), transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 calc(var(--u) * 6), #000 calc(100% - var(--u) * 6), transparent);
+}
+
+.mq__track {
+  display: flex;
+  width: max-content;
+  padding: calc(var(--u) * 1.5) 0;
+  animation: mq-scroll var(--mq-duration) linear infinite;
+}
+/* readable: pause when hovered or focused (keyboard) */
+.mq:hover .mq__track,
+.mq:focus-within .mq__track { animation-play-state: paused; }
+
+.mq__group {
+  display: flex;
+  align-items: center;
+  gap: var(--mq-gap);
+  /* trailing gap so two groups + translateX(-50%) line up seamlessly */
+  padding: 0 var(--mq-gap) 0 0;
+  margin: 0;
+  list-style: none;
+}
+
+.mq__item {
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-weight: var(--fw-light);
+  font-size: 1.7rem;
+  letter-spacing: .01em;
+}
+/* alternating rose / gold accent */
+.mq__group .mq__item:nth-child(odd)  { color: var(--rose); }
+.mq__group .mq__item:nth-child(even) { color: var(--gold); }
+.mq__item::before {
+  content: "";
+  width: calc(var(--u) * .75);
+  height: calc(var(--u) * .75);
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: .55;
+  margin-right: var(--mq-gap);
+}
+
+/* phrases are buttons (shortcut into Coaching) — reset to look like text */
+.mq__link {
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  transition: color var(--t-fast) var(--ease);
+}
+.mq__link:hover,
+.mq__link:focus-visible {
+  color: var(--cream);
+  text-decoration: underline;
+  text-decoration-color: var(--rose);
+  text-underline-offset: 5px;
+}
+.mq__link:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+
+@keyframes mq-scroll { to { transform: translateX(-50%); } }
+
+/* reduced motion: no auto-scroll — wrap to a static, centred, readable row */
+@media (prefers-reduced-motion: reduce) {
+  .mq__viewport { -webkit-mask-image: none; mask-image: none; }
+  .mq__track {
+    width: auto;
+    animation: none;
+    transform: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: calc(var(--u) * 2) calc(var(--u) * 3);
+  }
+  .mq__group {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-right: 0;
+    gap: calc(var(--u) * 2) calc(var(--u) * 3);
+  }
+  .mq__group[aria-hidden="true"] { display: none; }
+}
