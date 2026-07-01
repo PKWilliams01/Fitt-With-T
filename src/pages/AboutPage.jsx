@@ -32,7 +32,7 @@ export default function AboutPage({ onNavigate }) {
       <header className="page-head">
         <div className="wrap">
           <span className="eyebrow eyebrow--center reveal">About</span>
-          <h1 className="display reveal d1">Meet <em>T</em></h1>
+          <h1 className="display reveal d1">Meet <em>Tommera</em></h1>
           <p className="reveal d2">The coach behind Fitt With T.</p>
         </div>
       </header>
