@@ -26,6 +26,13 @@
 .testimonials__head { text-align: center; }
 .note { text-align: center; color: var(--muted); font-size: .82rem; font-style: italic; margin-top: calc(var(--u) * 4); }
 
+/* ---- follow / social section ---- */
+.social__inner { text-align: center; }
+.social__inner h2 { margin-top: calc(var(--u) * 2); }
+.social__inner p { color: var(--muted); margin: calc(var(--u) * 2) auto 0; max-width: 44ch; }
+.social__links { margin-top: calc(var(--u) * 4); }
+.social__links .social-links { justify-content: center; }
+
 /* ---- closing CTA band ---- */
 .cta-band {
   background: linear-gradient(135deg, var(--rose), var(--rose-2));
