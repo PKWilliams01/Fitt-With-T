@@ -165,7 +165,10 @@
 
 /* ---- mobile: cap the portrait so the start of her story shows with it ---- */
 @media (max-width: 900px) {
-  .about-page .photo { max-height: 40vh; }
+  /* FIT-77 — centre the portrait and make it a touch larger on phones.
+     Explicit width (not stretch) keeps the box sized while margin auto
+     centres it; max-height stays as a ceiling for short screens. */
+  .about-page .photo { width: 90%; margin-inline: auto; max-height: 52vh; }
 }
 
 /* ---- desktop ---- */
