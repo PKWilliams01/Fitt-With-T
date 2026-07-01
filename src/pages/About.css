@@ -175,6 +175,7 @@
 @media (min-width: 900px) {
   /* compact page title + portrait capped to the viewport so the whole
      image is presented without scrolling */
+  .about-page .page-head { padding-top: calc(var(--u) * 15); } /* clear the taller logo nav */
   .about-page .page-head .display { font-size: var(--fs-h2); }
   .about-page .photo { max-height: 60vh; }
   .about-page .split { grid-template-columns: 1fr 1fr; gap: calc(var(--u) * 7); }
