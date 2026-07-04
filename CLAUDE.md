@@ -14,7 +14,7 @@ Production website for **Fitt With T** — a personal trainer in North London (T
 - All design values come from `src/styles/tokens.css` — the single source of truth.
 
 ## Pages
-Home, About (Tommera's real story), Services (Face to Face / Online Coaching / Hybrid — NO prices shown), Results & testimonial, Contact, Book-a-Taster flow.
+Home, About (Tommera's real story), Coaching/Services (tiers per the approved concept: Faith Starter / Intentional Progress / Tenacity Elite — 1/2/3 sessions per week; NO prices shown), Results & testimonial, Contact, Book-a-Taster flow.
 
 ## Engineering standards (non-negotiable)
 - Low complexity — one function/component, one job. Isolate branching.
