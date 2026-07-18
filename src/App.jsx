@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import { Analytics } from '@vercel/analytics/react'
 import Nav          from './components/Nav'
 import Footer       from './components/Footer'
 import IntroLogo    from './components/IntroLogo'
@@ -43,6 +44,7 @@ export default function App() {
       <Nav currentPage={page} onNavigate={navigate} />
       <Page onNavigate={navigate} introActive={introActive} />
       <Footer onNavigate={navigate} />
+      <Analytics />
     </>
   )
 }
