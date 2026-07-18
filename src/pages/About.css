@@ -65,14 +65,9 @@
 .about-page .page-head .display { margin-top: calc(var(--u) * 2); }
 .about-page .page-head p { color: var(--muted); max-width: 56ch; margin: calc(var(--u) * 2) auto 0; }
 
-/* ---- story split ---- */
-.about-page .about-story { padding-top: calc(var(--u) * 3); }
-.about-page .split {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: calc(var(--u) * 3);
-  align-items: start;
-}
+/* ---- story copy (reads as a centred editorial column under the slideshow) ---- */
+.about-page .about-story { padding-top: calc(var(--u) * 8); text-align: center; }
+.about-page .story-copy { max-width: 68ch; margin: 0 auto; text-align: left; }
 .about-page .story-copy h2 { margin: calc(var(--u) * 2) 0 calc(var(--u) * 2.5); }
 .about-page .story-copy p { color: var(--muted); margin-bottom: calc(var(--u) * 2); }
 .about-page .story-copy .lead {
@@ -89,25 +84,6 @@
   font-size: 1.6rem;
   color: var(--rose-2);
   margin-top: calc(var(--u) * 1);
-}
-
-/* ---- portrait placeholder zone ---- */
-.about-page .photo {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 4 / 5;
-  margin: 0;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-md);
-  background: linear-gradient(150deg, var(--sand-2), var(--sand) 55%, var(--cream));
-}
-.about-page .photo-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 /* ---- button ---- */
@@ -135,99 +111,123 @@
 .about-page .btn-primary:hover { background: var(--rose-2); transform: translateY(-2px); }
 .about-page .btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 
-/* ---- journey (gymnastics gallery) ---- */
-.about-page .journey { padding-top: 0; }
-.about-page .journey-head { text-align: center; max-width: 56ch; margin: 0 auto; }
-.about-page .journey-head .display { margin-top: calc(var(--u) * 2); }
-.about-page .journey-head p { color: var(--muted); margin-top: calc(var(--u) * 2); }
-
-.about-page .slideshow { margin-top: calc(var(--u) * 6); max-width: 640px; margin-inline: auto; }
+/* ---- slideshow (full-bleed editorial band, leads the page) ---- */
+.about-page .journey { padding: 0; }
 
 .about-page .slideshow-stage {
   position: relative;
-  aspect-ratio: 4 / 5;
+  width: 100%;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-md);
-  background: var(--sand);
+  background: var(--espresso);
 }
 .about-page .slideshow-slide {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity var(--t-slow) var(--ease);
-}
-.about-page .slideshow-slide.is-active {
-  opacity: 1;
-  /* slow, subtle Ken-Burns drift on the active slide only */
-  animation: journey-drift 9s var(--ease) forwards;
-}
-.about-page .slideshow-slide img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.1s var(--ease);
 }
-.about-page .slideshow-slide figcaption {
+.about-page .slideshow-slide.is-active { opacity: 1; }
+
+/* fixed gradient (not per-slide) — reads as one calm piece of chrome,
+   not something re-triggering on every crossfade */
+.about-page .slideshow-scrim {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: calc(var(--u) * 3) calc(var(--u) * 2.5) calc(var(--u) * 2);
-  background: linear-gradient(to top, rgba(36, 28, 23, .78), rgba(36, 28, 23, 0));
-  color: var(--cream);
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.15rem;
+  inset: 0;
+  background: linear-gradient(to top, rgba(36, 28, 23, .75) 0%, rgba(36, 28, 23, 0) 40%, rgba(36, 28, 23, .25) 100%);
+  pointer-events: none;
 }
 
-@keyframes journey-drift {
-  from { transform: scale(1); }
-  to { transform: scale(1.08); }
+.about-page .slideshow-meta {
+  position: absolute;
+  left: calc(var(--u) * 3);
+  right: calc(var(--u) * 3);
+  bottom: calc(var(--u) * 3.5);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: calc(var(--u) * 2);
+  color: var(--cream);
+}
+.about-page .slideshow-caption {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.6vw, 1.5rem);
+}
+.about-page .slideshow-count {
+  flex: none;
+  font-size: .72rem;
+  letter-spacing: .18em;
+  color: rgba(255, 253, 251, .7);
+  font-variant-numeric: tabular-nums;
 }
 
 .about-page .slideshow-nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: calc(var(--u) * 5);
-  height: calc(var(--u) * 5);
+  width: calc(var(--u) * 5.5);
+  height: calc(var(--u) * 5.5);
   display: grid;
   place-items: center;
+  border: 1px solid rgba(255, 253, 251, .4);
+  border-radius: var(--radius-pill);
+  background: rgba(36, 28, 23, .3);
+  color: var(--cream);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity var(--t-fast) var(--ease), background var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
+}
+.about-page .slideshow-stage:hover .slideshow-nav,
+.about-page .slideshow-nav:focus-visible { opacity: 1; }
+.about-page .slideshow-nav:hover { background: rgba(36, 28, 23, .55); }
+.about-page .slideshow-nav:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.about-page .slideshow-nav--prev { left: calc(var(--u) * 2.5); }
+.about-page .slideshow-nav--next { right: calc(var(--u) * 2.5); }
+
+/* slim progress-bar track per slide, in place of dots */
+.about-page .slideshow-progress {
+  position: absolute;
+  top: calc(var(--u) * 2.5);
+  left: calc(var(--u) * 3);
+  right: calc(var(--u) * 3);
+  display: flex;
+  gap: calc(var(--u) * 1);
+}
+.about-page .slideshow-track {
+  flex: 1;
+  height: 2px;
   border: none;
   border-radius: var(--radius-pill);
-  background: rgba(255, 253, 251, .85);
-  color: var(--ink);
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: background var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
-}
-.about-page .slideshow-nav:hover { background: var(--cream); transform: translateY(-50%) scale(1.06); }
-.about-page .slideshow-nav:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-.about-page .slideshow-nav--prev { left: calc(var(--u) * 1.5); }
-.about-page .slideshow-nav--next { right: calc(var(--u) * 1.5); }
-
-.about-page .slideshow-dots {
-  display: flex;
-  justify-content: center;
-  gap: calc(var(--u) * 1.25);
-  margin-top: calc(var(--u) * 2.5);
-}
-.about-page .slideshow-dot {
-  width: calc(var(--u) * 1.25);
-  height: calc(var(--u) * 1.25);
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--rose);
-  background: transparent;
   padding: 0;
+  background: rgba(255, 253, 251, .3);
   cursor: pointer;
-  transition: background var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
+  overflow: hidden;
 }
-.about-page .slideshow-dot:hover { transform: scale(1.15); }
-.about-page .slideshow-dot:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-.about-page .slideshow-dot.is-active { background: var(--rose); }
+.about-page .slideshow-track.is-active { background: rgba(255, 253, 251, .3); }
+.about-page .slideshow-track-fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: var(--cream);
+  animation-name: slideshow-fill;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slideshow-fill {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-page .slideshow-nav { opacity: 1; }
+}
 
 /* ---- creed (My Approach) ---- */
 .about-page .creed { background: var(--espresso); color: var(--cream); }
@@ -257,22 +257,21 @@
 }
 .about-page .creed-item p { color: rgba(255, 253, 251, .6); font-size: .92rem; }
 
-/* ---- mobile: cap the portrait so the start of her story shows with it ---- */
+/* ---- mobile: cap the slideshow so it doesn't eat the whole viewport ---- */
 @media (max-width: 900px) {
-  /* FIT-77 — centre the portrait and make it a touch larger on phones.
-     Explicit width (not stretch) keeps the box sized while margin auto
-     centres it; max-height stays as a ceiling for short screens. */
-  .about-page .photo { width: 90%; margin-inline: auto; max-height: 52vh; }
+  .about-page .slideshow-stage { max-height: 70vh; }
 }
 
 /* ---- desktop ---- */
 @media (min-width: 900px) {
-  /* compact page title + portrait capped to the viewport so the whole
-     image is presented without scrolling */
-  .about-page .page-head { padding-top: calc(var(--u) * 15); } /* clear the taller logo nav */
+  /* compact page title so the slideshow band sits high on the page */
+  .about-page .page-head { padding-top: calc(var(--u) * 15); padding-bottom: calc(var(--u) * 2); } /* clear the taller logo nav */
   .about-page .page-head .display { font-size: var(--fs-h2); }
-  .about-page .photo { max-height: 60vh; }
-  .about-page .split { grid-template-columns: 1fr 1fr; gap: calc(var(--u) * 7); }
+  /* on wide screens, the portrait-oriented photos need a proportion close
+     to their own — not a cinematic band that forces an extreme crop into
+     just a face. Cap the width instead of stretching full-bleed. */
+  .about-page .journey-wrap { max-width: 640px; margin: 0 auto; padding: 0 calc(var(--u) * 3); }
+  .about-page .slideshow-stage { aspect-ratio: 4 / 5; max-height: 70vh; border-radius: var(--radius-sm); box-shadow: var(--shadow-md); }
   .about-page .creed-grid { grid-template-columns: repeat(4, 1fr); }
   .about-page .creed-item {
     padding: calc(var(--u) * 4) calc(var(--u) * 3);
@@ -280,7 +279,4 @@
     border-left: 1px solid var(--line-dark);
   }
   .about-page .creed-item:first-child { border-left: none; }
-
-  .about-page .slideshow { max-width: 760px; }
-  .about-page .slideshow-stage { aspect-ratio: 16 / 9; }
 }

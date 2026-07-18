@@ -8,34 +8,37 @@ import gymPortrait from '../assets/About Portrait 2.jpeg'
 import './About.css'
 
 const journeyPhotos = [
-  { src: gymBars, caption: 'Uneven bars', alt: 'Tommera mid-release on the uneven bars during a gymnastics competition' },
-  { src: gymFloor, caption: 'Floor routine', alt: 'Tommera performing a floor routine, arm raised mid-pose' },
-  { src: gymPortrait, caption: 'Competition ready', alt: 'Portrait of Tommera in her gymnastics leotard against a brick wall' },
-  { src: gymVault, caption: 'Sticking the vault', alt: 'Tommera landing a vault in front of a competition crowd' },
-  { src: gymTrophy, caption: 'Podium moments', alt: 'Tommera smiling and holding a trophy and medals after a competition' },
+  { src: portrait, caption: 'Coach & founder, Fitt With T', alt: 'Tommera, coach and founder of Fitt With T', position: 'center 20%' },
+  { src: gymBars, caption: 'Uneven bars — national competition', alt: 'Tommera mid-release on the uneven bars during a gymnastics competition', position: 'center 30%' },
+  { src: gymFloor, caption: 'Floor routine', alt: 'Tommera performing a floor routine, arm raised mid-pose', position: 'center 25%' },
+  { src: gymPortrait, caption: 'Competition ready', alt: 'Portrait of Tommera in her gymnastics leotard against a brick wall', position: 'center 15%' },
+  { src: gymVault, caption: 'Sticking the vault', alt: 'Tommera landing a vault in front of a competition crowd', position: 'center 35%' },
+  { src: gymTrophy, caption: '12 years of competition — podium moments', alt: 'Tommera smiling and holding a trophy and medals after a competition', position: 'center 20%' },
 ]
 
-const JOURNEY_INTERVAL_MS = 4500
+const JOURNEY_INTERVAL_MS = 5000
 
-/* Auto-advancing crossfade slideshow. Pauses on hover/focus so a visitor
-   reading a caption isn't interrupted; stays static (no autoplay) under
-   prefers-reduced-motion, relying on the manual controls only. */
+/* Full-bleed editorial slideshow — leads the page. Auto-advances with a
+   slim progress bar (restarted per-slide via `key`), pauses on
+   hover/focus, and drops autoplay + the progress animation entirely
+   under prefers-reduced-motion, leaving only the manual controls. */
 function JourneySlideshow({ photos }) {
   const [index, setIndex] = useState(0)
   const [paused, setPaused] = useState(false)
-  const reduceMotion = useRef(
-    typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const [reduceMotion] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
   )
 
   useEffect(() => {
-    if (paused || reduceMotion.current) return
+    if (paused || reduceMotion) return
     const id = setInterval(() => {
       setIndex((i) => (i + 1) % photos.length)
     }, JOURNEY_INTERVAL_MS)
     return () => clearInterval(id)
-  }, [paused, photos.length])
+  }, [paused, reduceMotion, photos.length])
 
   const goTo = useCallback((i) => setIndex((i + photos.length) % photos.length), [photos.length])
+  const active = photos[index]
 
   return (
     <div
@@ -47,15 +50,23 @@ function JourneySlideshow({ photos }) {
     >
       <div className="slideshow-stage">
         {photos.map((photo, i) => (
-          <figure
+          <img
             key={photo.src}
             className={`slideshow-slide${i === index ? ' is-active' : ''}`}
+            src={photo.src}
+            alt={photo.alt}
+            style={{ objectPosition: photo.position }}
+            loading={i === 0 ? 'eager' : 'lazy'}
             aria-hidden={i === index ? undefined : true}
-          >
-            <img src={photo.src} alt={photo.alt} loading={i === 0 ? 'eager' : 'lazy'} />
-            <figcaption>{photo.caption}</figcaption>
-          </figure>
+          />
         ))}
+
+        <div className="slideshow-scrim" aria-hidden="true" />
+
+        <div className="slideshow-meta">
+          <p className="slideshow-caption">{active.caption}</p>
+          <span className="slideshow-count">{String(index + 1).padStart(2, '0')} / {String(photos.length).padStart(2, '0')}</span>
+        </div>
 
         <button
           type="button"
@@ -63,7 +74,7 @@ function JourneySlideshow({ photos }) {
           aria-label="Previous photo"
           onClick={() => goTo(index - 1)}
         >
-          <span aria-hidden="true">←</span>
+          <span aria-hidden="true">‹</span>
         </button>
         <button
           type="button"
@@ -71,22 +82,26 @@ function JourneySlideshow({ photos }) {
           aria-label="Next photo"
           onClick={() => goTo(index + 1)}
         >
-          <span aria-hidden="true">→</span>
+          <span aria-hidden="true">›</span>
         </button>
-      </div>
 
-      <div className="slideshow-dots" role="tablist" aria-label="Choose a photo">
-        {photos.map((photo, i) => (
-          <button
-            key={photo.src}
-            type="button"
-            role="tab"
-            aria-selected={i === index}
-            aria-label={`Show photo ${i + 1}: ${photo.caption}`}
-            className={`slideshow-dot${i === index ? ' is-active' : ''}`}
-            onClick={() => goTo(i)}
-          />
-        ))}
+        <div className="slideshow-progress" role="tablist" aria-label="Choose a photo">
+          {photos.map((photo, i) => (
+            <button
+              key={photo.src}
+              type="button"
+              role="tab"
+              aria-selected={i === index}
+              aria-label={`Show photo ${i + 1}: ${photo.caption}`}
+              className={`slideshow-track${i === index ? ' is-active' : ''}`}
+              onClick={() => goTo(i)}
+            >
+              {i === index && !paused && !reduceMotion && (
+                <span key={index} className="slideshow-track-fill" style={{ animationDuration: `${JOURNEY_INTERVAL_MS}ms` }} />
+              )}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   )
@@ -127,13 +142,15 @@ export default function AboutPage({ onNavigate }) {
         </div>
       </header>
 
-      <section className="about-story">
-        <div className="wrap split">
-          <figure className="photo reveal">
-            <img className="photo-img" src={portrait} alt="Tommera, coach and founder of Fitt With T" />
-          </figure>
+      <section className="journey reveal">
+        <div className="journey-wrap">
+          <JourneySlideshow photos={journeyPhotos} />
+        </div>
+      </section>
 
-          <div className="story-copy reveal d1">
+      <section className="about-story">
+        <div className="wrap">
+          <div className="story-copy reveal">
             <span className="eyebrow">My Story</span>
             <h2 className="display">Faith, fitness &amp; <em>purpose</em></h2>
 
@@ -176,23 +193,6 @@ export default function AboutPage({ onNavigate }) {
             <button className="btn btn-primary" onClick={() => onNavigate('book')}>
               Train with me <span aria-hidden="true">→</span>
             </button>
-          </div>
-        </div>
-      </section>
-
-      <section className="journey">
-        <div className="wrap">
-          <div className="journey-head">
-            <span className="eyebrow eyebrow--center reveal">My Journey</span>
-            <h2 className="display reveal d1">12 years in the <em>gym</em></h2>
-            <p className="reveal d2">
-              From national and international competition to coaching — a few moments
-              from the gymnastics career that shaped everything I teach today.
-            </p>
-          </div>
-
-          <div className="reveal d2">
-            <JourneySlideshow photos={journeyPhotos} />
           </div>
         </div>
       </section>
