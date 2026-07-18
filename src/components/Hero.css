@@ -118,7 +118,7 @@
 .btn-outline:focus-visible {
   background: var(--rose);
   border-color: var(--rose);
-  color: #fff;
+  color: var(--cream);
   transform: translateY(-2px);
   outline: none;
 }

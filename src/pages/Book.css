@@ -1,0 +1,77 @@
+/* Book a Taster (FIT-15) — steps + scaffold for the certified booking/intake
+   embed. Tokens only. No booking data is handled in this codebase. */
+
+.book-page .page-head {
+  padding-top: calc(var(--u) * 13);
+  padding-bottom: calc(var(--u) * 3);
+  text-align: center;
+  background: radial-gradient(90% 130% at 50% 0%, var(--rose-soft), transparent 60%);
+}
+.book-page .page-head .display { margin-top: calc(var(--u) * 2); }
+.book-page .page-head p { color: var(--muted); max-width: 56ch; margin: calc(var(--u) * 2) auto 0; }
+.book-page > section { padding-top: calc(var(--u) * 3); padding-bottom: calc(var(--u) * 6); }
+
+.book-steps {
+  list-style: none;
+  display: grid;
+  gap: calc(var(--u) * 3);
+  max-width: 720px;
+  margin: 0 auto calc(var(--u) * 5);
+}
+.book-step {
+  display: flex;
+  gap: calc(var(--u) * 2.5);
+  align-items: flex-start;
+}
+.book-step__n {
+  flex: none;
+  width: calc(var(--u) * 5);
+  height: calc(var(--u) * 5);
+  border-radius: 50%;
+  background: var(--rose-soft);
+  color: var(--rose-2);
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.book-step__h {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: var(--fw-reg);
+  margin-bottom: 4px;
+}
+.book-step p { color: var(--muted); font-size: .95rem; }
+
+.book-embed {
+  max-width: 720px;
+  margin: 0 auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--cream);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.book-embed__frame {
+  width: 100%;
+  min-height: 640px;
+  border: 0;
+  display: block;
+}
+.book-embed__pending {
+  padding: calc(var(--u) * 5) calc(var(--u) * 4);
+  text-align: center;
+  color: var(--ink);
+}
+.book-embed__title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--rose-2);
+  margin-bottom: calc(var(--u) * 1.5);
+}
+.book-embed__pending p:not(.book-embed__title) { color: var(--muted); max-width: 52ch; margin: 0 auto; }
+.book-embed__pending a { color: var(--rose-2); }
+.book-embed__pending a:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; border-radius: var(--radius-sm); }
+
+.book-page .note { text-align: center; max-width: 60ch; margin: calc(var(--u) * 3) auto 0; color: var(--muted); font-size: .85rem; }
