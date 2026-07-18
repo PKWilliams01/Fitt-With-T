@@ -1,6 +1,19 @@
 import { useEffect, useRef } from 'react'
 import portrait from '../assets/Portrait.jpeg'
+import gymFloor from '../assets/WhatsApp Image 2026-06-10 at 8.30.30 PM.jpeg'
+import gymTrophy from '../assets/WhatsApp Image 2026-06-10 at 8.39.49 PM.jpeg'
+import gymVault from '../assets/WhatsApp Image 2026-06-10 at 8.30.29 PM.jpeg'
+import gymBars from '../assets/About Poortrait 3.jpeg'
+import gymPortrait from '../assets/About Portrait 2.jpeg'
 import './About.css'
+
+const journeyPhotos = [
+  { src: gymBars, alt: 'Tommera mid-release on the uneven bars during a gymnastics competition' },
+  { src: gymFloor, alt: 'Tommera performing a floor routine, arm raised mid-pose' },
+  { src: gymPortrait, alt: 'Portrait of Tommera in her gymnastics leotard against a brick wall' },
+  { src: gymVault, alt: 'Tommera landing a vault in front of a competition crowd' },
+  { src: gymTrophy, alt: 'Tommera smiling and holding a trophy and medals after a competition' },
+]
 
 export default function AboutPage({ onNavigate }) {
   const rootRef = useRef(null)
@@ -87,6 +100,27 @@ export default function AboutPage({ onNavigate }) {
               Train with me <span aria-hidden="true">→</span>
             </button>
           </div>
+        </div>
+      </section>
+
+      <section className="journey">
+        <div className="wrap">
+          <div className="journey-head">
+            <span className="eyebrow eyebrow--center reveal">My Journey</span>
+            <h2 className="display reveal d1">12 years in the <em>gym</em></h2>
+            <p className="reveal d2">
+              From national and international competition to coaching — a few moments
+              from the gymnastics career that shaped everything I teach today.
+            </p>
+          </div>
+
+          <ul className="journey-grid">
+            {journeyPhotos.map((photo, i) => (
+              <li className={`journey-item reveal d${Math.min(i, 3)}`} key={photo.src}>
+                <img src={photo.src} alt={photo.alt} loading="lazy" />
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
