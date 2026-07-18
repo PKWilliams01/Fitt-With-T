@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import portrait from '../assets/Portrait.jpeg'
 import gymFloor from '../assets/WhatsApp Image 2026-06-10 at 8.30.30 PM.jpeg'
 import gymTrophy from '../assets/WhatsApp Image 2026-06-10 at 8.39.49 PM.jpeg'
@@ -8,12 +8,89 @@ import gymPortrait from '../assets/About Portrait 2.jpeg'
 import './About.css'
 
 const journeyPhotos = [
-  { src: gymBars, alt: 'Tommera mid-release on the uneven bars during a gymnastics competition' },
-  { src: gymFloor, alt: 'Tommera performing a floor routine, arm raised mid-pose' },
-  { src: gymPortrait, alt: 'Portrait of Tommera in her gymnastics leotard against a brick wall' },
-  { src: gymVault, alt: 'Tommera landing a vault in front of a competition crowd' },
-  { src: gymTrophy, alt: 'Tommera smiling and holding a trophy and medals after a competition' },
+  { src: gymBars, caption: 'Uneven bars', alt: 'Tommera mid-release on the uneven bars during a gymnastics competition' },
+  { src: gymFloor, caption: 'Floor routine', alt: 'Tommera performing a floor routine, arm raised mid-pose' },
+  { src: gymPortrait, caption: 'Competition ready', alt: 'Portrait of Tommera in her gymnastics leotard against a brick wall' },
+  { src: gymVault, caption: 'Sticking the vault', alt: 'Tommera landing a vault in front of a competition crowd' },
+  { src: gymTrophy, caption: 'Podium moments', alt: 'Tommera smiling and holding a trophy and medals after a competition' },
 ]
+
+const JOURNEY_INTERVAL_MS = 4500
+
+/* Auto-advancing crossfade slideshow. Pauses on hover/focus so a visitor
+   reading a caption isn't interrupted; stays static (no autoplay) under
+   prefers-reduced-motion, relying on the manual controls only. */
+function JourneySlideshow({ photos }) {
+  const [index, setIndex] = useState(0)
+  const [paused, setPaused] = useState(false)
+  const reduceMotion = useRef(
+    typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  )
+
+  useEffect(() => {
+    if (paused || reduceMotion.current) return
+    const id = setInterval(() => {
+      setIndex((i) => (i + 1) % photos.length)
+    }, JOURNEY_INTERVAL_MS)
+    return () => clearInterval(id)
+  }, [paused, photos.length])
+
+  const goTo = useCallback((i) => setIndex((i + photos.length) % photos.length), [photos.length])
+
+  return (
+    <div
+      className="slideshow"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
+    >
+      <div className="slideshow-stage">
+        {photos.map((photo, i) => (
+          <figure
+            key={photo.src}
+            className={`slideshow-slide${i === index ? ' is-active' : ''}`}
+            aria-hidden={i === index ? undefined : true}
+          >
+            <img src={photo.src} alt={photo.alt} loading={i === 0 ? 'eager' : 'lazy'} />
+            <figcaption>{photo.caption}</figcaption>
+          </figure>
+        ))}
+
+        <button
+          type="button"
+          className="slideshow-nav slideshow-nav--prev"
+          aria-label="Previous photo"
+          onClick={() => goTo(index - 1)}
+        >
+          <span aria-hidden="true">←</span>
+        </button>
+        <button
+          type="button"
+          className="slideshow-nav slideshow-nav--next"
+          aria-label="Next photo"
+          onClick={() => goTo(index + 1)}
+        >
+          <span aria-hidden="true">→</span>
+        </button>
+      </div>
+
+      <div className="slideshow-dots" role="tablist" aria-label="Choose a photo">
+        {photos.map((photo, i) => (
+          <button
+            key={photo.src}
+            type="button"
+            role="tab"
+            aria-selected={i === index}
+            aria-label={`Show photo ${i + 1}: ${photo.caption}`}
+            className={`slideshow-dot${i === index ? ' is-active' : ''}`}
+            onClick={() => goTo(i)}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
 
 export default function AboutPage({ onNavigate }) {
   const rootRef = useRef(null)
@@ -114,13 +191,9 @@ export default function AboutPage({ onNavigate }) {
             </p>
           </div>
 
-          <ul className="journey-grid">
-            {journeyPhotos.map((photo, i) => (
-              <li className={`journey-item reveal d${Math.min(i, 3)}`} key={photo.src}>
-                <img src={photo.src} alt={photo.alt} loading="lazy" />
-              </li>
-            ))}
-          </ul>
+          <div className="reveal d2">
+            <JourneySlideshow photos={journeyPhotos} />
+          </div>
         </div>
       </section>
 

@@ -141,32 +141,93 @@
 .about-page .journey-head .display { margin-top: calc(var(--u) * 2); }
 .about-page .journey-head p { color: var(--muted); margin-top: calc(var(--u) * 2); }
 
-.about-page .journey-grid {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: calc(var(--u) * 2);
-  margin-top: calc(var(--u) * 6);
-}
-.about-page .journey-item {
+.about-page .slideshow { margin-top: calc(var(--u) * 6); max-width: 640px; margin-inline: auto; }
+
+.about-page .slideshow-stage {
   position: relative;
-  overflow: hidden;
   aspect-ratio: 4 / 5;
+  overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
+  background: var(--sand);
 }
-.about-page .journey-item img {
+.about-page .slideshow-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity var(--t-slow) var(--ease);
+}
+.about-page .slideshow-slide.is-active {
+  opacity: 1;
+  /* slow, subtle Ken-Burns drift on the active slide only */
+  animation: journey-drift 9s var(--ease) forwards;
+}
+.about-page .slideshow-slide img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--t-slow) var(--ease);
 }
-.about-page .journey-item:hover img { transform: scale(1.04); }
-/* first tile leads the mosaic, spanning both mobile columns */
-.about-page .journey-item:first-child { grid-column: 1 / -1; aspect-ratio: 16 / 10; }
+.about-page .slideshow-slide figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: calc(var(--u) * 3) calc(var(--u) * 2.5) calc(var(--u) * 2);
+  background: linear-gradient(to top, rgba(36, 28, 23, .78), rgba(36, 28, 23, 0));
+  color: var(--cream);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.15rem;
+}
+
+@keyframes journey-drift {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+
+.about-page .slideshow-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: calc(var(--u) * 5);
+  height: calc(var(--u) * 5);
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 253, 251, .85);
+  color: var(--ink);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
+}
+.about-page .slideshow-nav:hover { background: var(--cream); transform: translateY(-50%) scale(1.06); }
+.about-page .slideshow-nav:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.about-page .slideshow-nav--prev { left: calc(var(--u) * 1.5); }
+.about-page .slideshow-nav--next { right: calc(var(--u) * 1.5); }
+
+.about-page .slideshow-dots {
+  display: flex;
+  justify-content: center;
+  gap: calc(var(--u) * 1.25);
+  margin-top: calc(var(--u) * 2.5);
+}
+.about-page .slideshow-dot {
+  width: calc(var(--u) * 1.25);
+  height: calc(var(--u) * 1.25);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--rose);
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: background var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
+}
+.about-page .slideshow-dot:hover { transform: scale(1.15); }
+.about-page .slideshow-dot:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.about-page .slideshow-dot.is-active { background: var(--rose); }
 
 /* ---- creed (My Approach) ---- */
 .about-page .creed { background: var(--espresso); color: var(--cream); }
@@ -220,10 +281,6 @@
   }
   .about-page .creed-item:first-child { border-left: none; }
 
-  .about-page .journey-grid { grid-template-columns: repeat(4, 1fr); }
-  .about-page .journey-item:first-child {
-    grid-column: 1 / 3;
-    grid-row: 1 / 3;
-    aspect-ratio: auto;
-  }
+  .about-page .slideshow { max-width: 760px; }
+  .about-page .slideshow-stage { aspect-ratio: 16 / 9; }
 }
