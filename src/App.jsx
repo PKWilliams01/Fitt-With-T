@@ -11,6 +11,7 @@ import ServicesPage from './pages/ServicesPage'
 import ResultsPage  from './pages/ResultsPage'
 import ContactPage  from './pages/ContactPage'
 import BookPage     from './pages/BookPage'
+import PrivacyPage  from './pages/PrivacyPage'
 
 const PAGES = {
   home:     HomePage,
@@ -19,6 +20,7 @@ const PAGES = {
   results:  ResultsPage,
   contact:  ContactPage,
   book:     BookPage,
+  privacy:  PrivacyPage,
 }
 
 function shouldPlayIntro() {
@@ -45,7 +47,7 @@ export default function App() {
       <Nav currentPage={page} onNavigate={navigate} />
       <Page onNavigate={navigate} introActive={introActive} />
       <Footer onNavigate={navigate} />
-      <ConsentBanner />
+      <ConsentBanner onNavigate={navigate} />
     </CookieConsentProvider>
   )
 }

@@ -4,7 +4,7 @@ import './ConsentBanner.css'
 /* Consent banner — shown only while the choice is 'unknown'. Two equally
    weighted actions; no dismiss that implies neither choice. This banner
    governs only the Acuity embed — the site adds no trackers of its own. */
-export default function ConsentBanner() {
+export default function ConsentBanner({ onNavigate }) {
   const { consent, choose } = useCookieConsent()
   if (consent !== 'unknown') return null
 
@@ -22,8 +22,9 @@ export default function ConsentBanner() {
         (Acuity) sets additional cookies — including analytics and third-party
         cookies from Google and Stripe — but only if you accept. If you reject,
         you can still book directly on Acuity&rsquo;s own page.{' '}
-        {/* placeholder policy route — content to be confirmed by the client */}
-        <a className="consent__link" href="/privacy">Cookie &amp; privacy policy</a>
+        <button className="consent__link" onClick={() => onNavigate('privacy')}>
+          Read the cookie &amp; privacy policy
+        </button>
       </p>
       <div className="consent__actions">
         <button className="btn btn-primary" onClick={() => choose('accepted')}>

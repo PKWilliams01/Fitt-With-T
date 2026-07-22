@@ -1,0 +1,80 @@
+/* Privacy & cookies — long-form legal copy. Tokens only. */
+
+.privacy-page .page-head {
+  padding-top: calc(var(--u) * 13);
+  padding-bottom: calc(var(--u) * 3);
+  text-align: center;
+  background: radial-gradient(90% 130% at 50% 0%, var(--rose-soft), transparent 60%);
+}
+.privacy-page .page-head .display { margin-top: calc(var(--u) * 2); }
+.privacy-page .page-head p { color: var(--muted); max-width: 56ch; margin: calc(var(--u) * 2) auto 0; }
+.privacy-page > section { padding-top: calc(var(--u) * 3); }
+
+/* readable measure for body copy */
+.privacy {
+  max-width: 68ch;
+  margin: 0 auto;
+}
+
+.privacy__updated {
+  font-size: .8rem;
+  font-style: italic;
+  color: var(--muted);
+  margin-bottom: calc(var(--u) * 4);
+}
+
+.privacy h2 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-med);
+  font-size: 1.5rem;
+  margin: calc(var(--u) * 4) 0 calc(var(--u) * 1.5);
+}
+.privacy h2:first-of-type { margin-top: 0; }
+
+.privacy p { color: var(--muted); margin-bottom: calc(var(--u) * 2); }
+.privacy strong { color: var(--ink); font-weight: var(--fw-semi); }
+.privacy a { color: var(--rose-2); }
+.privacy a:focus-visible,
+.privacy__inline-btn:focus-visible {
+  outline: 2px solid var(--rose);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+.privacy code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: .88em;
+  background: var(--sand);
+  border-radius: var(--radius-sm);
+  padding: 1px calc(var(--u) * .75);
+}
+
+/* inline "Manage cookies" trigger — reads as a link, behaves as a button */
+.privacy__inline-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--rose-2);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.privacy__list {
+  list-style: none;
+  margin: 0 0 calc(var(--u) * 2);
+  padding: 0;
+  color: var(--muted);
+}
+.privacy__list li {
+  border-left: 2px solid var(--line);
+  padding-left: calc(var(--u) * 2);
+  margin-bottom: calc(var(--u) * 2);
+}
+
+.privacy__back { margin-top: calc(var(--u) * 4); }
+
+@media (min-width: 900px) {
+  .privacy-page .page-head .display { font-size: var(--fs-h2); }
+}

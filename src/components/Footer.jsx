@@ -63,7 +63,12 @@ export default function Footer({ onNavigate }) {
 
         <div className="footer__bottom">
           <span>© 2026 Fitt With T · Personal Training</span>
-          <button className="footer__manage" onClick={reopen}>Manage cookies</button>
+          <span className="footer__legal">
+            <button className="footer__manage" onClick={() => onNavigate('privacy')}>
+              Privacy &amp; cookies
+            </button>
+            <button className="footer__manage" onClick={reopen}>Manage cookies</button>
+          </span>
         </div>
 
       </div>

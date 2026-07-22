@@ -95,7 +95,9 @@
   font-size: 0.78rem;
 }
 
-/* manage-cookies affordance — reopens the consent banner */
+.footer__legal { display: inline-flex; gap: calc(var(--u) * 2); flex-wrap: wrap; }
+
+/* legal / consent affordances in the bottom bar */
 .footer__manage {
   background: none;
   border: none;
