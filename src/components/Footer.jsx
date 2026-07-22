@@ -1,4 +1,5 @@
 import { SOCIALS, isMail } from '../data/socials'
+import { useCookieConsent } from '../context/CookieConsent'
 import './Footer.css'
 
 const EXPLORE = [
@@ -9,6 +10,8 @@ const EXPLORE = [
 ]
 
 export default function Footer({ onNavigate }) {
+  const { reopen } = useCookieConsent()
+
   return (
     <footer className="footer">
       <div className="footer__wrap">
@@ -60,6 +63,7 @@ export default function Footer({ onNavigate }) {
 
         <div className="footer__bottom">
           <span>© 2026 Fitt With T · Personal Training</span>
+          <button className="footer__manage" onClick={reopen}>Manage cookies</button>
         </div>
 
       </div>

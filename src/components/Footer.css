@@ -95,8 +95,24 @@
   font-size: 0.78rem;
 }
 
+/* manage-cookies affordance — reopens the consent banner */
+.footer__manage {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: inherit;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--t-fast);
+}
+.footer__manage:hover { color: var(--cream); }
+
 /* ====== Focus ====== */
 .footer__logo:focus-visible,
+.footer__manage:focus-visible,
 .footer__link:focus-visible {
   outline: 2px solid var(--rose);
   outline-offset: 3px;

@@ -16,6 +16,9 @@ export const BOOKING_EMBED_URL =
   'https://app.acuityscheduling.com/schedule.php?owner=39911636&ref=embedded_csp'
 /* Acuity's official embed helper — resizes the iframe; never touches form data. */
 export const ACUITY_EMBED_SCRIPT = 'https://embed.acuityscheduling.com/js/embed.js'
+/* Direct (non-embedded) booking page — the no-cookie fallback for visitors
+   who reject cookies: booking happens entirely on Acuity's own site. */
+export const BOOKING_DIRECT_URL = 'https://app.acuityscheduling.com/schedule.php?owner=39911636'
 
 // true only once a real https embed URL has been configured
 export const isConfigured = (url) => typeof url === 'string' && url.startsWith('https://')

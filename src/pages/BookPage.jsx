@@ -1,7 +1,8 @@
 import useReveal from '../hooks/useReveal'
 import { SOCIALS, isMail } from '../data/socials'
 import ProviderEmbed from '../components/ProviderEmbed'
-import { BOOKING_EMBED_URL, PROVIDER_NAME } from '../config/provider'
+import { BOOKING_EMBED_URL, BOOKING_DIRECT_URL, PROVIDER_NAME } from '../config/provider'
+import { useCookieConsent } from '../context/CookieConsent'
 import './Book.css'
 
 const emailEntry = SOCIALS.find((s) => isMail(s.href))
@@ -15,6 +16,7 @@ const STEPS = [
 
 export default function BookPage() {
   const revealRef = useReveal()
+  const { consent } = useCookieConsent()
 
   return (
     <main className="book-page" ref={revealRef}>
@@ -44,19 +46,35 @@ export default function BookPage() {
           </ol>
 
           <div className="book-embed reveal d2">
-            <ProviderEmbed title="Book a free taster session" src={BOOKING_EMBED_URL}>
-              {/* shown until the client's provider URL is configured */}
+            {consent === 'accepted' ? (
+              /* consent given — only now does the Acuity iframe (and its
+                 third-party cookies) enter the DOM */
+              <ProviderEmbed title="Book a free taster session" src={BOOKING_EMBED_URL}>
+                {/* shown until the client's provider URL is configured */}
+                <div className="book-embed__pending" role="status">
+                  <p className="book-embed__title">Scheduling is being connected</p>
+                  <p>
+                    This is where the booking calendar and intake form will appear,
+                    provided securely by our scheduling partner — it isn&rsquo;t live
+                    yet. In the meantime, email T directly to arrange your free
+                    taster:{' '}
+                    <a href={emailEntry.href}>{emailEntry.href.replace('mailto:', '')}</a>.
+                  </p>
+                </div>
+              </ProviderEmbed>
+            ) : (
+              /* no consent (unknown or rejected): no iframe, no embed script.
+                 Rejecting never blocks booking — Acuity's own page still works. */
               <div className="book-embed__pending" role="status">
-                <p className="book-embed__title">Scheduling is being connected</p>
+                <p className="book-embed__title">Booking calendar not loaded</p>
                 <p>
-                  This is where the booking calendar and intake form will appear,
-                  provided securely by our scheduling partner — it isn&rsquo;t live
-                  yet. In the meantime, email T directly to arrange your free
-                  taster:{' '}
-                  <a href={emailEntry.href}>{emailEntry.href.replace('mailto:', '')}</a>.
+                  To load the secure booking calendar, please accept cookies — or{' '}
+                  <a href={BOOKING_DIRECT_URL} target="_blank" rel="noopener noreferrer">
+                    book directly on Acuity
+                  </a>.
                 </p>
               </div>
-            </ProviderEmbed>
+            )}
           </div>
 
           <p className="note">

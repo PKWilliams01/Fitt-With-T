@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import './App.css'
+import { CookieConsentProvider } from './context/CookieConsent'
+import ConsentBanner from './components/ConsentBanner'
 import Nav          from './components/Nav'
 import Footer       from './components/Footer'
 import IntroLogo    from './components/IntroLogo'
@@ -38,11 +40,12 @@ export default function App() {
   const Page = PAGES[page]
 
   return (
-    <>
+    <CookieConsentProvider>
       <IntroLogo onDone={() => setIntroActive(false)} />
       <Nav currentPage={page} onNavigate={navigate} />
       <Page onNavigate={navigate} introActive={introActive} />
       <Footer onNavigate={navigate} />
-    </>
+      <ConsentBanner />
+    </CookieConsentProvider>
   )
 }
