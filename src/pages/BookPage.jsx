@@ -1,5 +1,7 @@
 import useReveal from '../hooks/useReveal'
 import { SOCIALS, isMail } from '../data/socials'
+import ProviderEmbed from '../components/ProviderEmbed'
+import { BOOKING_EMBED_URL } from '../config/provider'
 import './Book.css'
 
 const emailEntry = SOCIALS.find((s) => isMail(s.href))
@@ -10,17 +12,6 @@ const STEPS = [
   ['Share a few details', 'A short intake covers your goals and any health basics, so T can coach you safely from session one.'],
   ['Meet & move', 'We talk through what you want, then do a relaxed first session together.'],
 ]
-
-/*
- * Booking + the ~15-question health intake are handled entirely by a
- * certified provider (Acuity / Square / Calendly) — per CLAUDE.md this is
- * special-category health data under UK GDPR and must never be collected by
- * a hand-rolled form or stored in this codebase. The client owns that
- * provider account. This section is scaffolding only: once the client
- * shares her scheduling embed/link, drop the provider's own <iframe> or
- * embed script here in place of BOOKING_EMBED_URL. Nothing else changes.
- */
-const BOOKING_EMBED_URL = null
 
 export default function BookPage() {
   const revealRef = useReveal()
@@ -53,14 +44,8 @@ export default function BookPage() {
           </ol>
 
           <div className="book-embed reveal d2">
-            {BOOKING_EMBED_URL ? (
-              <iframe
-                className="book-embed__frame"
-                src={BOOKING_EMBED_URL}
-                title="Book a free taster session"
-                loading="lazy"
-              />
-            ) : (
+            <ProviderEmbed title="Book a free taster session" src={BOOKING_EMBED_URL}>
+              {/* shown until the client's provider URL is configured */}
               <div className="book-embed__pending" role="status">
                 <p className="book-embed__title">Scheduling is being connected</p>
                 <p>
@@ -71,7 +56,7 @@ export default function BookPage() {
                   <a href={emailEntry.href}>{emailEntry.href.replace('mailto:', '')}</a>.
                 </p>
               </div>
-            )}
+            </ProviderEmbed>
           </div>
 
           <p className="note">

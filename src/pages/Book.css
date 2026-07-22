@@ -53,12 +53,6 @@
   box-shadow: var(--shadow-sm);
   overflow: hidden;
 }
-.book-embed__frame {
-  width: 100%;
-  min-height: 640px;
-  border: 0;
-  display: block;
-}
 .book-embed__pending {
   padding: calc(var(--u) * 5) calc(var(--u) * 4);
   text-align: center;
