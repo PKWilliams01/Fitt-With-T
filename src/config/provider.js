@@ -10,7 +10,12 @@
    logs or pre-fills anything inside it. Paste the client's own embed URL
    here once she supplies and authorises it; nothing else needs to change.
    ============================================================ */
-export const BOOKING_EMBED_URL = null
+/* The client's own Acuity account (owner=39911636). Authorised by her. */
+export const PROVIDER_NAME = 'Acuity'
+export const BOOKING_EMBED_URL =
+  'https://app.acuityscheduling.com/schedule.php?owner=39911636&ref=embedded_csp'
+/* Acuity's official embed helper — resizes the iframe; never touches form data. */
+export const ACUITY_EMBED_SCRIPT = 'https://embed.acuityscheduling.com/js/embed.js'
 
 // true only once a real https embed URL has been configured
 export const isConfigured = (url) => typeof url === 'string' && url.startsWith('https://')

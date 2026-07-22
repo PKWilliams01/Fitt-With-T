@@ -1,7 +1,7 @@
 import useReveal from '../hooks/useReveal'
 import { SOCIALS, isMail } from '../data/socials'
 import ProviderEmbed from '../components/ProviderEmbed'
-import { BOOKING_EMBED_URL } from '../config/provider'
+import { BOOKING_EMBED_URL, PROVIDER_NAME } from '../config/provider'
 import './Book.css'
 
 const emailEntry = SOCIALS.find((s) => isMail(s.href))
@@ -60,8 +60,8 @@ export default function BookPage() {
           </div>
 
           <p className="note">
-            Your intake answers (goals, health basics) are collected securely by
-            our scheduling partner — never stored on this site.
+            Your booking and details are handled securely by {PROVIDER_NAME} —
+            they&rsquo;re never stored on this site.
           </p>
         </div>
       </section>
