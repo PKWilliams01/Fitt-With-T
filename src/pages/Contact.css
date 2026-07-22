@@ -28,19 +28,6 @@
   padding: calc(var(--u) * 4);
   box-shadow: var(--shadow-sm);
 }
-/* temporary "email me directly" note while the form endpoint is unwired */
-.contact-formnote {
-  background: var(--gold-soft);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  padding: calc(var(--u) * 1.5) calc(var(--u) * 2);
-  margin-bottom: calc(var(--u) * 3);
-  font-size: .82rem;
-  color: var(--ink);
-}
-.contact-formnote a { color: var(--rose-2); }
-.contact-formnote a:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; border-radius: var(--radius-sm); }
-
 .contact-form .field { margin-bottom: calc(var(--u) * 2.5); }
 .contact-form label {
   display: block;

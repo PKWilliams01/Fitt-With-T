@@ -18,11 +18,18 @@ const emailEntry = SOCIALS.find((s) => isMail(s.href))
 const EMPTY = { name: '', email: '', message: '' }
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
+/* FIT-70 — the client's own authorised Basin form endpoint. Public by design
+   (no key or secret). This is the ONLY destination this form submits to.
+   Client-side validation below is for UX; Basin validates server-side too. */
+const BASIN_ENDPOINT = 'https://usebasin.com/f/460af029a90e'
+
 export default function ContactPage({ onNavigate }) {
   const revealRef = useReveal()
   const [values, setValues] = useState(EMPTY)
   const [errors, setErrors] = useState({})
   const [sent, setSent] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [submitError, setSubmitError] = useState(null)
 
   function validate(v) {
     const e = {}
@@ -39,20 +46,32 @@ export default function ContactPage({ onNavigate }) {
     if (errors[name]) setErrors((er) => ({ ...er, [name]: undefined }))
   }
 
-  /* TEMPORARY until an authorised form endpoint is wired (FIT-70): hand the
-     message off to the visitor's own email app so it genuinely reaches T.
-     No backend, nothing stored or sent on our side; client-side validation
-     is UX only. Replace this with the real endpoint when it's ready. */
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
+    const form = e.currentTarget
     const found = validate(values)
     setErrors(found)
     if (Object.keys(found).length) return
-    const subject = encodeURIComponent(`Website enquiry — ${values.name}`)
-    const body = encodeURIComponent(`${values.message}\n\n— ${values.name} (${values.email})`)
-    window.location.href = `${emailEntry.href}?subject=${subject}&body=${body}`
-    setSent(true)
-    setValues(EMPTY)
+
+    setSending(true)
+    setSubmitError(null)
+    try {
+      const res = await fetch(BASIN_ENDPOINT, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(form), // uses each field's name attribute
+      })
+      if (!res.ok) throw new Error(`Basin responded ${res.status}`)
+      setSent(true)
+      setValues(EMPTY)
+    } catch {
+      // keep what they typed so nothing is lost
+      setSubmitError(
+        `Sorry — that didn’t send. Please try again, or email me at ${emailEntry.href.replace('mailto:', '')}.`
+      )
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -74,18 +93,11 @@ export default function ContactPage({ onNavigate }) {
           <div className="contact-form-wrap reveal">
             {sent ? (
               <p className="contact-sent" role="status">
-                Your email app should open so you can send this straight to me. If it
-                doesn’t, email me at{' '}
-                <a href={emailEntry.href}>{emailEntry.href.replace('mailto:', '')}</a>.
+                Thank you — your message is on its way. I’ll be in touch very soon.
               </p>
             ) : (
-              <>
-                <p className="contact-formnote">
-                  My contact form is still being connected — pressing send opens your
-                  email app so your message reaches me directly. Prefer to email? Reach me at{' '}
-                  <a href={emailEntry.href}>{emailEntry.href.replace('mailto:', '')}</a>.
-                </p>
-                <form className="contact-form" onSubmit={handleSubmit} noValidate>
+              <form className="contact-form" onSubmit={handleSubmit} noValidate
+                    action={BASIN_ENDPOINT} method="POST">
                 <div className="field">
                   <label htmlFor="cf-name">Your name</label>
                   <input id="cf-name" name="name" type="text" value={values.name}
@@ -113,11 +125,11 @@ export default function ContactPage({ onNavigate }) {
                   {errors.message && <p className="field-err" id="cf-message-err" role="alert">{errors.message}</p>}
                 </div>
 
-                <button className="btn btn-primary" type="submit">
-                  Send message <span aria-hidden="true">→</span>
+                <button className="btn btn-primary" type="submit" disabled={sending}>
+                  {sending ? 'Sending…' : 'Send message'} <span aria-hidden="true">→</span>
                 </button>
-                </form>
-              </>
+                {submitError && <p className="field-err" role="alert">{submitError}</p>}
+              </form>
             )}
           </div>
 
