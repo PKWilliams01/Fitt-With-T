@@ -135,12 +135,24 @@
   display: flex;
   justify-content: center;
   gap: calc(var(--u) * 2);
-  padding: 0 calc(var(--u) * 2) calc(var(--u) * 3.5);
+  padding: calc(var(--u) * 5) calc(var(--u) * 2) calc(var(--u) * 3.5);
   font-family: var(--font-display);
   font-style: italic;
   font-size: .95rem;
-  color: rgba(255, 253, 251, .85);
+  color: var(--cream);
+  /* soft scrim that dissolves into the photo rather than a hard-edged bar;
+     stays solid behind the text itself for guaranteed contrast */
+  background: linear-gradient(0deg, rgba(36, 28, 23, .82) 0%, rgba(36, 28, 23, .82) 45%, transparent 100%);
   flex-wrap: wrap;
+  /* fades out as the hero scrolls out of view (set from JS; 1 = fully shown).
+     Uses filter, not opacity — the entrance .rise keyframe already animates
+     opacity with forwards, which would otherwise always win the cascade. */
+  filter: opacity(var(--creed-fade, 1));
+  transition: filter .15s linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-creed { filter: opacity(1); }
 }
 
 .hero-creed span::after {
@@ -223,7 +235,7 @@
     justify-content: center;
     gap: calc(var(--u) * 3);
     font-size: 1.3rem;
-    padding: 0 calc(var(--u) * 4) calc(var(--u) * 5);
+    padding: calc(var(--u) * 3) calc(var(--u) * 4) calc(var(--u) * 5);
   }
   .hero-creed span::after { margin-left: calc(var(--u) * 3); }
 }

@@ -3,6 +3,7 @@ import './Hero.css'
 
 export default function Hero({ onNavigate, introActive }) {
   const mediaRef = useRef(null)
+  const heroRef = useRef(null)
 
   /* FIT-55 — gentle parallax: the photo pulls at a slower rate than the page.
      Skipped entirely for prefers-reduced-motion users. */
@@ -24,8 +25,32 @@ export default function Hero({ onNavigate, introActive }) {
     }
   }, [])
 
+  /* creed strip fades out as the user scrolls the hero out of view.
+     Skipped for prefers-reduced-motion, where it just stays visible. */
+  useEffect(() => {
+    const hero = heroRef.current
+    if (!hero || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    let raf = 0
+    const onScroll = () => {
+      cancelAnimationFrame(raf)
+      raf = requestAnimationFrame(() => {
+        const { top, height } = hero.getBoundingClientRect()
+        // fades out over the last 40% of the hero's height as it scrolls up
+        const progress = Math.min(Math.max(-top / (height * 0.6), 0), 1)
+        hero.style.setProperty('--creed-fade', String(1 - progress))
+      })
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      cancelAnimationFrame(raf)
+    }
+  }, [])
+
   return (
-    <section className={`hero${introActive ? '' : ' hero--reveal'}`}>
+    <section className={`hero${introActive ? '' : ' hero--reveal'}`} ref={heroRef}>
       {/* FIT-53 — full-bleed photo zone (hero.jpeg) under the readability overlay */}
       <div className="hero-media" aria-hidden="true" ref={mediaRef} />
 
@@ -47,7 +72,7 @@ export default function Hero({ onNavigate, introActive }) {
 
       {/* creed strip pinned at the bottom of the hero */}
       <div className="hero-creed rise d4">
-        <span>Faith</span><span>Intention</span><span>Tenacity</span>
+        <span>Faith</span><span>Intention</span><span>Tenacity</span><span>Testimonials</span>
       </div>
     </section>
   )

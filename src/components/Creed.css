@@ -13,7 +13,7 @@
 .creed-item:first-child { border-left: none; }
 .creed-item__n { font-family: var(--font-display); font-style: italic; font-size: 1rem; color: var(--gold); }
 .creed-item h3 { font-family: var(--font-display); font-weight: var(--fw-med); font-size: 1.9rem; margin: calc(var(--u) * 1.5) 0; color: var(--cream); }
-.creed-item p { color: rgba(255, 253, 251, .6); font-size: .92rem; }
+.creed-item p { color: rgba(255, 253, 251, .78); font-size: .92rem; }
 
 /* animated rose divider that grows as the column reveals */
 .creed-item::after {
