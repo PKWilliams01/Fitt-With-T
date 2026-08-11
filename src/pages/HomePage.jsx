@@ -53,15 +53,17 @@ export default function HomePage({ onNavigate, introActive }) {
           <div className="welcome__copy">
             <span className="eyebrow reveal">Welcome</span>
             <h2 className="display reveal d1">Coaching that meets <em>you</em> where you are</h2>
+            <p className="lead reveal d2">No intimidation. No jargon. No judgement.</p>
             <p className="reveal d2">
-              No intimidation, no jargon, no judgement. Whether you're stepping into a gym for
-              the first time, rebuilding after a break, or chasing a specific goal — we start
-              from where you are and build something that fits your life.
+              Whether it&rsquo;s your first time in the gym, a fresh start after time away, or a
+              step towards a specific goal, you&rsquo;ll be met exactly where you are and guided
+              towards where you want to be.
             </p>
             <p className="reveal d2">
-              My clients are women and men, younger and older, complete beginners and returners.
-              What they share is the want to feel stronger, more capable and more at home in
-              their own body.
+              My clients come from all walks of life &mdash; women and men, young and older,
+              complete beginners and those returning to their fitness journey. What connects them
+              all is a shared desire to feel stronger, more capable, and truly confident in their
+              own bodies.
             </p>
             <button className="btn btn-ghost reveal d3" onClick={() => onNavigate('about')}>
               My story <span aria-hidden="true">&rarr;</span>

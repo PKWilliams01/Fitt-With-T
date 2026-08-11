@@ -28,7 +28,7 @@ export default function Footer({ onNavigate }) {
             </button>
             <p className="footer__creed">Faith · Intention · Tenacity · Testimonials</p>
             <p className="footer__tagline">
-              Personal training for everyone — beginners, returners, all ages and levels.
+              Coaching for everyone — beginners, returners, all ages and levels.
             </p>
           </div>
 
@@ -62,7 +62,7 @@ export default function Footer({ onNavigate }) {
         </div>
 
         <div className="footer__bottom">
-          <span>© 2026 Fitt With T · Personal Training</span>
+          <span>© 2026 Fitt With T</span>
           <span className="footer__legal">
             <button className="footer__manage" onClick={() => onNavigate('privacy')}>
               Privacy &amp; cookies
