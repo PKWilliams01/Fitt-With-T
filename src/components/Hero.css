@@ -88,8 +88,7 @@
 
 /* legibility insurance for type sitting over the photo */
 .hero-h1,
-.hero-sub,
-.hero-creed {
+.hero-sub {
   text-shadow: 0 2px 16px rgba(36, 28, 23, .55);
 }
 
@@ -128,28 +127,52 @@
   outline-offset: 3px;
 }
 
-/* ====== Creed strip ====== */
+/* ====== Creed strip — frosted pills over the photo, not a flat bar ====== */
 .hero-creed {
   position: relative;
   z-index: 2;
   display: flex;
   justify-content: center;
-  gap: calc(var(--u) * 2);
+  align-items: center;
+  gap: calc(var(--u) * 1.25);
   padding: 0 calc(var(--u) * 2) calc(var(--u) * 3.5);
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: .95rem;
-  color: rgba(255, 253, 251, .85);
   flex-wrap: wrap;
 }
 
-.hero-creed span::after {
-  content: "·";
-  margin-left: calc(var(--u) * 2);
-  color: var(--rose);
+/* soft rose-gold glow behind the row, echoing the hero's own vignette */
+.hero-creed::before {
+  content: "";
+  position: absolute;
+  inset: calc(var(--u) * -3) 10% calc(var(--u) * -2);
+  background: radial-gradient(60% 160% at 50% 100%, rgba(179, 112, 92, .3), transparent 72%);
+  filter: blur(20px);
+  z-index: -1;
+  pointer-events: none;
 }
 
-.hero-creed span:last-child::after { content: ""; }
+.hero-creed__item {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--u) * .85);
+  padding: calc(var(--u) * 1.1) calc(var(--u) * 2.25);
+  border-radius: var(--radius-pill);
+  background: rgba(36, 28, 23, .76);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 253, 251, .16);
+  box-shadow: 0 10px 24px rgba(36, 28, 23, .28);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: .92rem;
+  color: var(--cream);
+}
+
+.hero-creed__dot {
+  font-size: .68em;
+  color: var(--gold);
+}
+/* alternate the accent dot rose/gold — a callback to the home marquee */
+.hero-creed__item:nth-child(even) .hero-creed__dot { color: var(--rose); }
 
 /* ====== FIT-52 — staggered entrance (text follows the photo) ====== */
 .rise {
@@ -221,9 +244,11 @@
   /* creed centred across the hero, a touch larger */
   .hero-creed {
     justify-content: center;
-    gap: calc(var(--u) * 3);
-    font-size: 1.3rem;
+    gap: calc(var(--u) * 2);
     padding: 0 calc(var(--u) * 4) calc(var(--u) * 5);
   }
-  .hero-creed span::after { margin-left: calc(var(--u) * 3); }
+  .hero-creed__item {
+    padding: calc(var(--u) * 1.4) calc(var(--u) * 3);
+    font-size: 1.2rem;
+  }
 }

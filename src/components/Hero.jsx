@@ -45,9 +45,20 @@ export default function Hero({ onNavigate, introActive }) {
         </button>
       </div>
 
-      {/* creed strip pinned at the bottom of the hero */}
+      {/* creed strip pinned at the bottom of the hero — frosted pills, one per word */}
       <div className="hero-creed rise d4">
-        <span>Faith</span><span>Intention</span><span>Tenacity</span>
+        <span className="hero-creed__item">
+          <span className="hero-creed__dot" aria-hidden="true">&#10022;</span>Faith
+        </span>
+        <span className="hero-creed__item">
+          <span className="hero-creed__dot" aria-hidden="true">&#10022;</span>Intention
+        </span>
+        <span className="hero-creed__item">
+          <span className="hero-creed__dot" aria-hidden="true">&#10022;</span>Tenacity
+        </span>
+        <span className="hero-creed__item">
+          <span className="hero-creed__dot" aria-hidden="true">&#10022;</span>Testimonials
+        </span>
       </div>
     </section>
   )
