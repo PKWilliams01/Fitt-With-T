@@ -154,38 +154,38 @@ export default function AboutPage({ onNavigate }) {
             <span className="eyebrow">My Story</span>
             <h2 className="display">Faith, fitness &amp; <em>purpose</em></h2>
 
-            <p className="lead">Hey, I'm Tommera — and I'm really glad you're here.</p>
+            <p className="lead">Hey, I&rsquo;m Tommera and I&rsquo;m really glad you are here.</p>
 
             <p>
-              I've spent most of my life in the world of fitness, starting out as a
-              gymnast and competing at both a national and international level for over
-              12 years. It taught me discipline, resilience, and just how powerful the
-              body (and mind!) can be. But most importantly, it gave me a real passion
-              for helping others find their <strong>strength</strong> in a way that
-              works for them.
+              I&rsquo;ve spent most of my life in the world of fitness. I started out as a
+              gymnast, competing at both a national and international level for over 12
+              years, and it has shaped so much of who I am today. It taught me
+              discipline, resilience, and just how powerful the body and mind can be.
+              But more than anything, it gave me a real <strong>love</strong> for helping
+              others discover their own strength in a way that works for them.
             </p>
 
             <p>
-              After coming back from a serious injury and surgery, I saw for myself how
-              tough it can be to rebuild. That's why I'm so <strong>passionate</strong>{' '}
-              about creating a training space that's supportive, understanding and meets
-              you exactly where you are, whether you're just starting out or already on
-              your fitness journey.
+              Coming back from a serious injury and surgery showed me a completely
+              different side of fitness. I know first-hand how tough it can be to
+              rebuild, to start again, and to keep going when things feel hard.
+              That&rsquo;s why creating a space that feels{' '}
+              <strong>supportive, understanding, and freeing</strong> means so much to
+              me. Wherever you&rsquo;re starting from, I&rsquo;ll meet you there.
             </p>
 
             <p>
-              I <strong>love</strong> working with people from all walks of life, not
-              just athletes. It doesn't matter if you're a complete beginner, someone
-              looking to build confidence in the gym, recovering from injury, or just
-              trying to move more — I've got you. I'll be your coach, cheerleader, and
-              accountability partner, every step of the way.
+              I work with people from all walks of life. Whether you&rsquo;re an
+              athlete, brand new to the gym, recovering from injury, or simply trying
+              to move more and feel better, you don&rsquo;t have to do it alone.{' '}
+              <strong>I&rsquo;ve got you.</strong> I&rsquo;ll be there to guide you,
+              support you, and keep you accountable every step of the way.
             </p>
 
             <p>
-              At the heart of it all, I want you to feel encouraged, capable, and never
-              alone in this. Because your fitness journey is <em>yours</em> — I'm just
-              here to help you make it feel a little less overwhelming and a lot more
-              empowering.
+              At the heart of it all, <em>your journey is entirely your own</em>. I&rsquo;m
+              here to encourage you through it, refining the process so it feels less
+              overwhelming and far more empowering.
             </p>
 
             <p className="sig">— T</p>
