@@ -1,0 +1,91 @@
+/* TestimonialMarquee — wall of client reviews, two rows scrolling opposite
+   directions. Only used once there are >=4 real testimonials; fewer than
+   that, TestimonialMarquee.jsx renders the plain single-featured
+   Testimonial layout instead. Tokens only. */
+
+.tmq {
+  --tmq-gap: calc(var(--u) * 3);
+  --tmq-duration: 42s;
+  position: relative;
+}
+
+.tmq-viewport {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--u) * 3);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 calc(var(--u) * 6), #000 calc(100% - var(--u) * 6), transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 calc(var(--u) * 6), #000 calc(100% - var(--u) * 6), transparent);
+}
+
+.tmq-row { overflow: hidden; }
+
+.tmq-track {
+  display: flex;
+  width: max-content;
+  animation: tmq-scroll var(--tmq-duration) linear infinite;
+}
+.tmq-row--reverse .tmq-track { animation-direction: reverse; }
+
+.tmq:hover .tmq-track,
+.tmq:focus-within .tmq-track { animation-play-state: paused; }
+
+.tmq-group {
+  display: flex;
+  gap: var(--tmq-gap);
+  padding-right: var(--tmq-gap);
+  list-style: none;
+  margin: 0;
+}
+.tmq-item { display: flex; }
+
+@keyframes tmq-scroll { to { transform: translateX(-50%); } }
+
+.tmq-card {
+  width: min(360px, 82vw);
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: calc(var(--u) * 3);
+}
+.tmq-card__quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--ink);
+  margin-bottom: calc(var(--u) * 2);
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.tmq-card__who { display: flex; align-items: center; gap: calc(var(--u) * 1.25); }
+.tmq-card__avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--rose-soft);
+  border: 1px solid var(--rose);
+  color: var(--rose-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: .85rem;
+  flex-shrink: 0;
+}
+.tmq-card__id { text-align: left; }
+.tmq-card__id b { font-weight: var(--fw-semi); font-size: .9rem; display: block; }
+.tmq-card__id small { color: var(--muted); font-size: .76rem; }
+
+/* static, non-scrolling grid — same technique as the home marquee */
+@media (prefers-reduced-motion: reduce) {
+  .tmq-viewport { -webkit-mask-image: none; mask-image: none; }
+  .tmq-track { animation: none; flex-wrap: wrap; width: auto; justify-content: center; }
+  .tmq-group[aria-hidden="true"] { display: none; }
+}
+
+@media (max-width: 520px) {
+  .tmq-card { width: min(300px, 78vw); }
+}
