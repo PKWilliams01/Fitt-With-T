@@ -6,7 +6,7 @@
    =========================================================================== */
 
 .mq {
-  --mq-gap: calc(var(--u) * 6);
+  --mq-gap: calc(var(--u) * 4);
   --mq-duration: var(--t-marquee);
   background: var(--espresso);
   color: var(--cream);
@@ -23,7 +23,7 @@
 .mq__track {
   display: flex;
   width: max-content;
-  padding: calc(var(--u) * 1.5) 0;
+  padding: calc(var(--u) * .75) 0;
   animation: mq-scroll var(--mq-duration) linear infinite;
 }
 /* readable: pause when hovered or focused (keyboard) */
@@ -44,7 +44,7 @@
   white-space: nowrap;
   font-family: var(--font-display);
   font-weight: var(--fw-light);
-  font-size: 1.7rem;
+  font-size: var(--fs-body);
   letter-spacing: .01em;
 }
 /* alternating rose / gold accent */
