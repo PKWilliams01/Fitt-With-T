@@ -3,21 +3,6 @@ import TestimonialMarquee from '../components/TestimonialMarquee'
 import { TESTIMONIALS } from '../data/testimonials'
 import './Results.css'
 
-/* Labelled placeholder photo zones — verbatim from the approved concept
-   (#page-results). Deliberately span women & men, beginners→advanced,
-   younger & older, so everyone sees themselves. Real photos (with the
-   client's permission) replace these on the live site. */
-const GALLERY = [
-  { label: 'Before / after transformation', span: 'gtall' },
-  { label: 'Client training (female)' },
-  { label: 'Client training (male)' },
-  { label: 'Session in action', span: 'gwide' },
-  { label: 'Strength milestone' },
-  { label: 'Mobility / older client' },
-  { label: 'Gymnastics / skill shot', span: 'gwide' },
-  { label: 'Happy client portrait' },
-]
-
 export default function ResultsPage({ onNavigate }) {
   const revealRef = useReveal()
 
@@ -36,20 +21,6 @@ export default function ResultsPage({ onNavigate }) {
 
       <section>
         <div className="wrap">
-          <ul className="gal-grid">
-            {GALLERY.map(({ label, span }) => (
-              <li key={label} className={`photo reveal${span ? ` ${span}` : ''}`}>
-                <span className="pc" aria-hidden="true">&#10022;</span>
-                <span className="pl">{label}</span>
-              </li>
-            ))}
-          </ul>
-          <p className="note">
-            Labelled photo zones — deliberately spanning women and men, beginners
-            to advanced, so everyone sees themselves here. Filled with T's real
-            photos (with permission) on the live site.
-          </p>
-
           <div className="results-wall reveal d1">
             <TestimonialMarquee testimonials={TESTIMONIALS} />
           </div>
