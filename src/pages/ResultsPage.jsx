@@ -1,5 +1,6 @@
 import useReveal from '../hooks/useReveal'
-import Testimonial from '../components/Testimonial'
+import TestimonialMarquee from '../components/TestimonialMarquee'
+import { TESTIMONIALS } from '../data/testimonials'
 import './Results.css'
 
 /* Labelled placeholder photo zones — verbatim from the approved concept
@@ -50,12 +51,7 @@ export default function ResultsPage({ onNavigate }) {
           </p>
 
           <div className="results-wall reveal d1">
-            <Testimonial
-              stars={5}
-              quote="[ T's real 12-week client testimonial drops in here — her client's genuine words once she shares them. ]"
-              author="12-week client"
-              role="Completed programme"
-            />
+            <TestimonialMarquee testimonials={TESTIMONIALS} />
           </div>
           <p className="note">
             A growing wall of reviews — clients are invited to leave a written
