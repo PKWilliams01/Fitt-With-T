@@ -64,7 +64,7 @@
 
 .nav-logo__img {
   display: block;
-  height: calc(var(--u) * 11);
+  height: calc(var(--u) * 12);
   width: auto;
   transition: opacity var(--t-slow) var(--ease), filter var(--t-fast), height var(--t-fast);
 }
@@ -182,7 +182,7 @@
 /* ====== Mobile ====== */
 @media (max-width: 900px) {
   .nav-burger { display: flex; position: relative; z-index: 3; }
-  .nav-logo__img { height: calc(var(--u) * 8); }
+  .nav-logo__img { height: calc(var(--u) * 8.5); }
 
   .nav-links {
     position: fixed;

@@ -265,7 +265,7 @@
 /* ---- desktop ---- */
 @media (min-width: 900px) {
   /* compact page title so the slideshow band sits high on the page */
-  .about-page .page-head { padding-top: calc(var(--u) * 15); padding-bottom: calc(var(--u) * 2); } /* clear the taller logo nav */
+  .about-page .page-head { padding-top: calc(var(--u) * 16); padding-bottom: calc(var(--u) * 2); } /* clear the taller logo nav */
   .about-page .page-head .display { font-size: var(--fs-h2); }
   /* on wide screens, the portrait-oriented photos need a proportion close
      to their own — not a cinematic band that forces an extreme crop into

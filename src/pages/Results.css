@@ -27,6 +27,6 @@
 
 /* desktop: compact title to match About / Coaching */
 @media (min-width: 900px) {
-  .results-page .page-head { padding-top: calc(var(--u) * 15); } /* clear the taller logo nav */
+  .results-page .page-head { padding-top: calc(var(--u) * 16); } /* clear the taller logo nav */
   .results-page .page-head .display { font-size: var(--fs-h2); }
 }
