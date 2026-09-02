@@ -32,6 +32,7 @@
   .services-page .page-head { padding-top: calc(var(--u) * 16); } /* clear the taller logo nav */
   .services-page .page-head .display { font-size: var(--fs-h2); }
   .services-page .service-card { padding: calc(var(--u) * 3) calc(var(--u) * 3.5); }
+  .services-page .service-card--featured { padding-top: calc(var(--u) * 5.5); } /* room for the top badge */
   .services-page .service-card__desc { margin: calc(var(--u) * 1.75) 0; }
   .services-page .service-card__incl { padding-top: calc(var(--u) * 2); margin-bottom: calc(var(--u) * 1.5); }
 }

@@ -30,17 +30,22 @@
 .service-card--featured .service-card__incl { border-color: var(--line-dark); }
 .service-card--featured .service-card__incl li { color: rgba(255, 253, 251, .7); }
 
+/* centred badge tabbed onto the top edge — always fully legible, unlike a
+   diagonal corner ribbon (which clipped longer labels under overflow:hidden) */
+.service-card--featured { padding-top: calc(var(--u) * 6.5); }
 .service-card__ribbon {
   position: absolute;
-  top: 18px;
-  right: -30px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   background: var(--rose);
   color: var(--cream);
   font-size: .62rem;
   letter-spacing: .14em;
   text-transform: uppercase;
-  padding: 5px 36px;
-  transform: rotate(45deg);
+  padding: 5px 18px;
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  white-space: nowrap;
 }
 .service-card__name { font-family: var(--font-display); font-weight: var(--fw-med); font-size: 1.8rem; }
 .service-card__freq { color: var(--rose-2); font-size: .82rem; letter-spacing: .06em; margin-top: 5px; text-transform: uppercase; }
