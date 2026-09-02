@@ -137,7 +137,6 @@ export default function ContactPage({ onNavigate }) {
             <div>
               <h2 className="contact-direct__h">Reach me directly</h2>
               <p>Prefer email? <a href={emailEntry.href}>{emailEntry.href.replace('mailto:', '')}</a></p>
-              <p className="contact-direct__note">Based in North London &amp; surrounding areas.</p>
             </div>
             <div>
               <h2 className="contact-direct__h">Follow along</h2>

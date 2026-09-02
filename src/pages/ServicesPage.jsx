@@ -15,9 +15,7 @@ const TIERS = [
       'Form & technique coaching',
       'Friendly, no-judgement support',
     ],
-    featured: true,
-    ribbon: 'Start here',
-    ctaVariant: 'primary',
+    ctaVariant: 'ghost',
   },
   {
     name: 'Intentional Progress',
@@ -29,7 +27,9 @@ const TIERS = [
       'Regular check-ins & accountability',
       'Guidance between sessions',
     ],
-    ctaVariant: 'ghost',
+    featured: true,
+    ribbon: 'Most Popular',
+    ctaVariant: 'primary',
   },
   {
     name: 'Tenacity Elite',

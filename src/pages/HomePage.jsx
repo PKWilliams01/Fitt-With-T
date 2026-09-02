@@ -13,16 +13,16 @@ const TIERS = [
     freq: '1 session / week',
     desc: 'The first step. Build the basics, find your rhythm, and start moving with real confidence.',
     includes: ['One 1:1 session each week', 'A plan built around your goals', 'Technique & form coaching'],
-    featured: true,
-    ribbon: 'Start here',
-    ctaVariant: 'primary',
+    ctaVariant: 'ghost',
   },
   {
     name: 'Intentional Progress',
     freq: '2 sessions / week',
     desc: 'Commit properly. Twice-weekly coaching and a structured plan for faster, visible progress.',
     includes: ['Two 1:1 sessions each week', 'Progressive programming', 'Check-ins & accountability'],
-    ctaVariant: 'ghost',
+    featured: true,
+    ribbon: 'Most Popular',
+    ctaVariant: 'primary',
   },
   {
     name: 'Tenacity Elite',
@@ -60,7 +60,7 @@ export default function HomePage({ onNavigate, introActive }) {
               towards where you want to be.
             </p>
             <p className="reveal d2">
-              My clients come from all walks of life &mdash; women and men, young and older,
+              My clients come from all walks of life, women and men, young and older,
               complete beginners and those returning to their fitness journey. What connects them
               all is a shared desire to feel stronger, more capable, and truly confident in their
               own bodies.
