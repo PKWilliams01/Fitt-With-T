@@ -131,7 +131,7 @@ export default function HomePage({ onNavigate, introActive }) {
             <h2 className="display">Your first session is <em>free</em></h2>
             <p>
               Fill in a short intake form, pick a time, and let's see if we're a fit.
-              No pressure, no commitment — just a conversation and a workout.
+              No pressure, no commitment, just a conversation and a workout.
             </p>
             <button className="btn btn-dark" onClick={() => onNavigate('book')}>
               Book your free taster <span aria-hidden="true">&rarr;</span>

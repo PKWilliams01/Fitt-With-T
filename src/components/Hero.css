@@ -129,7 +129,10 @@
 
 /* ====== Creed strip — plain type dissolving into the photo, no pills/bar ====== */
 .hero-creed {
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 2;
   display: flex;
   justify-content: center;
