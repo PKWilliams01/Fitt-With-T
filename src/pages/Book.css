@@ -9,6 +9,14 @@
 }
 .book-page .page-head .display { margin-top: calc(var(--u) * 2); }
 .book-page .page-head p { color: var(--muted); max-width: 56ch; margin: calc(var(--u) * 2) auto 0; }
+.book-interest {
+  display: inline-block;
+  background: var(--rose-soft);
+  color: var(--espresso);
+  border-radius: var(--radius-sm);
+  padding: calc(var(--u) * 1.25) calc(var(--u) * 2.5);
+  font-size: .9rem;
+}
 .book-page > section { padding-top: calc(var(--u) * 3); padding-bottom: calc(var(--u) * 6); }
 
 .book-steps {

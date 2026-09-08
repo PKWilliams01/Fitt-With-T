@@ -89,7 +89,7 @@ export default function HomePage({ onNavigate, introActive }) {
                 {...tier}
                 delay={i}
                 ctaLabel="Book a consultation"
-                onCta={() => onNavigate('book')}
+                onCta={() => onNavigate('book', { tier: tier.name })}
               />
             ))}
           </div>

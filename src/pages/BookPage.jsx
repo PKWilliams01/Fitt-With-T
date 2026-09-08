@@ -14,7 +14,7 @@ const STEPS = [
   ['Meet & move', 'We talk through what you want, then do a relaxed first session together.'],
 ]
 
-export default function BookPage() {
+export default function BookPage({ bookContext = {} }) {
   const revealRef = useReveal()
   const { consent } = useCookieConsent()
 
@@ -22,8 +22,13 @@ export default function BookPage() {
     <main className="book-page" ref={revealRef}>
       <header className="page-head">
         <div className="wrap">
-          <span className="eyebrow center reveal">Book a taster</span>
+          <span className="eyebrow center reveal">Book a consultation</span>
           <h1 className="display reveal d1">Let&rsquo;s start with a <em>free session</em></h1>
+          {bookContext.tier && (
+            <p className="book-interest reveal d1">
+              You&rsquo;re interested in <strong>{bookContext.tier}</strong> — let&rsquo;s get you booked in.
+            </p>
+          )}
           <p className="reveal d2">
             No pressure and no charge — just a chance to meet, talk through your
             goals, and feel how T coaches before you commit to anything.

@@ -71,7 +71,7 @@ export default function ServicesPage({ onNavigate }) {
                 {...tier}
                 delay={i}
                 ctaLabel="Book a consultation"
-                onCta={() => onNavigate('book')}
+                onCta={() => onNavigate('book', { tier: tier.name })}
               />
             ))}
           </div>
