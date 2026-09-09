@@ -47,7 +47,7 @@ export default function HomePage({ onNavigate, introActive }) {
       {/* welcome / intro */}
       <section className="welcome">
         <div className="wrap split">
-          <div className="photo reveal">
+          <div className="photo">
             <img src={welcomePhoto} alt="Tommera landing a vault at competition" className="photo__img" />
             <span className="pl">Tommera, competing nationally</span>
           </div>
