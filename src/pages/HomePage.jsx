@@ -5,6 +5,7 @@ import ServiceCard from '../components/ServiceCard'
 import Testimonial from '../components/Testimonial'
 import SocialLinks from '../components/SocialLinks'
 import useReveal from '../hooks/useReveal'
+import welcomePhoto from '../assets/WhatsApp Image 2026-06-10 at 8.30.29 PM.jpeg'
 import './Home.css'
 
 const TIERS = [
@@ -47,8 +48,8 @@ export default function HomePage({ onNavigate, introActive }) {
       <section className="welcome">
         <div className="wrap split">
           <div className="photo reveal">
-            <span className="pc">T</span>
-            <span className="pl">T training a client</span>
+            <img src={welcomePhoto} alt="Tommera landing a vault at competition" className="photo__img" />
+            <span className="pl">Tommera, competing nationally</span>
           </div>
           <div className="welcome__copy">
             <span className="eyebrow reveal">Welcome</span>
