@@ -33,9 +33,11 @@ function shouldPlayIntro() {
 export default function App() {
   const [page, setPage] = useState('home')
   const [introActive, setIntroActive] = useState(shouldPlayIntro)
+  const [bookContext, setBookContext] = useState({})
 
-  function navigate(to) {
+  function navigate(to, context = {}) {
     setPage(to)
+    setBookContext(to === 'book' ? context : {})
     window.scrollTo({ top: 0, behavior: 'instant' })
   }
 
@@ -45,7 +47,7 @@ export default function App() {
     <CookieConsentProvider>
       <IntroLogo onDone={() => setIntroActive(false)} />
       <Nav currentPage={page} onNavigate={navigate} />
-      <Page onNavigate={navigate} introActive={introActive} />
+      <Page onNavigate={navigate} introActive={introActive} bookContext={bookContext} />
       <Footer onNavigate={navigate} />
       <ConsentBanner onNavigate={navigate} />
     </CookieConsentProvider>

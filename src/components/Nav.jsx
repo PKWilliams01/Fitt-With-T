@@ -99,7 +99,7 @@ export default function Nav({ currentPage, onNavigate }) {
         ))}
 
         <button className="nav-cta" onClick={() => handleNav('book')}>
-          Book a Taster
+          Book a Consultation
         </button>
 
         <div className="nav-social">
