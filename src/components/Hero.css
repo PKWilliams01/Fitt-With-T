@@ -137,9 +137,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: calc(var(--u) * 3);
-  padding: calc(var(--u) * 4) calc(var(--u) * 3) calc(var(--u) * 4);
-  flex-wrap: wrap;
+  gap: calc(var(--u) * 1.5);
+  padding: calc(var(--u) * 4) calc(var(--u) * 2) calc(var(--u) * 4);
+  flex-wrap: nowrap;
 }
 
 /* soft gradient underneath the words — reads as the photo's own vignette
@@ -156,10 +156,10 @@
 .hero-creed__item {
   display: inline-flex;
   align-items: center;
-  gap: calc(var(--u) * .85);
+  gap: calc(var(--u) * .6);
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 1rem;
+  font-size: .82rem;
   letter-spacing: .02em;
   color: var(--cream);
   text-shadow: 0 2px 12px rgba(36, 28, 23, .65), 0 1px 4px rgba(36, 28, 23, .85);
