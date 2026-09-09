@@ -30,8 +30,7 @@ export default function BookPage({ bookContext = {} }) {
             </p>
           )}
           <p className="reveal d2">
-            No pressure and no charge — just a chance to meet, talk through your
-            goals, and feel how T coaches before you commit to anything.
+            
           </p>
         </div>
       </header>
