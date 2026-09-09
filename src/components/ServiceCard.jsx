@@ -9,7 +9,7 @@ export default function ServiceCard({
   includes = [],
   featured = false,
   ribbon,
-  ctaLabel = 'Book a taster',
+  ctaLabel = 'Book a consultation',
   ctaVariant = 'ghost',
   onCta,
   delay = 0,

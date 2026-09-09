@@ -1,4 +1,4 @@
-/* Book a Taster (FIT-15) — steps + scaffold for the certified booking/intake
+/* Book a Consultation — steps + scaffold for the certified booking/intake
    embed. Tokens only. No booking data is handled in this codebase. */
 
 .book-page .page-head {
@@ -24,7 +24,14 @@
   display: grid;
   gap: calc(var(--u) * 3);
   max-width: 720px;
-  margin: 0 auto calc(var(--u) * 5);
+  margin: 0 auto calc(var(--u) * 4);
+}
+.book-explainer {
+  max-width: 60ch;
+  margin: 0 auto calc(var(--u) * 4);
+  text-align: center;
+  color: var(--muted);
+  font-size: .95rem;
 }
 .book-step {
   display: flex;

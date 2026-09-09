@@ -7,11 +7,11 @@ import './Book.css'
 
 const emailEntry = SOCIALS.find((s) => isMail(s.href))
 
-/* Free-taster steps — sets expectations before the embed loads. */
+/* Consultation steps — sets expectations before the embed loads. */
 const STEPS = [
   ['Pick a time', 'Choose a slot that works for you — no charge, no commitment.'],
   ['Share a few details', 'A short intake covers your goals and any health basics, so T can coach you safely from session one.'],
-  ['Meet & move', 'We talk through what you want, then do a relaxed first session together.'],
+  ['Talk it through', 'We meet online to go over your goals and PAR-Q, then plan your next step together.'],
 ]
 
 export default function BookPage({ bookContext = {} }) {
@@ -29,9 +29,6 @@ export default function BookPage({ bookContext = {} }) {
               You&rsquo;re interested in <strong>{bookContext.tier}</strong> — let&rsquo;s get you booked in.
             </p>
           )}
-          <p className="reveal d2">
-            
-          </p>
         </div>
       </header>
 
@@ -49,11 +46,16 @@ export default function BookPage({ bookContext = {} }) {
             ))}
           </ol>
 
+          <p className="book-explainer reveal d2">
+            Book a free online consultation to talk through your PAR-Q and goals —
+            afterwards we&rsquo;ll arrange your first session together.
+          </p>
+
           <div className="book-embed reveal d2">
             {consent === 'accepted' ? (
               /* consent given — only now does the Acuity iframe (and its
                  third-party cookies) enter the DOM */
-              <ProviderEmbed title="Book a free taster session" src={BOOKING_EMBED_URL}>
+              <ProviderEmbed title="Book a free consultation" src={BOOKING_EMBED_URL}>
                 {/* shown until the client's provider URL is configured */}
                 <div className="book-embed__pending" role="status">
                   <p className="book-embed__title">Scheduling is being connected</p>
@@ -61,7 +63,7 @@ export default function BookPage({ bookContext = {} }) {
                     This is where the booking calendar and intake form will appear,
                     provided securely by our scheduling partner — it isn&rsquo;t live
                     yet. In the meantime, email T directly to arrange your free
-                    taster:{' '}
+                    consultation:{' '}
                     <a href={emailEntry.href}>{emailEntry.href.replace('mailto:', '')}</a>.
                   </p>
                 </div>
