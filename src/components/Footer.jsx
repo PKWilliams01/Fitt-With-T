@@ -43,8 +43,8 @@ export default function Footer({ onNavigate }) {
 
           <div className="footer__col">
             <h5 className="footer__heading">Start</h5>
-            <button className="footer__link" onClick={() => onNavigate('book')}>
-              Book a taster
+            <button className="footer__link" onClick={() => onNavigate('packages')}>
+              Book a consultation
             </button>
             {SOCIALS.map(({ label, href }) => (
               <a

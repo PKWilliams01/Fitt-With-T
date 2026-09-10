@@ -39,7 +39,7 @@ export default function Hero({ onNavigate, introActive }) {
         </p>
         <button
           className="btn-outline rise d4"
-          onClick={() => onNavigate('book')}
+          onClick={() => onNavigate('packages')}
         >
           Train with me
         </button>

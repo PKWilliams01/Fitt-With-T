@@ -134,8 +134,8 @@ export default function HomePage({ onNavigate, introActive }) {
               Fill in a short intake form, pick a time, and let's see if we're a fit.
               No pressure, no commitment, just a conversation and a workout.
             </p>
-            <button className="btn btn-dark" onClick={() => onNavigate('book')}>
-              Book your free taster <span aria-hidden="true">&rarr;</span>
+            <button className="btn btn-dark" onClick={() => onNavigate('packages')}>
+              Book your free consultation <span aria-hidden="true">&rarr;</span>
             </button>
           </div>
         </div>

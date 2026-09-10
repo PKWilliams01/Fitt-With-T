@@ -55,7 +55,7 @@ export default function ServicesPage({ onNavigate }) {
           <span className="eyebrow center reveal">Coaching</span>
           <h1 className="display reveal d1">Ways to <em>train together</em></h1>
           <p className="reveal d2">
-            Every journey starts with a free taster so we know it's the right fit.
+            Every journey starts with a free consultation so we know it's the right fit.
             We'll talk through the plan and pricing that suits you once you're ready —
             no pressure upfront.
           </p>
@@ -76,7 +76,7 @@ export default function ServicesPage({ onNavigate }) {
             ))}
           </div>
           <p className="note">
-            Pricing is discussed after your taster, once we know it's the right fit —
+            Pricing is discussed after your consultation, once we know it's the right fit —
             package inclusions are examples to confirm.
           </p>
         </div>

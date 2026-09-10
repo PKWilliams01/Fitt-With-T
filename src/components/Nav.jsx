@@ -98,7 +98,7 @@ export default function Nav({ currentPage, onNavigate }) {
           </button>
         ))}
 
-        <button className="nav-cta" onClick={() => handleNav('book')}>
+        <button className="nav-cta" onClick={() => handleNav('packages')}>
           Book a Consultation
         </button>
 

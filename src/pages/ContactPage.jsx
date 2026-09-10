@@ -8,9 +8,9 @@ import './Contact.css'
 const FAQ = [
   ['Do I need to be fit to start?', 'Not at all — the Faith Starter is built for total beginners and anyone coming back after a break. We start exactly where you are.'],
   ['Is this only for women?', 'No. While many of my clients are women, I coach men too, of all ages — beginners to advanced. Everyone’s welcome and everyone gets a plan built for them.'],
-  ['What happens at the free taster?', 'We meet, talk through your goals, and do a relaxed first session so you can feel how I coach — no pressure to continue.'],
+  ['What happens at the free consultation?', 'We meet online to talk through your goals and PAR-Q, so you can feel how I coach and we can plan your first session — no pressure to continue.'],
   ['What’s the intake form for?', 'A few questions about your goals, health and lifestyle so I can train you safely and tailor your sessions. Your answers stay private and secure.'],
-  ['How does pricing work?', 'We discuss the right package and pricing after your taster, once we know it’s a good fit — so you’re never committing blind.'],
+  ['How does pricing work?', 'We discuss the right package and pricing after your consultation, once we know it’s a good fit — so you’re never committing blind.'],
 ]
 
 const emailEntry = SOCIALS.find((s) => isMail(s.href))
@@ -142,8 +142,8 @@ export default function ContactPage({ onNavigate }) {
               <h2 className="contact-direct__h">Follow along</h2>
               <SocialLinks />
             </div>
-            <button className="btn btn-ghost" onClick={() => onNavigate('book')}>
-              Or book a free taster <span aria-hidden="true">→</span>
+            <button className="btn btn-ghost" onClick={() => onNavigate('packages')}>
+              Or book a free consultation <span aria-hidden="true">→</span>
             </button>
           </aside>
         </div>
