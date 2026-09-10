@@ -1,35 +1,37 @@
-import { useEffect, useRef } from 'react'
+import LightRays from './LightRays'
 import './Hero.css'
 
+/* Hero background: rose-gold light rays (ogl/WebGL) streaming from the top
+   over a dark espresso base; a scrim + text-shadow keep the cream type legible.
+   The WebGL ray loop is skipped for prefers-reduced-motion users. */
+const animate =
+  typeof window !== 'undefined' &&
+  !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
 export default function Hero({ onNavigate, introActive }) {
-  const mediaRef = useRef(null)
-
-  /* FIT-55 — gentle parallax: the photo pulls at a slower rate than the page.
-     Skipped entirely for prefers-reduced-motion users. */
-  useEffect(() => {
-    const el = mediaRef.current
-    if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-
-    let raf = 0
-    const onScroll = () => {
-      cancelAnimationFrame(raf)
-      raf = requestAnimationFrame(() => {
-        el.style.setProperty('--py', `${-window.scrollY * 0.12}px`)
-      })
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-      cancelAnimationFrame(raf)
-    }
-  }, [])
-
   return (
     <section className={`hero${introActive ? '' : ' hero--reveal'}`}>
-      {/* FIT-53 — full-bleed photo zone (hero.jpeg) under the readability overlay */}
-      <div className="hero-media" aria-hidden="true" ref={mediaRef} />
+      {animate && (
+        <div className="hero-rays" aria-hidden="true">
+          <LightRays
+            raysOrigin="top-center"
+            raysColor="#b3705c"
+            raysSpeed={1}
+            lightSpread={0.5}
+            rayLength={3}
+            followMouse
+            mouseInfluence={0.1}
+            noiseAmount={0}
+            distortion={0}
+            pulsating={false}
+            fadeDistance={1}
+            saturation={1}
+          />
+        </div>
+      )}
+      <div className="hero-scrim" aria-hidden="true" />
 
-      {/* FIT-51 — centred headline + CTA */}
+      {/* centred headline + CTA */}
       <div className="hero-centre">
         <h1 className="hero-h1 rise d2">
           More than a programme<br /><em>a mindset shift</em>
@@ -45,7 +47,7 @@ export default function Hero({ onNavigate, introActive }) {
         </button>
       </div>
 
-      {/* creed strip pinned at the bottom of the hero — frosted pills, one per word */}
+      {/* creed strip pinned at the bottom of the hero — one per word */}
       <div className="hero-creed rise d4">
         <span className="hero-creed__item">
           <span className="hero-creed__dot" aria-hidden="true">&#10022;</span>Faith

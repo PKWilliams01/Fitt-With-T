@@ -9,52 +9,34 @@
   background: var(--espresso);  /* base behind the media (and the dark panel on desktop) */
 }
 
-/* ====== FIT-53 — full-bleed media layer ====== */
-.hero-media {
-  position: absolute;
-  /* vertical buffer (top/bottom) gives the parallax room to travel without
-     ever exposing an edge */
-  top: -12%;
-  bottom: -12%;
-  left: 0;
-  right: 0;
-  z-index: 0;
-  background-image: url('/hero.jpeg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-color: var(--espresso);   /* fallback if the image fails */
-  /* FIT-55 — parallax offset set from JS (0 when reduced-motion) */
-  transform: translateY(var(--py, 0));
-  will-change: transform;
-  /* held hidden until the hero reveals (image fades in first) */
-  opacity: 0;
-}
-
-/* ====== Entrance — photo fades in first, then the text rises ====== */
-.hero--reveal .hero-media { animation: media-in 1.3s var(--ease) forwards; }
-
-@keyframes media-in { to { opacity: 1; } }
-
-/* readability scrim — darker at the top & bottom with a soft centre wash, so
-   cream text always has contrast while the photo stays visible at the edges */
-.hero-media::after {
-  content: "";
+/* subtle scrim deepens the espresso base (so the rays pop) and darkens the
+   very bottom for the creed strip */
+.hero-scrim {
   position: absolute;
   inset: 0;
+  z-index: 1;
+  pointer-events: none;
   background:
-    radial-gradient(120% 65% at 50% 42%, rgba(36, 28, 23, .50), transparent 70%),
     linear-gradient(180deg,
-      rgba(36, 28, 23, .70) 0%,
-      rgba(36, 28, 23, .34) 32%,
-      rgba(36, 28, 23, .42) 62%,
-      rgba(36, 28, 23, .82) 100%);
+      rgba(20, 15, 12, .30) 0%,
+      rgba(20, 15, 12, .10) 34%,
+      rgba(20, 15, 12, .22) 68%,
+      rgba(20, 15, 12, .62) 100%);
+}
+
+/* rose-gold light rays (ogl) stream over the silk + scrim, adding light
+   without washing out the type below them */
+.hero-rays {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
 }
 
 /* ====== FIT-51 — centre block ====== */
 .hero-centre {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -133,7 +115,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 2;
+  z-index: 3;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -194,38 +176,23 @@
   .hero-media { opacity: 1; }
 }
 
-/* ====== Desktop — split composition: readable text panel + clear photo ====== */
+/* ====== Desktop — centred text-only hero on the espresso gradient ====== */
 @media (min-width: 900px) {
-  /* dark panel behind the text — a faint warm glow adds depth so it isn't flat */
+  /* warm radial glow adds depth so the gradient isn't flat (vertical base,
+     no diagonal banding) */
   .hero {
     background:
-      radial-gradient(55% 50% at 6% 16%, rgba(179, 112, 92, .16), transparent 62%),
-      linear-gradient(100deg, var(--espresso) 0%, #2f251e 46%, #322821 100%);
+      radial-gradient(70% 60% at 50% 20%, rgba(179, 112, 92, .16), transparent 62%),
+      linear-gradient(180deg, #2c231d 0%, var(--espresso) 58%, #1f1813 100%);
   }
 
-  /* photo sits in a tall right-hand column (minimal crop = full figure shown)
-     and meets the dark panel on a crisp angled edge — sharp and modern */
-  .hero-media {
-    left: 38%;
-    background-position: center 30%;
-    -webkit-clip-path: polygon(11% 0, 100% 0, 100% 100%, 0 100%);
-            clip-path: polygon(11% 0, 100% 0, 100% 100%, 0 100%);
-  }
-
-  /* darken only the top (nav) and bottom (creed) */
-  .hero-media::after {
-    background:
-      linear-gradient(180deg, rgba(36, 28, 23, .42) 0%, transparent 24%, transparent 66%, rgba(36, 28, 23, .58) 100%);
-  }
-
-  /* text drops into the dark left panel — high contrast, very readable */
   .hero-centre {
-    align-items: flex-start;
-    text-align: left;
-    max-width: 48%;
-    margin-right: auto;
+    align-items: center;
+    text-align: center;
+    max-width: 60ch;
+    margin: 0 auto;
     gap: calc(var(--u) * 3.5);
-    padding: calc(var(--u) * 14) calc(var(--u) * 4) calc(var(--u) * 10) calc(var(--u) * 9);
+    padding: calc(var(--u) * 14) calc(var(--u) * 4) calc(var(--u) * 10);
   }
   .hero-h1 {
     font-size: clamp(3.2rem, 5.2vw, 4.6rem);

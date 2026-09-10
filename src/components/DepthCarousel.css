@@ -53,6 +53,14 @@
   display: block;
   pointer-events: none;
   -webkit-user-drag: none;
+  /* slow editorial zoom on hover — scales the inner image only, leaving the
+     card's 3D transform (set by GSAP) untouched; the card clips via overflow */
+  transition: transform 2s ease-out;
+}
+.depth-carousel__card:hover .depth-carousel__img { transform: scale(1.07); }
+@media (prefers-reduced-motion: reduce) {
+  .depth-carousel__img { transition: none; }
+  .depth-carousel__card:hover .depth-carousel__img { transform: none; }
 }
 
 .depth-carousel__tint {

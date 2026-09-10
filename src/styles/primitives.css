@@ -108,6 +108,13 @@ section { padding: calc(var(--u) * 12) 0; }
   object-fit: cover;
   object-position: center;
   z-index: 1;
+  /* slow editorial zoom on hover (container clips via overflow: hidden) */
+  transition: transform 2s ease-out;
+}
+.photo:hover .photo__img { transform: scale(1.06); }
+@media (prefers-reduced-motion: reduce) {
+  .photo__img { transition: none; }
+  .photo:hover .photo__img { transform: none; }
 }
 .photo .pc {
   position: absolute;

@@ -1,4 +1,6 @@
-/* ====== Intro logo reveal (one per session) ====== */
+/* ====== Intro logo reveal (one per session) ======
+   Logo rises + fades in (GSAP), holds, then the espresso overlay dissolves
+   into the home hero. */
 .intro {
   position: fixed;
   inset: 0;
@@ -17,16 +19,15 @@
   width: auto;
   /* dark logo art knocked out to clean white on the espresso wash */
   filter: brightness(0) invert(1);
-  transform-origin: center;
-  animation: intro-logo 3600ms var(--ease) forwards;
+  opacity: 0;
+  transform: translateY(40px);
+  /* rise + fade with a strong ease-out (power3-like) */
+  animation: intro-logo-in 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   will-change: opacity, transform;
 }
 
-@keyframes intro-logo {
-  0%   { opacity: 0; transform: scale(.94); }
-  22%  { opacity: 1; transform: scale(1); }
-  60%  { opacity: 1; transform: scale(1); }
-  100% { opacity: 0; transform: scale(1.06); }
+@keyframes intro-logo-in {
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* keep the corner nav logo hidden until the intro hands off */
