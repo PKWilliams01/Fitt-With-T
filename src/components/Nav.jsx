@@ -99,7 +99,7 @@ export default function Nav({ currentPage, onNavigate }) {
         ))}
 
         <button className="nav-cta" onClick={() => handleNav('packages')}>
-          Book a Consultation
+          View Coaching
         </button>
 
         <div className="nav-social">
