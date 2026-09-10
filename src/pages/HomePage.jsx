@@ -1,11 +1,9 @@
 import Hero from '../components/Hero'
-import Marquee from '../components/Marquee'
 import Creed from '../components/Creed'
 import ServiceCard from '../components/ServiceCard'
 import Testimonial from '../components/Testimonial'
 import SocialLinks from '../components/SocialLinks'
 import useReveal from '../hooks/useReveal'
-import welcomePhoto from '../assets/WhatsApp Image 2026-06-10 at 8.30.29 PM.jpeg'
 import './Home.css'
 
 const TIERS = [
@@ -41,14 +39,11 @@ export default function HomePage({ onNavigate, introActive }) {
     <main ref={revealRef}>
       <Hero onNavigate={onNavigate} introActive={introActive} />
 
-      {/* sliding marquee strip */}
-      <Marquee onNavigate={onNavigate} />
-
       {/* welcome / intro */}
       <section className="welcome">
         <div className="wrap split">
           <div className="photo">
-            <img src={welcomePhoto} alt="Tommera landing a vault at competition" className="photo__img" />
+            <img src="/hero.jpeg" alt="Tommera chalking up before a competition routine" className="photo__img" />
             <span className="pl">Tommera, competing nationally</span>
           </div>
           <div className="welcome__copy">
