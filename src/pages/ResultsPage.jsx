@@ -1,6 +1,5 @@
 import useReveal from '../hooks/useReveal'
-import TestimonialMarquee from '../components/TestimonialMarquee'
-import { TESTIMONIALS } from '../data/testimonials'
+import Carousel from '../components/Carousel'
 import './Results.css'
 
 export default function ResultsPage({ onNavigate }) {
@@ -22,7 +21,7 @@ export default function ResultsPage({ onNavigate }) {
       <section>
         <div className="wrap">
           <div className="results-wall reveal d1">
-            <TestimonialMarquee testimonials={TESTIMONIALS} />
+            <Carousel autoplay autoplayDelay={6000} loop pauseOnHover />
           </div>
           <p className="note">
             A growing wall of reviews — clients are invited to leave a written

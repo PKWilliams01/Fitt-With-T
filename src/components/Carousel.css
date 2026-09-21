@@ -1,0 +1,112 @@
+/* Testimonial carousel — brand-skinned (warm cream cards, soft corners). */
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  padding: calc(var(--u) * 2);
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.carousel-track {
+  display: flex;
+  align-items: stretch;
+  height: 430px;
+}
+
+/* ---- card ---- */
+.tcard {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: calc(var(--u) * 2);
+  padding: calc(var(--u) * 4) calc(var(--u) * 3.5) calc(var(--u) * 3.5);
+  background: var(--cream);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
+}
+.tcard:active { cursor: grabbing; }
+
+.tcard__mark {
+  font-family: var(--font-display);
+  font-size: 3.2rem;
+  line-height: .6;
+  color: var(--rose);
+  opacity: .6;
+}
+
+.tcard__quote {
+  margin: 0;
+  flex: 1;
+  font-family: var(--font-body);
+  font-weight: var(--fw-light);
+  font-size: .92rem;
+  line-height: 1.6;
+  color: var(--ink);
+  overflow-y: auto;
+}
+.tcard__quote::-webkit-scrollbar { width: 0; }
+
+.tcard__author {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--u) * 1.5);
+  padding-top: calc(var(--u) * 2);
+  border-top: 1px solid var(--line);
+}
+.tcard__avatar {
+  flex: none;
+  width: calc(var(--u) * 4.5);
+  height: calc(var(--u) * 4.5);
+  border-radius: 50%;
+  background: var(--rose-soft);
+  color: var(--rose-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+.tcard__name {
+  font-weight: var(--fw-semi);
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--rose-2);
+}
+
+/* ---- indicators ---- */
+.carousel-indicators-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.carousel-indicators {
+  margin-top: calc(var(--u) * 3);
+  display: flex;
+  gap: calc(var(--u) * 1.25);
+}
+.carousel-indicator {
+  height: 8px;
+  width: 8px;
+  border: none;
+  padding: 0;
+  appearance: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 150ms;
+}
+.carousel-indicator:focus-visible {
+  outline: 2px solid var(--rose);
+  outline-offset: 3px;
+}
+.carousel-indicator.active { background-color: var(--rose); }
+.carousel-indicator.inactive { background-color: var(--sand-2); }
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-indicator { transition: none; }
+}

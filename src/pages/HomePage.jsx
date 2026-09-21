@@ -1,7 +1,7 @@
 import Hero from '../components/Hero'
 import Creed from '../components/Creed'
 import ServiceCard from '../components/ServiceCard'
-import Testimonial from '../components/Testimonial'
+import Carousel from '../components/Carousel'
 import SocialLinks from '../components/SocialLinks'
 import useReveal from '../hooks/useReveal'
 import './Home.css'
@@ -98,11 +98,8 @@ export default function HomePage({ onNavigate, introActive }) {
           <div className="testimonials__head">
             <span className="eyebrow center reveal">Testimonials</span>
           </div>
-          <div className="reveal d1">
-            <Testimonial
-              quote="The best PT ever!! Thank you for getting me across the finish line of my first half marathon and rehabbing me through injury. I'm very excited for this next phase of our training and the PBs I'll collect along the way!"
-              author="A Fitt With T client"
-            />
+          <div className="testimonials__carousel reveal d1">
+            <Carousel autoplay autoplayDelay={6000} loop pauseOnHover />
           </div>
           <p className="note reveal d2">More reviews join here as clients finish their programmes.</p>
         </div>
