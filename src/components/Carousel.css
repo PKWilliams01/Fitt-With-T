@@ -22,8 +22,9 @@
   justify-content: space-between;
   gap: calc(var(--u) * 2);
   padding: calc(var(--u) * 4) calc(var(--u) * 3.5) calc(var(--u) * 3.5);
-  background: transparent;
+  background: var(--cream);
   border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
   overflow: hidden;
   cursor: grab;
   user-select: none;
