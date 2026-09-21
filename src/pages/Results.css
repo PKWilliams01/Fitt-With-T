@@ -17,13 +17,10 @@
    auto-fit means a single item sits centred & full-width; extra <Testimonial>s
    flow into columns automatically. */
 .results-wall {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-  gap: calc(var(--u) * 4);
-  align-items: start;
+  display: flex;
+  justify-content: center;
   margin-top: calc(var(--u) * 8);
 }
-.results-wall .testimonial { margin: 0 auto; }
 
 /* desktop: compact title to match About / Coaching */
 @media (min-width: 900px) {

@@ -16,6 +16,7 @@
 
 /* ---- testimonials ---- */
 .testimonials__head { text-align: center; }
+.testimonials__carousel { display: flex; justify-content: center; margin-top: calc(var(--u) * 5); }
 .note { text-align: center; color: var(--muted); font-size: .82rem; font-style: italic; margin-top: calc(var(--u) * 4); }
 
 /* ---- follow / social section ---- */
