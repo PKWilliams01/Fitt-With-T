@@ -1,5 +1,6 @@
 import useReveal from '../hooks/useReveal'
 import Carousel from '../components/Carousel'
+import TestimonialForm from '../components/TestimonialForm'
 import './Results.css'
 
 export default function ResultsPage({ onNavigate }) {
@@ -27,6 +28,23 @@ export default function ResultsPage({ onNavigate }) {
             A growing wall of reviews. Clients are invited to leave a written
             testimonial or Google review as they finish their programme.
           </p>
+        </div>
+      </section>
+
+      <section className="results-share">
+        <div className="wrap">
+          <div className="results-share__head">
+            <span className="eyebrow center reveal">Your turn</span>
+            <h2 className="display reveal d1">Trained with T? <em>Share your story</em></h2>
+            <p className="reveal d2">
+              A few words about your experience means the world, and helps the next
+              person take their first step. T reviews every submission before anything
+              goes on the wall.
+            </p>
+          </div>
+          <div className="reveal d1">
+            <TestimonialForm />
+          </div>
         </div>
       </section>
     </main>

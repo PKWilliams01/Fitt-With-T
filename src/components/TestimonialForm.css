@@ -1,0 +1,80 @@
+/* Testimonial submission form — brand-styled, accessible. */
+.tform {
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: left;
+  display: grid;
+  gap: calc(var(--u) * 2.5);
+}
+
+.tform .field { display: grid; gap: calc(var(--u) * 0.75); }
+
+.tform label {
+  font-weight: var(--fw-med);
+  font-size: .9rem;
+  color: var(--ink);
+}
+
+.tform input[type="text"],
+.tform textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: calc(var(--u) * 1.5) calc(var(--u) * 2);
+  transition: border-color var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease);
+}
+.tform textarea { resize: vertical; min-height: calc(var(--u) * 14); }
+
+.tform input[type="text"]:focus,
+.tform textarea:focus {
+  outline: none;
+  border-color: var(--rose);
+  box-shadow: 0 0 0 3px var(--rose-soft);
+}
+
+/* consent checkbox row */
+.tform__consent {
+  display: flex;
+  align-items: flex-start;
+  gap: calc(var(--u) * 1.25);
+  font-weight: var(--fw-reg);
+  font-size: .9rem;
+  color: var(--muted);
+  cursor: pointer;
+}
+.tform__consent input[type="checkbox"] {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--rose);
+  cursor: pointer;
+}
+.tform__consent input[type="checkbox"]:focus-visible {
+  outline: 2px solid var(--rose);
+  outline-offset: 2px;
+}
+
+.tform .field-err { color: var(--rose-2); font-size: .82rem; }
+
+.tform .btn { justify-self: start; }
+
+.tform__note {
+  color: var(--muted);
+  font-size: .8rem;
+  font-style: italic;
+}
+
+.tform__sent {
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--rose-2);
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  line-height: 1.4;
+}
