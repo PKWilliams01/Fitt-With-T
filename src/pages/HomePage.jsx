@@ -2,9 +2,9 @@ import Hero from '../components/Hero'
 import Creed from '../components/Creed'
 import ServiceCard from '../components/ServiceCard'
 import Carousel from '../components/Carousel'
-import { HOME_TESTIMONIALS } from '../data/testimonials'
 import SocialLinks from '../components/SocialLinks'
 import useReveal from '../hooks/useReveal'
+import useTestimonials from '../hooks/useTestimonials'
 import './Home.css'
 
 const TIERS = [
@@ -35,6 +35,7 @@ const TIERS = [
 
 export default function HomePage({ onNavigate, introActive }) {
   const revealRef = useReveal()
+  const { home: homeTestimonials } = useTestimonials()
 
   return (
     <main ref={revealRef}>
@@ -100,7 +101,7 @@ export default function HomePage({ onNavigate, introActive }) {
             <span className="eyebrow center reveal">Testimonials</span>
           </div>
           <div className="testimonials__carousel reveal d1">
-            <Carousel items={HOME_TESTIMONIALS} autoplay autoplayDelay={6000} loop pauseOnHover />
+            <Carousel items={homeTestimonials} autoplay autoplayDelay={6000} loop pauseOnHover />
           </div>
           <p className="note reveal d2">More reviews join here as clients finish their programmes.</p>
         </div>

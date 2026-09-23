@@ -1,10 +1,12 @@
 import useReveal from '../hooks/useReveal'
+import useTestimonials from '../hooks/useTestimonials'
 import Carousel from '../components/Carousel'
 import TestimonialForm from '../components/TestimonialForm'
 import './Results.css'
 
 export default function ResultsPage({ onNavigate }) {
   const revealRef = useReveal()
+  const { all: testimonials } = useTestimonials()
 
   return (
     <main className="results-page" ref={revealRef}>
@@ -22,7 +24,7 @@ export default function ResultsPage({ onNavigate }) {
       <section>
         <div className="wrap">
           <div className="results-wall reveal d1">
-            <Carousel autoplay autoplayDelay={6000} loop pauseOnHover />
+            <Carousel items={testimonials} autoplay autoplayDelay={6000} loop pauseOnHover />
           </div>
           <p className="note">
             A growing wall of reviews. Clients are invited to leave a written
