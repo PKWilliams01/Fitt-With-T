@@ -22,6 +22,12 @@
   margin-top: calc(var(--u) * 8);
 }
 
+/* ---- share your story (client submission form) ---- */
+.results-share { background: var(--sand); }
+.results-share__head { text-align: center; max-width: 62ch; margin: 0 auto calc(var(--u) * 6); }
+.results-share__head .display { margin-top: calc(var(--u) * 2); }
+.results-share__head p { color: var(--muted); margin: calc(var(--u) * 2) auto 0; }
+
 /* desktop: compact title to match About / Coaching */
 @media (min-width: 900px) {
   .results-page .page-head { padding-top: calc(var(--u) * 16); } /* clear the taller logo nav */
