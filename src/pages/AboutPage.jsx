@@ -21,7 +21,7 @@ const REST_PHOTOS = [
   { image: gymTrophy,   alt: 'Tommera smiling and holding a trophy and medals after a competition' },
   { image: gymPodium,   alt: 'Tommera sitting at the edge of the competition podium by the uneven bars' },
   { image: gymMedals,   alt: 'Tommera wearing her medals after a gymnastics competition' },
-  { image: gymBeam,     alt: 'Tommera mid-routine on the balance beam' },
+  { image: gymBeam,     alt: 'Tommera mid-routine on the balance beam', fit: 'contain', background: '#000' },
 ]
 
 function shuffle(items) {

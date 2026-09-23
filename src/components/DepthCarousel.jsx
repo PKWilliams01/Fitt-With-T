@@ -353,13 +353,19 @@ const DepthCarousel = ({
             key={i}
             className="depth-carousel__card"
             ref={el => (cardRefs.current[i] = el)}
-            style={{ width: cardWidth, height: cardHeight, borderRadius: radius }}
+            style={{ width: cardWidth, height: cardHeight, borderRadius: radius, background: item.background }}
             aria-roledescription="slide"
             aria-label={`${i + 1} of ${count}`}
             aria-hidden={active !== i}
             onClick={() => onCardClick(i)}
           >
-            <img className="depth-carousel__img" src={item.image} alt={item.alt || ''} draggable={false} />
+            <img
+              className="depth-carousel__img"
+              src={item.image}
+              alt={item.alt || ''}
+              draggable={false}
+              style={{ objectFit: item.fit || 'cover' }}
+            />
             <span
               className="depth-carousel__tint"
               ref={el => (overlayRefs.current[i] = el)}
