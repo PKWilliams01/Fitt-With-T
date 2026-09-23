@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import portrait from '../assets/Portrait.jpeg'
 import gymFloor from '../assets/WhatsApp Image 2026-06-10 at 8.30.30 PM.jpeg'
 import gymTrophy from '../assets/WhatsApp Image 2026-06-10 at 8.39.49 PM.jpeg'
@@ -11,32 +11,22 @@ import gymBeam from '../assets/tommera-beam.jpg'
 import DepthCarousel from '../components/DepthCarousel'
 import './About.css'
 
-/* First photo (the portrait) always leads; the rest are shuffled each visit. */
-const LEAD_PHOTO = { image: portrait, alt: 'Tommera, coach and founder of Fitt With T' }
-const REST_PHOTOS = [
-  { image: gymBars,     alt: 'Tommera mid-release on the uneven bars during a gymnastics competition' },
-  { image: gymFloor,    alt: 'Tommera performing a floor routine, arm raised mid-pose' },
-  { image: gymPortrait, alt: 'Portrait of Tommera in her gymnastics leotard against a brick wall' },
-  { image: gymVault,    alt: 'Tommera landing a vault in front of a competition crowd' },
-  { image: gymTrophy,   alt: 'Tommera smiling and holding a trophy and medals after a competition' },
-  { image: gymPodium,   alt: 'Tommera sitting at the edge of the competition podium by the uneven bars' },
-  { image: gymMedals,   alt: 'Tommera wearing her medals after a gymnastics competition' },
-  { image: gymBeam,     alt: 'Tommera mid-routine on the balance beam', fit: 'contain', background: '#000' },
+/* Fixed carousel order (portrait leads). */
+const journeyPhotos = [
+  { image: portrait,    alt: 'Tommera, coach and founder of Fitt With T' },                          // 1
+  { image: gymBars,     alt: 'Tommera mid-release on the uneven bars during a gymnastics competition' }, // 2
+  { image: gymVault,    alt: 'Tommera landing a vault in front of a competition crowd' },            // 3
+  { image: gymPortrait, alt: 'Portrait of Tommera in her gymnastics leotard against a brick wall' }, // 4
+  { image: gymFloor,    alt: 'Tommera performing a floor routine, arm raised mid-pose' },            // 5
+  { image: gymMedals,   alt: 'Tommera wearing her medals after a gymnastics competition' },          // 6
+  { image: gymPodium,   alt: 'Tommera sitting at the edge of the competition podium by the uneven bars' }, // 7
+  { image: gymTrophy,   alt: 'Tommera smiling and holding a trophy and medals after a competition' }, // 8
+  { image: gymBeam,     alt: 'Tommera mid-routine on the balance beam', fit: 'contain', background: '#000' }, // 9
 ]
-
-function shuffle(items) {
-  const a = [...items]
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[a[i], a[j]] = [a[j], a[i]]
-  }
-  return a
-}
 
 export default function AboutPage({ onNavigate }) {
   const rootRef = useRef(null)
   const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768)
-  const journeyPhotos = useMemo(() => [LEAD_PHOTO, ...shuffle(REST_PHOTOS)], [])
   useEffect(() => {
     const handler = () => setIsMobile(window.innerWidth < 768)
     window.addEventListener('resize', handler)
