@@ -77,7 +77,7 @@ export default function Nav({ currentPage, onNavigate }) {
       <button
         className="nav-logo"
         onClick={() => handleNav('home')}
-        aria-label="Fitt With T — go to home"
+        aria-label="Fitt With T home"
       >
         <img className="nav-logo__img" src={logo} alt="Fitt With T" />
       </button>

@@ -19,8 +19,8 @@ export default function ConsentBanner({ onNavigate }) {
       <h2 className="consent__h" id="consent-h">Cookies on this site</h2>
       <p className="consent__p" id="consent-p">
         We use essential cookies to make this site work. Our booking system
-        (Acuity) sets additional cookies — including analytics and third-party
-        cookies from Google and Stripe — but only if you accept. If you reject,
+        (Acuity) sets additional cookies, including analytics and third-party
+        cookies from Google and Stripe, but only if you accept. If you reject,
         you can still book directly on Acuity&rsquo;s own page.{' '}
         <button className="consent__link" onClick={() => onNavigate('privacy')}>
           Read the cookie &amp; privacy policy

@@ -39,7 +39,7 @@ export default function SocialLinks({ items = SOCIAL_PLATFORMS }) {
           ) : (
             <span
               className="social-links__link social-links__link--soon"
-              aria-label={`${label} — handle coming soon`}
+              aria-label={`${label} handle coming soon`}
             >
               <span className="social-links__icon" aria-hidden="true">{ICONS[label]}</span>
               {label}

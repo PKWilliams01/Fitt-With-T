@@ -6,11 +6,11 @@ import './Contact.css'
 
 /* FAQ — verbatim from the approved concept (#page-contact). */
 const FAQ = [
-  ['Do I need to be fit to start?', 'Not at all — the Faith Starter is built for total beginners and anyone coming back after a break. We start exactly where you are.'],
-  ['Is this only for women?', 'No. While many of my clients are women, I coach men too, of all ages — beginners to advanced. Everyone’s welcome and everyone gets a plan built for them.'],
-  ['What happens at the free consultation?', 'We meet online to talk through your goals and PAR-Q, so you can feel how I coach and we can plan your first session — no pressure to continue.'],
+  ['Do I need to be fit to start?', 'Not at all. The Faith Starter is built for total beginners and anyone coming back after a break. We start exactly where you are.'],
+  ['Is this only for women?', 'No. While many of my clients are women, I coach men too, of all ages, beginners to advanced. Everyone’s welcome and everyone gets a plan built for them.'],
+  ['What happens at the free consultation?', 'We meet online to talk through your goals and PAR-Q, so you can feel how I coach and we can plan your first session, no pressure to continue.'],
   ['What’s the intake form for?', 'A few questions about your goals, health and lifestyle so I can train you safely and tailor your sessions. Your answers stay private and secure.'],
-  ['How does pricing work?', 'We discuss the right package and pricing after your consultation, once we know it’s a good fit — so you’re never committing blind.'],
+  ['How does pricing work?', 'We discuss the right package and pricing after your consultation, once we know it’s a good fit, so you’re never committing blind.'],
 ]
 
 const emailEntry = SOCIALS.find((s) => isMail(s.href))
@@ -67,7 +67,7 @@ export default function ContactPage({ onNavigate }) {
     } catch {
       // keep what they typed so nothing is lost
       setSubmitError(
-        `Sorry — that didn’t send. Please try again, or email me at ${emailEntry.href.replace('mailto:', '')}.`
+        `Sorry, that didn’t send. Please try again, or email me at ${emailEntry.href.replace('mailto:', '')}.`
       )
     } finally {
       setSending(false)
@@ -81,7 +81,7 @@ export default function ContactPage({ onNavigate }) {
           <span className="eyebrow center reveal">Get in touch</span>
           <h1 className="display reveal d1">Not quite sure yet? <em>Let’s chat</em></h1>
           <p className="reveal d2">
-            No pressure and no commitment — if you’ve got a question or just want to
+            No pressure and no commitment. If you’ve got a question or just want to
             see whether we’re a fit, drop me a message below. I read every one myself
             and I’ll get back to you personally.
           </p>
@@ -93,7 +93,7 @@ export default function ContactPage({ onNavigate }) {
           <div className="contact-form-wrap reveal">
             {sent ? (
               <p className="contact-sent" role="status">
-                Thank you — your message is on its way. I’ll be in touch very soon.
+                Thank you, your message is on its way. I’ll be in touch very soon.
               </p>
             ) : (
               <form className="contact-form" onSubmit={handleSubmit} noValidate
