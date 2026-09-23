@@ -44,7 +44,7 @@ export default function HomePage({ onNavigate, introActive }) {
         <div className="wrap split">
           <div className="photo">
             <img src="/hero.jpeg" alt="Tommera chalking up before a competition routine" className="photo__img" />
-            <span className="pl">Tommera, competing nationally</span>
+            <span className="pl">Tommera in her element</span>
           </div>
           <div className="welcome__copy">
             <span className="eyebrow reveal">Welcome</span>
