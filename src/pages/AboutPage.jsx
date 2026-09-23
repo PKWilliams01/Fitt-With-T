@@ -125,7 +125,7 @@ export default function AboutPage({ onNavigate }) {
               overwhelming and far more empowering.
             </p>
 
-            <p className="sig">— T</p>
+            <p className="sig">T</p>
 
             <button className="btn btn-primary" onClick={() => onNavigate('book')}>
               Train with me <span aria-hidden="true">→</span>
@@ -160,7 +160,7 @@ export default function AboutPage({ onNavigate }) {
             <article className="creed-item reveal d3">
               <span className="creed-n">iv.</span>
               <h3>Testimonials</h3>
-              <p>Real stories from real people — the results speak for the method.</p>
+              <p>Real stories from real people. The results speak for the method.</p>
             </article>
           </div>
         </div>

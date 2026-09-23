@@ -8,7 +8,7 @@ export const TESTIMONIALS = [
   },
   {
     name: 'Ayshu',
-    quote: "Hi Tommera, I've really appreciated all of our sessions. I finally feel happy and see progress — I owe it all to you, thank you so much!",
+    quote: "Hi Tommera, I've really appreciated all of our sessions. I finally feel happy and see progress. I owe it all to you, thank you so much!",
   },
   {
     name: 'A Fitt With T client',

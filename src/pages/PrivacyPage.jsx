@@ -25,7 +25,7 @@ export default function PrivacyPage({ onNavigate }) {
           <span className="eyebrow center reveal">Legal</span>
           <h1 className="display reveal d1">Privacy &amp; <em>cookies</em></h1>
           <p className="reveal d2">
-            How this website handles your information — in plain English.
+            How this website handles your information, in plain English.
           </p>
         </div>
       </header>
@@ -60,7 +60,7 @@ export default function PrivacyPage({ onNavigate }) {
           </p>
           <p>
             If you decline, nothing from Acuity is loaded and none of those cookies are
-            set — you can still book using the direct link on the booking page, which
+            set. You can still book using the direct link on the booking page, which
             takes you to Acuity&rsquo;s own site.
           </p>
           <p>
@@ -74,7 +74,7 @@ export default function PrivacyPage({ onNavigate }) {
             If you send a message, the name, email address and message you type are
             passed to Basin, who deliver it to Tommera&rsquo;s inbox. They aren&rsquo;t
             stored on this website. Please don&rsquo;t include health details in the
-            contact form — those belong in the booking questionnaire, which is handled
+            contact form. Those belong in the booking questionnaire, which is handled
             securely by Acuity.
           </p>
 
@@ -83,14 +83,14 @@ export default function PrivacyPage({ onNavigate }) {
             Booking and the short health questionnaire happen entirely inside
             Acuity&rsquo;s system, in Tommera&rsquo;s own account. Health information is
             sensitive, so it is deliberately never sent to, processed by, or stored on
-            this website — we only display Acuity&rsquo;s booking page.
+            this website. We only display Acuity&rsquo;s booking page.
           </p>
 
           <h2>Who else receives data</h2>
           <ul className="privacy__list">
             {PROCESSORS.map(([name, what, href]) => (
               <li key={name}>
-                <strong>{name}</strong> — {what}{' '}
+                <strong>{name}</strong>: {what}{' '}
                 <a href={href} target="_blank" rel="noopener noreferrer">Their privacy policy</a>
               </li>
             ))}

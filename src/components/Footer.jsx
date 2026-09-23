@@ -22,13 +22,13 @@ export default function Footer({ onNavigate }) {
             <button
               className="footer__logo"
               onClick={() => onNavigate('home')}
-              aria-label="Fitt With T — go to home"
+              aria-label="Fitt With T home"
             >
               Fitt With <span className="footer__logo-t">T</span>
             </button>
             <p className="footer__creed">Faith · Intention · Tenacity · Testimonials</p>
             <p className="footer__tagline">
-              Coaching for everyone — beginners, returners, all ages and levels.
+              Coaching for everyone: beginners, returners, all ages and levels.
             </p>
           </div>
 

@@ -8,7 +8,7 @@ const TIERS = [
   {
     name: 'Faith Starter',
     freq: '1 session / week',
-    desc: "The perfect first step into training. We build the fundamentals — movement, confidence, and a routine that sticks. Ideal if you're new or returning after time away.",
+    desc: "The perfect first step into training. We build the fundamentals: movement, confidence, and a routine that sticks. Ideal if you're new or returning after time away.",
     includes: [
       'One 1:1 coaching session each week',
       'A plan built around your goals & life',
@@ -56,7 +56,7 @@ export default function ServicesPage({ onNavigate }) {
           <h1 className="display reveal d1">Ways to <em>train together</em></h1>
           <p className="reveal d2">
             Every journey starts with a free consultation so we know it's the right fit.
-            We'll talk through the plan and pricing that suits you once you're ready —
+            We'll talk through the plan and pricing that suits you once you're ready,
             no pressure upfront.
           </p>
         </div>
@@ -76,8 +76,8 @@ export default function ServicesPage({ onNavigate }) {
             ))}
           </div>
           <p className="note">
-            Pricing is discussed after your consultation, once we know it's the right fit —
-            package inclusions are examples to confirm.
+            Pricing is discussed after your consultation, once we know it's the right fit.
+            Package inclusions are examples to confirm.
           </p>
         </div>
       </section>

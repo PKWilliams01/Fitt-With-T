@@ -13,7 +13,7 @@ export default function ResultsPage({ onNavigate }) {
           <h1 className="display reveal d1">Real people, real <em>progress</em></h1>
           <p className="reveal d2">
             Transformations and words from clients. This grows as more journeys
-            complete — the proof behind the method.
+            complete, the proof behind the method.
           </p>
         </div>
       </header>
@@ -24,7 +24,7 @@ export default function ResultsPage({ onNavigate }) {
             <Carousel autoplay autoplayDelay={6000} loop pauseOnHover />
           </div>
           <p className="note">
-            A growing wall of reviews — clients are invited to leave a written
+            A growing wall of reviews. Clients are invited to leave a written
             testimonial or Google review as they finish their programme.
           </p>
         </div>
