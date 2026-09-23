@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import portrait from '../assets/Portrait.jpeg'
-import gymFloor from '../assets/WhatsApp Image 2026-06-10 at 8.30.30 PM.jpeg'
-import gymTrophy from '../assets/WhatsApp Image 2026-06-10 at 8.39.49 PM.jpeg'
-import gymVault from '../assets/WhatsApp Image 2026-06-10 at 8.30.29 PM.jpeg'
-import gymBars from '../assets/About Poortrait 3.jpeg'
-import gymPortrait from '../assets/About Portrait 2.jpeg'
+import gymFlip from '../assets/About Poortrait 3.jpeg'
+import gymPortraitWall from '../assets/About Portrait 2.jpeg'
+import gymFloorLeap from '../assets/WhatsApp Image 2026-06-10 at 8.30.29 PM.jpeg'
+import gymTrophy from '../assets/WhatsApp Image 2026-06-10 at 8.30.30 PM.jpeg'
+import gymVaultSit from '../assets/WhatsApp Image 2026-06-10 at 8.39.49 PM.jpeg'
 import gymPodium from '../assets/tommera-bars-podium.jpg'
 import gymMedals from '../assets/tommera-medals.jpg'
 import gymBeam from '../assets/tommera-beam.jpg'
@@ -13,15 +13,15 @@ import './About.css'
 
 /* Fixed carousel order (portrait leads). */
 const journeyPhotos = [
-  { image: portrait,    alt: 'Tommera, coach and founder of Fitt With T' },                          // 1
-  { image: gymBars,     alt: 'Tommera mid-release on the uneven bars during a gymnastics competition' }, // 2
-  { image: gymVault,    alt: 'Tommera landing a vault in front of a competition crowd' },            // 3
-  { image: gymPortrait, alt: 'Portrait of Tommera in her gymnastics leotard against a brick wall' }, // 4
-  { image: gymFloor,    alt: 'Tommera performing a floor routine, arm raised mid-pose' },            // 5
-  { image: gymMedals,   alt: 'Tommera wearing her medals after a gymnastics competition' },          // 6
-  { image: gymPodium,   alt: 'Tommera sitting at the edge of the competition podium by the uneven bars' }, // 7
-  { image: gymTrophy,   alt: 'Tommera smiling and holding a trophy and medals after a competition' }, // 8
-  { image: gymBeam,     alt: 'Tommera mid-routine on the balance beam', fit: 'contain', background: '#000' }, // 9
+  { image: portrait,        alt: 'Tommera, coach and founder of Fitt With T' },                     // 1
+  { image: gymFlip,         alt: 'Tommera mid-flip during a gymnastics competition' },              // 2
+  { image: gymPodium,       alt: 'Tommera sitting at the edge of the competition podium by the uneven bars' }, // 3
+  { image: gymTrophy,       alt: 'Tommera holding a trophy and medals after a competition' },       // 4
+  { image: gymPortraitWall, alt: 'Portrait of Tommera in her competition leotard against a brick wall' }, // 5
+  { image: gymBeam,         alt: 'Tommera mid-routine on the balance beam', fit: 'contain', background: '#000' }, // 6
+  { image: gymMedals,       alt: 'Tommera wearing her medals after a gymnastics competition' },     // 7
+  { image: gymFloorLeap,    alt: 'Tommera mid-leap during a floor routine' },                       // 8
+  { image: gymVaultSit,     alt: 'Tommera sitting on the vault in front of a competition crowd' },  // 9
 ]
 
 export default function AboutPage({ onNavigate }) {
