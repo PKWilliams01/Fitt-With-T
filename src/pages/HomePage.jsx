@@ -5,6 +5,7 @@ import Carousel from '../components/Carousel'
 import SocialLinks from '../components/SocialLinks'
 import useReveal from '../hooks/useReveal'
 import useTestimonials from '../hooks/useTestimonials'
+import usePageMeta from '../hooks/usePageMeta'
 import './Home.css'
 
 const TIERS = [
@@ -36,6 +37,10 @@ const TIERS = [
 export default function HomePage({ onNavigate, introActive }) {
   const revealRef = useReveal()
   const { home: homeTestimonials } = useTestimonials()
+  usePageMeta(
+    'Fitt With T | Personal Training and Online Coaching',
+    'Build strength, confidence and lasting results with Fitt With T. Intentional programming, personal training sessions and online coaching designed for you.'
+  )
 
   return (
     <main ref={revealRef}>
