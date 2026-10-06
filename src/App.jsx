@@ -12,6 +12,7 @@ import ResultsPage  from './pages/ResultsPage'
 import ContactPage  from './pages/ContactPage'
 import BookPage     from './pages/BookPage'
 import PrivacyPage  from './pages/PrivacyPage'
+import TermsPage    from './pages/TermsPage'
 
 const PAGES = {
   home:     HomePage,
@@ -21,6 +22,7 @@ const PAGES = {
   contact:  ContactPage,
   book:     BookPage,
   privacy:  PrivacyPage,
+  terms:    TermsPage,
 }
 
 function shouldPlayIntro() {

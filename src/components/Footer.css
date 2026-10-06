@@ -82,6 +82,45 @@
 
 .footer__link:hover { color: var(--cream); }
 
+/* ====== Business details (sole-trader identity) ====== */
+.footer__business {
+  margin-top: calc(var(--u) * 5);
+  padding-top: calc(var(--u) * 3);
+  border-top: 1px solid var(--line-dark);
+}
+
+.footer__biz {
+  margin: calc(var(--u) * 2) 0 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: calc(var(--u) * 2) calc(var(--u) * 4);
+  font-size: 0.85rem;
+}
+
+.footer__biz dt {
+  color: var(--gold);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.footer__biz dd {
+  margin: 0;
+  color: rgba(255, 253, 251, 0.7);
+}
+
+/* Unfinished placeholder values — visually flagged so they can't ship empty. */
+.footer__biz-todo {
+  color: var(--gold);
+  font-style: italic;
+  opacity: 0.85;
+}
+
+@media (max-width: 600px) {
+  .footer__biz { grid-template-columns: 1fr; }
+}
+
 /* ====== Bottom bar ====== */
 .footer__bottom {
   border-top: 1px solid var(--line-dark);
