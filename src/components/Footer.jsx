@@ -61,31 +61,6 @@ export default function Footer({ onNavigate }) {
 
         </div>
 
-        {/* Business details — sole-trader identity info (legally required).
-            Values are clearly-bracketed placeholders the client must complete;
-            they are styled as unfinished so they cannot ship silently empty. */}
-        <div className="footer__business">
-          <h5 className="footer__heading">Business details</h5>
-          <dl className="footer__biz">
-            <div className="footer__biz-row">
-              <dt>Proprietor</dt>
-              <dd className="footer__biz-todo">[Tommera&rsquo;s full legal name — client to provide]</dd>
-            </div>
-            <div className="footer__biz-row">
-              <dt>Trading name</dt>
-              <dd>Fitt With T</dd>
-            </div>
-            <div className="footer__biz-row">
-              <dt>Contact email</dt>
-              <dd className="footer__biz-todo">[Email — client to provide]</dd>
-            </div>
-            <div className="footer__biz-row">
-              <dt>Business address</dt>
-              <dd className="footer__biz-todo">[Business contact address — client to provide; a real address, not a PO box]</dd>
-            </div>
-          </dl>
-        </div>
-
         <div className="footer__bottom">
           <span>© 2026 Fitt With T</span>
           <span className="footer__legal">

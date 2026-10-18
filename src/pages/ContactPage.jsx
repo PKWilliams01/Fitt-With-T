@@ -142,6 +142,32 @@ export default function ContactPage({ onNavigate }) {
               <h2 className="contact-direct__h">Follow along</h2>
               <SocialLinks />
             </div>
+
+            {/* Business details — sole-trader identity info. Values are
+                clearly-bracketed placeholders the client must complete; they
+                are styled as unfinished so they cannot ship silently empty. */}
+            <div>
+              <h2 className="contact-direct__h">Business details</h2>
+              <dl className="contact-biz">
+                <div className="contact-biz__row">
+                  <dt>Proprietor</dt>
+                  <dd className="contact-biz__todo">[Tommera&rsquo;s full legal name — client to provide]</dd>
+                </div>
+                <div className="contact-biz__row">
+                  <dt>Trading name</dt>
+                  <dd>Fitt With T</dd>
+                </div>
+                <div className="contact-biz__row">
+                  <dt>Contact email</dt>
+                  <dd className="contact-biz__todo">[Email — client to provide]</dd>
+                </div>
+                <div className="contact-biz__row">
+                  <dt>Business address</dt>
+                  <dd className="contact-biz__todo">[Business contact address — client to provide; a real address, not a PO box]</dd>
+                </div>
+              </dl>
+            </div>
+
             <button className="btn btn-ghost" onClick={() => onNavigate('packages')}>
               Or book a free consultation <span aria-hidden="true">→</span>
             </button>

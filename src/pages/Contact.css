@@ -84,6 +84,19 @@
 .contact-direct a { color: var(--rose-2); }
 .contact-direct a:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; border-radius: var(--radius-sm); }
 
+/* business details (sole-trader identity) */
+.contact-biz { margin: 0; display: grid; gap: calc(var(--u) * 1.5); }
+.contact-biz dt {
+  font-size: .62rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2px;
+}
+.contact-biz dd { margin: 0; color: var(--muted); font-size: .9rem; }
+/* unfinished placeholder values — flagged so they can't ship empty */
+.contact-biz__todo { font-style: italic; color: var(--rose-2); }
+
 /* FAQ accordion (native <details> for built-in accessibility) */
 .contact-faq-section .faq-head { text-align: center; }
 .contact-faq-section .faq-head .display { margin-top: calc(var(--u) * 2); }
