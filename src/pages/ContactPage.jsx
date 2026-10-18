@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import useReveal from '../hooks/useReveal'
+import usePageMeta from '../hooks/usePageMeta'
 import { SOCIALS, isMail } from '../data/socials'
 import SocialLinks from '../components/SocialLinks'
 import './Contact.css'
@@ -7,6 +8,7 @@ import './Contact.css'
 /* FAQ — verbatim from the approved concept (#page-contact). */
 const FAQ = [
   ['Do I need to be fit to start?', 'Not at all. The Faith Starter is built for total beginners and anyone coming back after a break. We start exactly where you are.'],
+  ['Do you train in person or online?', 'Both. I’m London-based for in-person personal training sessions, and I coach clients further afield through online coaching. Whichever fits your life best, we’ll build your plan around it, you get the same intention and accountability either way.'],
   ['Is this only for women?', 'No. While many of my clients are women, I coach men too, of all ages, beginners to advanced. Everyone’s welcome and everyone gets a plan built for them.'],
   ['What happens at the free consultation?', 'We meet online to talk through your goals and PAR-Q, so you can feel how I coach and we can plan your first session, no pressure to continue.'],
   ['What’s the intake form for?', 'A few questions about your goals, health and lifestyle so I can train you safely and tailor your sessions. Your answers stay private and secure.'],
@@ -25,6 +27,10 @@ const BASIN_ENDPOINT = 'https://usebasin.com/f/460af029a90e'
 
 export default function ContactPage({ onNavigate }) {
   const revealRef = useReveal()
+  usePageMeta(
+    'Say Hello | Fitt With T Personal Trainer in London',
+    "Not sure where to start? That's completely fine. Send Fitt With T a message to find out more before you commit."
+  )
   const [values, setValues] = useState(EMPTY)
   const [errors, setErrors] = useState({})
   const [sent, setSent] = useState(false)

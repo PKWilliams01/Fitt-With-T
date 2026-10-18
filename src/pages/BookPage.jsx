@@ -1,4 +1,5 @@
 import useReveal from '../hooks/useReveal'
+import usePageMeta from '../hooks/usePageMeta'
 import { SOCIALS, isMail } from '../data/socials'
 import ProviderEmbed from '../components/ProviderEmbed'
 import { BOOKING_EMBED_URL, BOOKING_DIRECT_URL, PROVIDER_NAME } from '../config/provider'
@@ -16,6 +17,10 @@ const STEPS = [
 
 export default function BookPage({ bookContext = {} }) {
   const revealRef = useReveal()
+  usePageMeta(
+    'Book Your Free Consultation | Fitt With T',
+    "Let's have a chat! Book your free online consultation to talk about your goals, then come and try a relaxed taster session. No pressure, just a friendly start."
+  )
   const { consent } = useCookieConsent()
 
   return (
