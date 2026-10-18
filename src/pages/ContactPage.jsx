@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import useReveal from '../hooks/useReveal'
+import usePageMeta from '../hooks/usePageMeta'
 import { SOCIALS, isMail } from '../data/socials'
 import SocialLinks from '../components/SocialLinks'
 import './Contact.css'
@@ -26,6 +27,10 @@ const BASIN_ENDPOINT = 'https://usebasin.com/f/460af029a90e'
 
 export default function ContactPage({ onNavigate }) {
   const revealRef = useReveal()
+  usePageMeta(
+    'Say Hello | Fitt With T Personal Trainer in London',
+    "Not sure where to start? That's completely fine. Send Fitt With T a message to find out more before you commit."
+  )
   const [values, setValues] = useState(EMPTY)
   const [errors, setErrors] = useState({})
   const [sent, setSent] = useState(false)

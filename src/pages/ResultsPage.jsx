@@ -1,4 +1,5 @@
 import useReveal from '../hooks/useReveal'
+import usePageMeta from '../hooks/usePageMeta'
 import useTestimonials from '../hooks/useTestimonials'
 import Carousel from '../components/Carousel'
 import TestimonialForm from '../components/TestimonialForm'
@@ -7,6 +8,10 @@ import './Results.css'
 export default function ResultsPage({ onNavigate }) {
   const revealRef = useReveal()
   const { all: testimonials } = useTestimonials()
+  usePageMeta(
+    'Client Results | Real Progress, Real People | Fitt With T Personal Training',
+    "See the strength, confidence and progress Fitt With T's clients have built. Real results from real training and you could be next."
+  )
 
   return (
     <main className="results-page" ref={revealRef}>

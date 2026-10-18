@@ -1,4 +1,5 @@
 import useReveal from '../hooks/useReveal'
+import usePageMeta from '../hooks/usePageMeta'
 import ServiceCard from '../components/ServiceCard'
 import './Services.css'
 
@@ -47,6 +48,10 @@ const TIERS = [
 
 export default function ServicesPage({ onNavigate }) {
   const revealRef = useReveal()
+  usePageMeta(
+    'Personal Training in London & Online Coaching | Fitt With T',
+    'Training that fits around your life, not the other way round. Face-to-face, online or hybrid coaching. Explore Fitt With T and find the package that feels right for you.'
+  )
 
   return (
     <main className="services-page" ref={revealRef}>
