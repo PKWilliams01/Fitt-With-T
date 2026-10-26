@@ -84,3 +84,17 @@
 .book-embed__pending a:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; border-radius: var(--radius-sm); }
 
 .book-page .note { text-align: center; max-width: 60ch; margin: calc(var(--u) * 3) auto 0; color: var(--muted); font-size: .85rem; }
+
+/* Age notice (18+ only) — clear, calm, near the booking. */
+.book-agenote {
+  max-width: 60ch;
+  margin: calc(var(--u) * 3) auto 0;
+  padding: calc(var(--u) * 2) calc(var(--u) * 2.5);
+  background: var(--sand);
+  border-left: 3px solid var(--rose);
+  border-radius: var(--radius-sm);
+  color: var(--ink);
+  font-size: .88rem;
+  line-height: 1.6;
+}
+.book-agenote strong { color: var(--rose-2); }
