@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 import './App.css'
 import { CookieConsentProvider } from './context/CookieConsent'
 import ConsentBanner from './components/ConsentBanner'
@@ -12,6 +13,7 @@ import ResultsPage  from './pages/ResultsPage'
 import ContactPage  from './pages/ContactPage'
 import BookPage     from './pages/BookPage'
 import PrivacyPage  from './pages/PrivacyPage'
+import TermsPage    from './pages/TermsPage'
 
 const PAGES = {
   home:     HomePage,
@@ -21,6 +23,7 @@ const PAGES = {
   contact:  ContactPage,
   book:     BookPage,
   privacy:  PrivacyPage,
+  terms:    TermsPage,
 }
 
 function shouldPlayIntro() {
@@ -50,6 +53,8 @@ export default function App() {
       <Page onNavigate={navigate} introActive={introActive} bookContext={bookContext} />
       <Footer onNavigate={navigate} />
       <ConsentBanner onNavigate={navigate} />
+      {/* Vercel Analytics — cookieless by design; mounted site-wide. */}
+      <Analytics />
     </CookieConsentProvider>
   )
 }

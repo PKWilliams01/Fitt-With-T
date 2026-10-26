@@ -88,6 +88,12 @@ export default function BookPage({ bookContext = {} }) {
             )}
           </div>
 
+          <p className="book-agenote">
+            <strong>Please note:</strong> coaching with Fitt With T is for adults aged
+            18 and over. By booking a consultation, you&rsquo;re confirming you&rsquo;re
+            18 or older.
+          </p>
+
           <p className="note">
             Your booking and details are handled securely by {PROVIDER_NAME}.
             They&rsquo;re never stored on this site.

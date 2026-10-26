@@ -61,11 +61,23 @@ export default function Footer({ onNavigate }) {
 
         </div>
 
+        {/* Sole-trader identity (legally required): compact single line. */}
+        <p className="footer__business">
+          Tommera Hendricks, trading as Fitt With T
+          <span className="footer__business-sep" aria-hidden="true"> · </span>
+          London
+          <span className="footer__business-sep" aria-hidden="true"> · </span>
+          <a className="footer__business-email" href="mailto:Fittwitht.1@gmail.com">Fittwitht.1@gmail.com</a>
+        </p>
+
         <div className="footer__bottom">
           <span>© 2026 Fitt With T</span>
           <span className="footer__legal">
             <button className="footer__manage" onClick={() => onNavigate('privacy')}>
               Privacy &amp; cookies
+            </button>
+            <button className="footer__manage" onClick={() => onNavigate('terms')}>
+              Terms
             </button>
             <button className="footer__manage" onClick={reopen}>Manage cookies</button>
           </span>
